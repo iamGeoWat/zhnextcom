@@ -1,9 +1,10 @@
 const https = require('https')
 const CryptoJS = require('crypto-js')
+const apiInfo = require('./config/api')
 
-const api_key = '3414ef69-78c3-4c8d-a723-86e0fd51c02b'
-const sec_key = 'D7034EC4A3F7290CBE77D0269231699F'
-const passphrase = '1993612dj'
+const api_key = apiInfo.okex_huang.api_key
+const sec_key = apiInfo.okex_huang.sec_key
+const passphrase = apiInfo.okex_huang.passphrase
 // Huang
 
 const express = require('express')
