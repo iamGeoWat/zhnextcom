@@ -1,6 +1,5 @@
 const https = require('https')
 const CryptoJS = require('crypto-js')
-const mysql = require('mysql')
 
 const api_key = '3414ef69-78c3-4c8d-a723-86e0fd51c02b'
 const sec_key = 'D7034EC4A3F7290CBE77D0269231699F'
@@ -16,19 +15,14 @@ app.use(function(req, res, next) {
   next();
 });
 
-var DBConnection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '199899',
-  database: 'FundInfo'
-})
-DBConnection.connect()
+const DotDao = require('./dao/DotDao')
+const dotDao = new DotDao()
 
-function modifyData(source, target) {
+function modifyPositionData(source, target) {
   //modify position info
-  if (source[0] !== null && source[0] !== undefined) {
-    var modPositionInfo = source[0]
-    var accountInfo = source[1]
+  if (source !== undefined) {
+    var modPositionInfo = source
+    // var accountInfo = source[1]
     for (var i = 0; i < modPositionInfo.length; i++) {
       var tokenName = modPositionInfo[i].instrument_id.substr(0, 3)
       var contractType = modPositionInfo[i].instrument_id.substr(8, 6)
@@ -48,32 +42,31 @@ function modifyData(source, target) {
         'long_pnl': long_pnl, 'long_pnl_ratio': modPositionInfo[i].long_pnl_ratio, 'long_pnl_ratio_percent': long_pnl_ratio_percent
       }
     }
+    target = modPositionInfo
   }
+}
+
+function modifyAccountData (source, target) {
   //modify account info
-  if (source[1] !== null && source[1] !== undefined) {
-    var modAccountInfo = source[1]
+  if (source !== undefined) {
+    var modAccountInfo = source
     for (var token in modAccountInfo) {
       
       var total_margin_frozen = 0
       for (var i = 0; i < modAccountInfo[token].contracts.length; i++) {
         total_margin_frozen += modAccountInfo[token].contracts[i].margin_frozen
       }
-      // if ((total_margin_frozen / modAccountInfo[token].equity * 100) >= 0.3) {
-      //   modAccountInfo[token].position_ratio = '32.16%'
-      // } else {
-      //   modAccountInfo[token].position_ratio = (total_margin_frozen / modAccountInfo[token].equity * 100).toString().substr(0, 5) + '%'
-      // }
       modAccountInfo[token].position_ratio = (total_margin_frozen / modAccountInfo[token].equity * 100).toString().substr(0, 5) + '%'
       modAccountInfo[token].weeklyPnL = Math.round(modAccountInfo[token].equity - modAccountInfo[token].total_avail_balance)
+      
+      target = modAccountInfo
     }
   }
-  target = [modPositionInfo, modAccountInfo]
 }
 
 var infoContainer = [
   [{}, {}]
 ]
-
 
 
 
@@ -112,6 +105,7 @@ var positionEngine = setInterval(() => {
       // console.log(JSON.parse(Buffer.concat(dataArr, dataArrLen).toString()))
       if (JSON.parse(Buffer.concat(dataArr, dataArrLen).toString()).holding !== undefined) {
         infoContainer[0][0] = JSON.parse(Buffer.concat(dataArr, dataArrLen).toString()).holding[0]
+        modifyPositionData(infoContainer[0][0], infoContainer[0][0])
       }
     })
   })
@@ -148,6 +142,7 @@ var accountEngine = setInterval(() => {
     res.on('end', () => {
       if (JSON.parse(Buffer.concat(dataArr, dataArrLen).toString()).info) {
         infoContainer[0][1] = JSON.parse(Buffer.concat(dataArr, dataArrLen).toString()).info
+        modifyAccountData(infoContainer[0][1], infoContainer[0][1])
       }
     })
   })
@@ -157,58 +152,30 @@ var accountEngine = setInterval(() => {
   accountInfoGrabber.end()
 }, 10000)
 
-var modifyInfoEngine = setInterval(() => {
-  modifyData(infoContainer[0], infoContainer[0])
-}, 3000)
-
 var seeThruEngine = setInterval(() => {
   console.log(infoContainer[0])
 }, 5000)
 
+
 //interfaces
-app.get('/dotGraph6h', (req, res) => {
-  console.log('a')
-  var qSQL = 'SELECT * FROM equity WHERE sampleIntv = \'1\''
-  DBConnection.query(qSQL, (err, result) => {
-    if (err) {
-      console.log('QUERY ERROR: ' + err.message)
-    }
-    console.log(JSON.stringify(result))
-    res.send(JSON.stringify(result))
-  })
+appt.get('dot1h', async (req, res) => {
+  var result = await dotDao.queryDotByIdAndIntvType(1, 1)
 })
-app.get('/dotGraphDay', (req, res) => {
-  console.log('b')
-  var qSQL = 'SELECT * FROM equity WHERE sampleIntv = \'2\''
-  DBConnection.query(qSQL, (err, result) => {
-    if (err) {
-      console.log('QUERY ERROR: ' + err.message)
-    }
-    console.log(JSON.stringify(result))
-    res.send(JSON.stringify(result))
-  })
+app.get('/dot6h', async (req, res) => {
+  var result = await dotDao.queryDotByIdAndIntvType(1, 2)
+  res.send(result)
 })
-app.get('/dotGraphWeek', (req, res) => {
-  console.log('c')
-  var qSQL = 'SELECT * FROM equity WHERE sampleIntv = \'3\''
-  DBConnection.query(qSQL, (err, result) => {
-    if (err) {
-      console.log('QUERY ERROR: ' + err.message)
-    }
-    console.log(JSON.stringify(result))
-    res.send(JSON.stringify(result))
-  })
+app.get('/dotDay', async (req, res) => {
+  var result = await dotDao.queryDotByIdAndIntvType(1, 3)
+  res.send(result)
 })
-app.get('/dotGraphMonth', (req, res) => {
-  console.log('d')
-  var qSQL = 'SELECT * FROM equity WHERE sampleIntv = \'4\''
-  DBConnection.query(qSQL, (err, result) => {
-    if (err) {
-      console.log('QUERY ERROR: ' + err.message)
-    }
-    console.log(JSON.stringify(result))
-    res.send(JSON.stringify(result))
-  })
+app.get('/dotWeek', async (req, res) => {
+  var result = await dotDao.queryDotByIdAndIntvType(1, 4)
+  res.send(result)
+})
+app.get('/dotMonth', async (req, res) => {
+  var result = await dotDao.queryDotByIdAndIntvType(1, 5)
+  res.send(result)
 })
 app.get('/info', (req, res) => res.send(JSON.stringify(infoContainer[0])))
 

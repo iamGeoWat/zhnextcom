@@ -57,4 +57,32 @@ module.exports = class DotDao {
       await conn.destroy()
     }
   }
+  async queryLatest () {
+    let conn = await dbConnection()
+    try {
+      let result = await conn.query(query.queryLatest)
+      result = JSON.parse(JSON.stringify(result))
+      return result
+    } catch (e) {
+      console.log(e)
+      throw e
+    } finally {
+      await conn.release()
+      await conn.destroy()
+    }
+  }
+  async queryLatestByIntvType (intvType) {
+    let conn = await dbConnection()
+    try {
+      let result = await conn.query(query.queryLatestByIntvType, intvType)
+      result = JSON.parse(JSON.stringify(result))
+      return result
+    } catch (e) {
+      console.log(e)
+      throw e
+    } finally {
+      await conn.release()
+      await conn.destroy()
+    }
+  }
 }

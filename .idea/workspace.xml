@@ -2,13 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c4fad8de-57f0-4386-8476-b9c30c6ec773" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/backend/dao/CommentDao.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/dao/CommentQuery.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/dao/OperationDao.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/dao/OperationQuery.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/dao/UserDao.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/dao/UserQuery.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dao/DotDao.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/dao/DotDao.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dao/DotQuery.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/dao/DotQuery.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dao/test.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/dao/test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dataFetchEngine.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/dataFetchEngine.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dataWriteEngine.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/dataWriteEngine.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -33,7 +31,7 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="gitignore" value="1" />
-          <entry key="js" value="15" />
+          <entry key="js" value="18" />
           <entry key="json" value="2" />
           <entry key="txt" value="1" />
         </counts>
@@ -41,19 +39,19 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="JSON" value="2" />
-          <entry key="JavaScript" value="15" />
+          <entry key="JavaScript" value="18" />
           <entry key="PLAIN_TEXT" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="gitignore" value="14" />
-          <entry key="js" value="3279" />
+          <entry key="js" value="4433" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JavaScript" value="3279" />
+          <entry key="JavaScript" value="4433" />
           <entry key="PLAIN_TEXT" value="14" />
         </counts>
       </usages-collector>
@@ -64,8 +62,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/backend/dao/DotDao.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="15" column="5" lean-forward="true" selection-end-line="59" selection-end-column="1" />
+            <state relative-caret-position="312">
+              <caret line="76" column="63" selection-start-line="76" selection-start-column="63" selection-end-line="76" selection-end-column="63" />
             </state>
           </provider>
         </entry>
@@ -73,8 +71,32 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/backend/dao/test.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+            <state relative-caret-position="180">
+              <caret line="12" column="5" lean-forward="true" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/backend/dataFetchEngine.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="327">
+              <caret line="176" column="57" lean-forward="true" selection-start-line="176" selection-start-column="57" selection-end-line="176" selection-end-column="57" />
+              <folding>
+                <element signature="n#!!block;n#modifyData#0" />
+                <element signature="n#!!block;n#modifyAccountData#0" />
+                <element signature="e#3239#4448#0" />
+                <element signature="e#4495#5594#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/backend/dataWriteEngine.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="192">
+              <caret line="34" column="19" lean-forward="true" selection-start-line="34" selection-start-column="19" selection-end-line="34" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -82,17 +104,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/backend/dao/DotQuery.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" column="1" lean-forward="true" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/backend/dao/dbConnection.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="48" selection-start-line="10" selection-start-column="48" selection-end-line="10" selection-end-column="48" />
+            <state relative-caret-position="105">
+              <caret line="7" column="1" lean-forward="true" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -125,19 +138,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/backend/dao/OperationQuery.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" column="1" lean-forward="true" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/backend/dao/UserDao.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="334">
-              <caret line="65" column="17" lean-forward="true" selection-start-line="65" selection-start-column="17" selection-end-line="65" selection-end-column="17" />
+            <state relative-caret-position="135">
+              <caret line="9" column="17" lean-forward="true" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -179,11 +183,6 @@
         <option value="$PROJECT_DIR$/backend/config/db.js" />
         <option value="$PROJECT_DIR$/backend/dao/query.js" />
         <option value="$PROJECT_DIR$/backend/dao/dbConnection.js" />
-        <option value="$PROJECT_DIR$/backend/dao/test.js" />
-        <option value="$PROJECT_DIR$/backend/dataFetchEngine.js" />
-        <option value="$PROJECT_DIR$/backend/dao/DotQuery.js" />
-        <option value="$PROJECT_DIR$/backend/dao/DotDao.js" />
-        <option value="$PROJECT_DIR$/backend/dataWriteEngine.js" />
         <option value="$PROJECT_DIR$/backend/.gitignore" />
         <option value="$PROJECT_DIR$/backend/dao/CommentQuery.js" />
         <option value="$PROJECT_DIR$/backend/dao/CommentDao.js" />
@@ -191,6 +190,11 @@
         <option value="$PROJECT_DIR$/backend/dao/OperationDao.js" />
         <option value="$PROJECT_DIR$/backend/dao/UserQuery.js" />
         <option value="$PROJECT_DIR$/backend/dao/UserDao.js" />
+        <option value="$PROJECT_DIR$/backend/dao/test.js" />
+        <option value="$PROJECT_DIR$/backend/dao/DotDao.js" />
+        <option value="$PROJECT_DIR$/backend/dao/DotQuery.js" />
+        <option value="$PROJECT_DIR$/backend/dataWriteEngine.js" />
+        <option value="$PROJECT_DIR$/backend/dataFetchEngine.js" />
       </list>
     </option>
   </component>
@@ -209,10 +213,10 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="198" />
-    <option name="y" value="296" />
+    <option name="x" value="203" />
+    <option name="y" value="23" />
     <option name="width" value="1317" />
-    <option name="height" value="898" />
+    <option name="height" value="994" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -234,12 +238,6 @@
               <item name="zhnextcom" type="b2602c69:ProjectViewProjectNode" />
               <item name="zhnextcom" type="462c0819:PsiDirectoryNode" />
               <item name="backend" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="zhnextcom" type="b2602c69:ProjectViewProjectNode" />
-              <item name="zhnextcom" type="462c0819:PsiDirectoryNode" />
-              <item name="backend" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="zhnextcom" type="b2602c69:ProjectViewProjectNode" />
@@ -286,10 +284,17 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Node.js.Unnamed (1)">
+    <configuration name="Unnamed (1)" type="NodeJSConfigurationType" factoryName="Node.js" path-to-js-file="backend/dataFetchEngine.js" working-dir="$PROJECT_DIR$">
+      <method v="2" />
+    </configuration>
     <configuration name="Unnamed" type="NodeJSConfigurationType" factoryName="Node.js" path-to-js-file="backend/dao/test.js" working-dir="$PROJECT_DIR$">
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Node.js.Unnamed (1)" />
+      <item itemvalue="Node.js.Unnamed" />
+    </list>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -303,15 +308,15 @@
       <updated>1547624753024</updated>
       <workItem from="1547624754246" duration="5625000" />
       <workItem from="1547738140003" duration="27000" />
-      <workItem from="1547738339868" duration="9023000" />
+      <workItem from="1547738339868" duration="12687000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14675000" />
+    <option name="totallyTimeSpent" value="18339000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="198" y="296" width="1317" height="898" extended-state="0" />
+    <frame x="203" y="23" width="1317" height="994" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.31944445" />
@@ -319,14 +324,14 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32941177" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.4463768" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.44567627" />
+      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.3991131" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="9" visible="true" weight="0.29156327" />
+      <window_info anchor="bottom" id="Terminal" order="9" weight="0.36585367" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -364,26 +369,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/backend/dataFetchEngine.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="337">
-          <caret line="165" column="8" selection-start-line="165" selection-start-column="8" selection-end-line="165" selection-end-column="8" />
-          <folding>
-            <element signature="e#5784#6065#0" />
-            <element signature="e#6105#6386#0" />
-            <element signature="e#6427#6708#0" />
-            <element signature="e#6750#7031#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/dataWriteEngine.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="20" selection-start-line="20" selection-end-line="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/backend/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -393,13 +378,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/frontend/readme.txt">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/dao/test.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/backend/dao/dbConnection.js">
       <provider selected="true" editor-type-id="text-editor">
@@ -436,20 +414,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/backend/dao/DotQuery.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="1" lean-forward="true" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/dao/DotDao.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="5" lean-forward="true" selection-end-line="59" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/backend/dao/UserQuery.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -459,8 +423,49 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/backend/dao/UserDao.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="334">
-          <caret line="65" column="17" lean-forward="true" selection-start-line="65" selection-start-column="17" selection-end-line="65" selection-end-column="17" />
+        <state relative-caret-position="135">
+          <caret line="9" column="17" lean-forward="true" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/dao/DotDao.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="76" column="63" selection-start-line="76" selection-start-column="63" selection-end-line="76" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/dao/DotQuery.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="1" lean-forward="true" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/dao/test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="5" lean-forward="true" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/dataWriteEngine.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="34" column="19" lean-forward="true" selection-start-line="34" selection-start-column="19" selection-end-line="34" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/dataFetchEngine.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="327">
+          <caret line="176" column="57" lean-forward="true" selection-start-line="176" selection-start-column="57" selection-end-line="176" selection-end-column="57" />
+          <folding>
+            <element signature="n#!!block;n#modifyData#0" />
+            <element signature="n#!!block;n#modifyAccountData#0" />
+            <element signature="e#3239#4448#0" />
+            <element signature="e#4495#5594#0" />
+          </folding>
         </state>
       </provider>
     </entry>
