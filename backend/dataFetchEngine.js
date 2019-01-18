@@ -159,7 +159,7 @@ var seeThruEngine = setInterval(() => {
 
 
 //interfaces
-appt.get('dot1h', async (req, res) => {
+app.get('dot1h', async (req, res) => {
   var result = await dotDao.queryDotByIdAndIntvType(1, 1)
   res.send(result)
 })
