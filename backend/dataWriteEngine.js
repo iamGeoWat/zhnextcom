@@ -37,7 +37,7 @@ async function dotWrite (intvType, apiID) {
     var equity = infoContainer[0][1]['eos'].equity
     var time = moment(new Date()).format('YYYY-MM-DD HH:mm:ss')
     var dotInfo = [equity, time, intvType, apiID, null]
-    console.log(dotInfo)
+    // console.log(dotInfo)
     if (intvType === 1) {
       if (await ifEquityChanged(equity)) {
         await dotDao.addDot(dotInfo)
@@ -48,7 +48,7 @@ async function dotWrite (intvType, apiID) {
             return console.error(err)
           }
         })
-        console.log(writeCount)
+        // console.log(writeCount)
       }
     } else {
       await dotDao.addDot(dotInfo)
@@ -59,7 +59,7 @@ async function dotWrite (intvType, apiID) {
           return console.error(err)
         }
       })
-      console.log(writeCount)
+      // console.log(writeCount)
   
     }
   }
@@ -81,8 +81,8 @@ function app() {
       })
   }, 1000)
   console.log('data engine engaged.')
-  // var dataWriteEngine = setInterval(classifiedWrite, 3600000)
-  var dataWriteEngine = setInterval(classifiedWrite, 5000)
+  var dataWriteEngine = setInterval(classifiedWrite, 3600000)
+  // var dataWriteEngine = setInterval(classifiedWrite, 5000)
   console.log('write engine engaged.')
 }
 

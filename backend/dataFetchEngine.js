@@ -1,4 +1,5 @@
 const https = require('https')
+const bodyParser = require('body-parser')
 const CryptoJS = require('crypto-js')
 const apiInfo = require('./config/api')
 
@@ -15,9 +16,13 @@ app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
+app.use(bodyParser.json())
 
 const DotDao = require('./dao/DotDao')
 const dotDao = new DotDao()
+
+const UserDao = require('./dao/UserDao')
+const userDao = new UserDao()
 
 function modifyPositionData(source, target) {
   //modify position info
@@ -180,10 +185,26 @@ app.get('/dotMonth', async (req, res) => {
   res.send(result)
 })
 app.get('/info', (req, res) => res.send(JSON.stringify(infoContainer[0])))
-app.get('/infoToShow', (req, res) => {
+app.post('/login', async (req, res) => {
+  let failPwd = { code: 1, content: 'wrong password'}
+  let failUsn = { code: 2, content: 'wrong username'}
+  let failUkn = { code: 3, content: 'unknown error'}
+  let pass = { code: 0, content: 'success'}
+  var account = req.body
+  var matchedPassword = await userDao.queryPasswordByUsername(account.username)
+  if (matchedPassword.length === 0) {
+    res.send(JSON.stringify(failUsn))
+  } else if (matchedPassword !== account.password) {
+    res.send(JSON.stringify(failPwd))
+  } else if (matchedPassword === account.password) {
+    res.send(JSON.stringify(pass))
+  } else {
+    res.send(JSON.stringify(failUkn))
+  }
+})
+app.get('/showInfo', (req, res) => {
   //todo:写展示的数据
   //todo:把equity改成账户总净值
-  //todo:写登录有关的接口
   res.send()
 })
 
