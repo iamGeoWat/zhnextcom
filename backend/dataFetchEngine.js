@@ -191,12 +191,12 @@ app.post('/login', async (req, res) => {
   let failUkn = { code: 3, content: 'unknown error'}
   let pass = { code: 0, content: 'success'}
   var account = req.body
-  var matchedPassword = await userDao.queryPasswordByUsername(account.username)
-  if (matchedPassword.length === 0) {
+  var queryResult = await userDao.queryPasswordByUsername(account.username)
+  if (queryResult.length === 0) {
     res.send(JSON.stringify(failUsn))
-  } else if (matchedPassword !== account.password) {
+  } else if (queryResult[0].password !== account.password) {
     res.send(JSON.stringify(failPwd))
-  } else if (matchedPassword === account.password) {
+  } else if (queryResult[0].password === account.password) {
     res.send(JSON.stringify(pass))
   } else {
     res.send(JSON.stringify(failUkn))
