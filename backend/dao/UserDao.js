@@ -5,7 +5,7 @@ module.exports = class UserDao {
   async addUser (userInfo) {
     let conn = await dbConnection()
     try {
-      await conn.query(query.add, [userInfo[0], userInfo[1], userInfo[2], userInfo[3], userInfo[4], null])
+      await conn.query(query.add, [userInfo[0], userInfo[1], userInfo[2], userInfo[3], userInfo[4], userInfo[5], userInfo[6], userInfo[7], null])
       return true
     } catch (e) {
       console.log(e)

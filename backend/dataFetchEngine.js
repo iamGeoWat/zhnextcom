@@ -180,5 +180,11 @@ app.get('/dotMonth', async (req, res) => {
   res.send(result)
 })
 app.get('/info', (req, res) => res.send(JSON.stringify(infoContainer[0])))
+app.get('/infoToShow', (req, res) => {
+  //todo:写展示的数据
+  //todo:把equity改成账户总净值
+  //todo:写登录有关的接口
+  res.send()
+})
 
 app.listen(8877, () => console.log('data fetch and interface is running at port 8877.'))

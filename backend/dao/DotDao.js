@@ -85,4 +85,28 @@ module.exports = class DotDao {
       await conn.destroy()
     }
   }
+  async queryEquityTimeByIdAndIntvType (apiId, intvType) {
+    let conn = await dbConnection()
+    try {
+      let equity = await conn.query(query.queryEquityByIdIntvType, [apiId, intvType])
+      let time = await conn.query(query.queryTimeByIdIntvType, [apiId, intvType])
+      if (equity.length === time.length) {
+        var modEquity = []
+        var modTime = []
+        for (var i = 0; i < equity.length; i++) {
+          modEquity.push(equity[i].equity)
+          modTime.push(time[i].time)
+        }
+        return [ modEquity, modTime ]
+      } else {
+        return 'database row data margin error.'
+      }
+    } catch (e) {
+      console.log(e)
+      throw e
+    } finally {
+      await conn.release()
+      await conn.destroy()
+    }
+  }
 }
