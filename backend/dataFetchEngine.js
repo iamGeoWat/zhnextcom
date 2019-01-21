@@ -165,23 +165,23 @@ var seeThruEngine = setInterval(() => {
 
 //interfaces
 app.get('/dot1h', async (req, res) => {
-  var result = await dotDao.queryDotByIdAndIntvType(1, 1)
+  var result = await dotDao.queryEquityTimeByIdAndIntvType(1, 1)
   res.send(result)
 })
 app.get('/dot6h', async (req, res) => {
-  var result = await dotDao.queryDotByIdAndIntvType(1, 2)
+  var result = await dotDao.queryEquityTimeByIdAndIntvType(1, 2)
   res.send(result)
 })
 app.get('/dotDay', async (req, res) => {
-  var result = await dotDao.queryDotByIdAndIntvType(1, 3)
+  var result = await dotDao.queryEquityTimeByIdAndIntvType(1, 3)
   res.send(result)
 })
 app.get('/dotWeek', async (req, res) => {
-  var result = await dotDao.queryDotByIdAndIntvType(1, 4)
+  var result = await dotDao.queryEquityTimeByIdAndIntvType(1, 4)
   res.send(result)
 })
 app.get('/dotMonth', async (req, res) => {
-  var result = await dotDao.queryDotByIdAndIntvType(1, 5)
+  var result = await dotDao.queryEquityTimeByIdAndIntvType(1, 5)
   res.send(result)
 })
 app.get('/info', (req, res) => res.send(JSON.stringify(infoContainer[0])))
