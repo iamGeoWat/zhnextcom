@@ -5,9 +5,27 @@ const fs = require('fs')
 const DotDao = require('./dao/DotDao')
 const dotDao = new DotDao()
 
-var infoContainer = [
-  [{}, {}]
-]
+var accountContainer = {
+  btc: {
+    wallet: 0,
+    b2b: 0,
+    contract: 0,
+    totalInUSD: 0
+  },
+  eos: {
+    wallet: 0,
+    b2b: 0,
+    contract: 0,
+    totalInUSD: 0
+  },
+  usdt: {
+    wallet: 0,
+    b2b: 0,
+    totalInUSD: 0
+  },
+  totalEquityInBTC: 0,
+  totalEquityInUSD: 0
+}
 
 var writeCount = 0
 
@@ -33,8 +51,8 @@ function classifiedWrite () {
 }
 
 async function dotWrite (intvType, apiID) {
-  if (infoContainer[0] !== 'error' && JSON.stringify(infoContainer[0][1]) !== '{}') {
-    var equity = infoContainer[0][1]['eos'].equity
+  if (accountContainer !== 'error' && accountContainer.totalEquityInBTC !== 0) {
+    var equity = accountContainer.totalEquityInBTC
     var time = moment(new Date()).format('YYYY-MM-DD HH:mm:ss')
     var dotInfo = [equity, time, intvType, apiID, null]
     // console.log(dotInfo)
@@ -72,12 +90,12 @@ function app() {
   writeCount = fs.readFileSync('./config/writecount.txt')
   console.log(writeCount.toString())
   var dataEngine = setInterval(() => {
-    axios.get('http://localhost:8877/info')
+    axios.get('http://localhost:8877/equity')
       .then((res) => {
-        infoContainer[0] = res.data
+        accountContainer = res.data
       })
       .catch((err) => {
-        infoContainer[0] = 'error'
+        accountContainer = 'error'
       })
   }, 1000)
   console.log('data engine engaged.')
