@@ -229,7 +229,6 @@ app.post('/showInfo', async (req, res) => {
   resData.runningTime = currentDate.diff(startDate, 'days') + 1
   // console.log(resData.runningTime)
   resData.estimatedYearly = (((((currentEquity - userInfo.start_equity) / userInfo.start_equity) * 100)/resData.runningTime) * 365).toFixed(4)
-  //todo:小数转百分比 计算年化 运行日期
   //todo:把equity改成账户总净值
   res.send(JSON.stringify(resData))
 })

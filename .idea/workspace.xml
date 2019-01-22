@@ -5,11 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c4fad8de-57f0-4386-8476-b9c30c6ec773" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/dao/UserDao.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/dao/UserDao.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/dao/UserQuery.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/dao/UserQuery.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/dao/test.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/dao/test.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/dataFetchEngine.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/dataFetchEngine.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -99,8 +94,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/backend/dataFetchEngine.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="278">
-              <caret line="245" column="25" lean-forward="true" selection-start-line="245" selection-start-column="25" selection-end-line="245" selection-end-column="25" />
+            <state relative-caret-position="407">
+              <caret line="231" selection-start-line="231" selection-end-line="231" />
               <folding>
                 <element signature="n#!!block;n#modifyData#0" />
               </folding>
@@ -327,7 +322,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40898000" />
+    <option name="totallyTimeSpent" value="40972000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -500,8 +495,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/backend/dataFetchEngine.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="245" column="25" lean-forward="true" selection-start-line="245" selection-start-column="25" selection-end-line="245" selection-end-column="25" />
+        <state relative-caret-position="407">
+          <caret line="231" selection-start-line="231" selection-end-line="231" />
           <folding>
             <element signature="n#!!block;n#modifyData#0" />
           </folding>
