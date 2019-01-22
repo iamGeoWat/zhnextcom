@@ -10,7 +10,7 @@
         <div class="item-content">
           <div style="margin-top: 15px">
             <img src="../../assets/platform/向上.png" height="13">
-            <p style="font-size: 38px;">0</p>
+            <p style="font-size: 38px;">{{this.showData.totalEquity}}</p>
             <p style="vertical-align: bottom;">BTC</p>
             <br/>
             <p style="font-size: 12px;color: rgb(181,181,181);">TOTAL NET WORTH 36.656BTC</p>
@@ -242,57 +242,56 @@
         });
       },
       drawPie() {
-        // 基于准备好的dom，初始化echarts实例
-        this.pieChart = this.$echarts.init(document.getElementById('pieChart'));
-        // 绘制图表
-        this.pieChart.setOption({
-          tooltip: {
-            trigger: 'item',
-            formatter: "{a} <br/>{b}: {c} ({d}%)"
-          },
-          legend: {
-            orient: 'vertical',
-            x: 'left',
-            data: ['BTC', 'ETH', 'LTC', 'EOS', 'USDT','其他']
-          },
-          series: [
-            {
-              name: '访问来源',
-              type: 'pie',
-              radius: ['40%', '70%'],
-              avoidLabelOverlap: false,
-              label: {
-                normal: {
-                  show: false,
-                  position: 'center'
-                },
-                emphasis: {
-                  show: true,
-                  textStyle: {
-                    fontSize: '30',
-                    fontWeight: 'bold'
+        this.$http({
+          method: 'get',
+          url: '/pie'
+        }).then((response) => {
+          // 基于准备好的dom，初始化echarts实例
+          this.pieChart = this.$echarts.init(document.getElementById('pieChart'));
+          // 绘制图表
+          this.pieChart.setOption({
+            tooltip: {
+              trigger: 'item',
+              formatter: "{a} <br/>{b}: {c} ({d}%)"
+            },
+            legend: {
+              orient: 'vertical',
+              x: 'left',
+              data: ['BTC', 'ETH', 'LTC', 'EOS', 'USDT','其他']
+            },
+            series: [
+              {
+                name: '访问来源',
+                type: 'pie',
+                radius: ['40%', '70%'],
+                avoidLabelOverlap: false,
+                label: {
+                  normal: {
+                    show: false,
+                    position: 'center'
+                  },
+                  emphasis: {
+                    show: true,
+                    textStyle: {
+                      fontSize: '30',
+                      fontWeight: 'bold'
+                    }
                   }
-                }
-              },
-              labelLine: {
-                normal: {
-                  show: false
-                }
-              },
-              data: [
-                {value: 300, name: 'BTC'},
-                {value: 310, name: 'ETH'},
-                {value: 234, name: 'LTC'},
-                {value: 135, name: 'EOS'},
-                {value: 1548, name: 'USDT'},
-                {value: 100, name:'其他'}
-              ]
-            }
-          ]
-        });
-        window.addEventListener("resize", () => {
-          this.pieChart.resize();
-        });
+                },
+                labelLine: {
+                  normal: {
+                    show: false
+                  }
+                },
+                data: response.data
+              }
+            ]
+          });
+          window.addEventListener("resize", () => {
+            this.pieChart.resize();
+          });
+        })
+
       },
       clickFun(value) {
         this.isActive = value.path[0].textContent;
