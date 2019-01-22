@@ -1,4 +1,5 @@
 const https = require('https')
+const moment = require('moment')
 const bodyParser = require('body-parser')
 const CryptoJS = require('crypto-js')
 const apiInfo = require('./config/api')
@@ -189,7 +190,7 @@ app.post('/login', async (req, res) => {
   let failPwd = { code: 1, content: 'wrong password'}
   let failUsn = { code: 2, content: 'wrong username'}
   let failUkn = { code: 3, content: 'unknown error'}
-  let pass = { code: 0, content: 'success'}
+  let pass = { code: 0, content: 'success', userid: ''}
   var account = req.body
   var queryResult = await userDao.queryPasswordByUsername(account.username)
   if (queryResult.length === 0) {
@@ -197,15 +198,54 @@ app.post('/login', async (req, res) => {
   } else if (queryResult[0].password !== account.password) {
     res.send(JSON.stringify(failPwd))
   } else if (queryResult[0].password === account.password) {
+    pass.userid = await userDao.queryByUsername(account.username)
+    pass.userid = pass.userid[0].UID
     res.send(JSON.stringify(pass))
   } else {
     res.send(JSON.stringify(failUkn))
   }
 })
-app.get('/showInfo', (req, res) => {
-  //todo:写展示的数据
+app.post('/showInfo', async (req, res) => {
+  var currentDate = new Date()
+  currentDate = moment(currentDate)
+  let userid = req.body.userid
+  let userInfo = await userDao.queryByUserID(userid)
+  let dotWeek = await dotDao.queryDotByIdAndIntvType(userid, 4)
+  userInfo = userInfo[0]
+  // console.log(userInfo)
+  var resData = { startEquity: '', weeklyProfitRatio: '', currentProfit: '', currentProfitRatio: '', estimatedYearly: '', equityRatio: '', runningTime: '' }
+  resData.startEquity = userInfo.start_equity
+  let currentEquity = infoContainer[0][1]['eos'].equity
+  // console.log(dotWeek)
+  if (dotWeek.length >= 1) {
+    let lastWeekEquity = dotWeek[dotWeek.length - 1].equity
+    resData.weeklyProfitRatio = (((currentEquity - lastWeekEquity) / lastWeekEquity)*100).toFixed(4)
+  }
+  resData.currentProfit = (currentEquity - userInfo.start_equity).toFixed(4)
+  resData.currentProfitRatio = (((currentEquity - userInfo.start_equity) / userInfo.start_equity)*100).toFixed(4)
+  resData.equityRatio = (((currentEquity - userInfo.start_equity) / userInfo.start_equity) * 100).toFixed(4)
+  var startDate = new Date(userInfo.start_date)
+  startDate = moment(startDate)
+  resData.runningTime = currentDate.diff(startDate, 'days') + 1
+  // console.log(resData.runningTime)
+  resData.estimatedYearly = (((((currentEquity - userInfo.start_equity) / userInfo.start_equity) * 100)/resData.runningTime) * 365).toFixed(4)
+  //todo:小数转百分比 计算年化 运行日期
   //todo:把equity改成账户总净值
-  res.send()
+  res.send(JSON.stringify(resData))
 })
 
 app.listen(8877, () => console.log('data fetch and interface is running at port 8877.'))
+
+// 需要数据：
+// 1、初始资产S0
+// 2、实时资产S1
+// 3、每周结算时资产S2
+// 4、开始日期D0
+// 5、当前日期D1
+// 初始净值：S0
+// 周收益率 Z：（S1-S2）/S2*100%
+// 累积收益S：S1-S0
+// 累积收益率 W：（S1-S0）/S0*100%
+// 动态年化Y：（S1-S0）/S0*100%/(T1-T0)*365=W/T*365
+// 净值：W/100%
+// 运行时间T：D1-D0

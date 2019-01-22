@@ -71,4 +71,32 @@ module.exports = class UserDao {
       await conn.destroy()
     }
   }
+  async queryByUsername (username) {
+    let conn = await dbConnection()
+    try {
+      let result = await conn.query(query.queryByUsername, username)
+      result = JSON.parse(JSON.stringify(result))
+      return result
+    } catch (e) {
+      console.log(e)
+      throw e
+    } finally {
+      await conn.release()
+      await conn.destroy()
+    }
+  }
+  async queryByUserID (userid) {
+    let conn = await dbConnection()
+    try {
+      let result = await conn.query(query.queryByUserID, userid)
+      result = JSON.parse(JSON.stringify(result))
+      return result
+    } catch (e) {
+      console.log(e)
+      throw e
+    } finally {
+      await conn.release()
+      await conn.destroy()
+    }
+  }
 }

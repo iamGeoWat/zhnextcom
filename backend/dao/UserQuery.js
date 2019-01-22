@@ -3,5 +3,7 @@ module.exports = {
   queryByType: 'SELECT * FROM user WHERE type = ?',
   queryAll: 'SELECT * FROM user',
   queryUsername: 'SELECT username FROM user',
-  queryPasswordByUsername: 'SELECT password FROM user WHERE username = ?'
+  queryPasswordByUsername: 'SELECT password FROM user WHERE username = ?',
+  queryByUsername: 'SELECT * FROM user WHERE username = ?',
+  queryByUserID: 'SELECT * FROM user WHERE UID = ?'
 }
