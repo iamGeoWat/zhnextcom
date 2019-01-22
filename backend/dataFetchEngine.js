@@ -77,7 +77,7 @@ var infoContainer = [
 
 var accountContainer = []
 var accountEngine = setInterval(() => {
-  
+
 })
 
 
@@ -123,7 +123,7 @@ var positionEngine = setInterval(() => {
     console.error(e);
   });
   positionInfoGrabber.end()
-}, 5000)
+}, 10000)
 
 var contractAccountEngine = setInterval(() => {
   var timestamp = new Date();
@@ -160,7 +160,7 @@ var contractAccountEngine = setInterval(() => {
     console.error(e);
   });
   accountInfoGrabber.end()
-}, 10000)
+}, 20000)
 
 var seeThruEngine = setInterval(() => {
   console.log(infoContainer[0])
