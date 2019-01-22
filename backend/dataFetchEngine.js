@@ -80,20 +80,20 @@ var accountContainer = {
   btc: {
     wallet: 0,
     b2b: 0,
-    contract: 0,
-    totalInUSD: 0
+    contract: 0
   },
   eos: {
     wallet: 0,
     b2b: 0,
-    contract: 0,
-    totalInUSD: 0
+    contract: 0
   },
   usdt: {
     wallet: 0,
-    b2b: 0,
-    totalInUSD: 0
+    b2b: 0
   },
+  totalBTCInUSD: 0,
+  totalEOSInUSD: 0,
+  totalUSDTInUSD: 0,
   totalEquityInBTC: 0,
   totalEquityInUSD: 0
 }
@@ -328,16 +328,17 @@ var priceEngine = setInterval(() => {
         btcTotal += parseFloat(accountContainer.btc[item])
       }
       // console.log('btc before: ' + btcTotal)
+      // console.log('btc price: ' + res.data[0])
       btcTotal = btcTotal * res.data[0]
       for (var i in accountContainer.usdt) {
         usdtTotal += parseFloat(accountContainer.usdt[i])
       }
-      // console.log('ysdt: '+ usdtTotal)
+      // console.log('usdt: '+ usdtTotal)
       // console.log('btc: ' + btcTotal)
       accountContainer.totalEquityInUSD = (eosTotal + btcTotal + usdtTotal).toFixed(4)
-      accountContainer.btc.totalInUSD = btcTotal
-      accountContainer.eos.totalInUSD = eosTotal
-      accountContainer.usdt.totalInUSD = usdtTotal
+      accountContainer.totalBTCInUSD = btcTotal
+      accountContainer.totalEOSInUSD = eosTotal
+      accountContainer.totalUSDTInUSD = usdtTotal
       axios.get('https://api.bitfinex.com/v2/ticker/tBTCUSD').then((res) => {
         accountContainer.totalEquityInBTC = (accountContainer.totalEquityInUSD / res.data[0]).toFixed(4)
         // console.log(accountContainer)
@@ -347,7 +348,7 @@ var priceEngine = setInterval(() => {
 }, 10000)
 
 var seeThruEngine = setInterval(() => {
-  console.log(infoContainer[0])
+  console.log(accountContainer)
 }, 5000)
 
 
@@ -380,9 +381,9 @@ app.get('/pie', (req, res) => {
     {value: 0, name: 'EOS'},
     {value: 0, name: 'USDT'}
   ]
-  resData[0].value = accountContainer.btc.totalInUSD
-  resData[1].value = accountContainer.eos.totalInUSD
-  resData[2].value = accountContainer.usdt.totalInUSD
+  resData[0].value = accountContainer.totalBTCInUSD
+  resData[1].value = accountContainer.totalEOSInUSD
+  resData[2].value = accountContainer.totalUSDTInUSD
   res.send(JSON.stringify(resData))
 })
 app.post('/login', async (req, res) => {

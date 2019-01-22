@@ -9,20 +9,20 @@ var accountContainer = {
   btc: {
     wallet: 0,
     b2b: 0,
-    contract: 0,
-    totalInUSD: 0
+    contract: 0
   },
   eos: {
     wallet: 0,
     b2b: 0,
-    contract: 0,
-    totalInUSD: 0
+    contract: 0
   },
   usdt: {
     wallet: 0,
-    b2b: 0,
-    totalInUSD: 0
+    b2b: 0
   },
+  totalBTCInUSD: 0,
+  totalEOSInUSD: 0,
+  totalUSDTInUSD: 0,
   totalEquityInBTC: 0,
   totalEquityInUSD: 0
 }
@@ -51,7 +51,9 @@ function classifiedWrite () {
 }
 
 async function dotWrite (intvType, apiID) {
+  console.log(accountContainer)
   if (accountContainer !== 'error' && accountContainer.totalEquityInBTC !== 0) {
+    console.log(accountContainer)
     var equity = accountContainer.totalEquityInBTC
     var time = moment(new Date()).format('YYYY-MM-DD HH:mm:ss')
     var dotInfo = [equity, time, intvType, apiID, null]
@@ -95,12 +97,13 @@ function app() {
         accountContainer = res.data
       })
       .catch((err) => {
+        console.log(err)
         accountContainer = 'error'
       })
   }, 1000)
   console.log('data engine engaged.')
-  var dataWriteEngine = setInterval(classifiedWrite, 3600000)
-  // var dataWriteEngine = setInterval(classifiedWrite, 5000)
+  // var dataWriteEngine = setInterval(classifiedWrite, 3600000)
+  var dataWriteEngine = setInterval(classifiedWrite, 5000)
   console.log('write engine engaged.')
 }
 
