@@ -75,7 +75,10 @@ var infoContainer = [
   [{}, {}]
 ]
 
-
+var accountContainer = []
+var accountEngine = setInterval(() => {
+  
+})
 
 
 
@@ -122,7 +125,7 @@ var positionEngine = setInterval(() => {
   positionInfoGrabber.end()
 }, 5000)
 
-var accountEngine = setInterval(() => {
+var contractAccountEngine = setInterval(() => {
   var timestamp = new Date();
   timestamp.setHours(timestamp.getHours(), timestamp.getMinutes());
   var accountSign = CryptoJS.enc.Base64.stringify(CryptoJS.HmacSHA256(timestamp.toISOString() + 'GET' + '/api/futures/v3/accounts', sec_key))
