@@ -414,7 +414,7 @@ app.post('/showInfo', async (req, res) => {
   userInfo = userInfo[0]
   // console.log(userInfo)
   var resData = { startEquity: '', weeklyProfitRatio: '', currentProfit: '', currentProfitRatio: '', estimatedYearly: '', equityRatio: '', runningTime: '', totalEquity: '' }
-  resData.startEquity = userInfo.start_equity
+  resData.startEquity = parseFloat(userInfo.start_equity).toFixed(3)
   let currentEquity = accountContainer.totalEquityInBTC
   // console.log(dotWeek)
   if (dotWeek.length >= 1) {

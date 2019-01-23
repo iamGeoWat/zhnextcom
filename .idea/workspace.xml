@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c4fad8de-57f0-4386-8476-b9c30c6ec773" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/frontend/dalongyu/src/components/platform/PlatformMain.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/dalongyu/src/components/platform/PlatformMain.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dataFetchEngine.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/dataFetchEngine.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -31,7 +32,7 @@
         <counts>
           <entry key="gitignore" value="4" />
           <entry key="html" value="1" />
-          <entry key="js" value="32" />
+          <entry key="js" value="33" />
           <entry key="json" value="3" />
           <entry key="txt" value="3" />
           <entry key="vue" value="2" />
@@ -41,7 +42,7 @@
         <counts>
           <entry key="HTML" value="1" />
           <entry key="JSON" value="3" />
-          <entry key="JavaScript" value="32" />
+          <entry key="JavaScript" value="33" />
           <entry key="PLAIN_TEXT" value="7" />
           <entry key="Vue.js" value="2" />
         </counts>
@@ -49,14 +50,14 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="gitignore" value="79" />
-          <entry key="js" value="12419" />
+          <entry key="js" value="12429" />
           <entry key="txt" value="9" />
           <entry key="vue" value="188" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JavaScript" value="12419" />
+          <entry key="JavaScript" value="12429" />
           <entry key="PLAIN_TEXT" value="88" />
           <entry key="Vue.js" value="188" />
         </counts>
@@ -83,11 +84,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/backend/dataFetchEngine.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-699">
-              <caret line="344" column="8" selection-start-line="344" selection-start-column="8" selection-end-line="344" selection-end-column="8" />
+            <state relative-caret-position="472">
+              <caret line="432" column="35" lean-forward="true" selection-start-line="432" selection-start-column="35" selection-end-line="432" selection-end-column="35" />
               <folding>
                 <element signature="n#!!block;n#modifyPositionData#0" />
                 <element signature="e#3313#4591#0" />
@@ -108,11 +109,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/frontend/dalongyu/src/components/platform/PlatformMain.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="123">
-              <caret line="71" column="70" selection-start-line="71" selection-start-column="70" selection-end-line="71" selection-end-column="70" />
+            <state relative-caret-position="138">
+              <caret line="72" column="54" lean-forward="true" selection-start-line="72" selection-start-column="54" selection-end-line="72" selection-end-column="54" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#p#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
@@ -145,7 +146,7 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/backend/dist/static/js/app.809d9e95d7c36abaeb52.js">
+        <entry file="file://$PROJECT_DIR$/backend/dist/static/js/app.64d9964802d8d4d5e972.js">
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
@@ -206,8 +207,8 @@
       <find>equity</find>
       <find>resData</find>
       <find>req</find>
-      <find>drawPie</find>
       <find>totalEquityInBTC</find>
+      <find>drawPie</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -233,10 +234,10 @@
         <option value="$PROJECT_DIR$/backend/index.js" />
         <option value="$PROJECT_DIR$/backend/dao/DotQuery.js" />
         <option value="$PROJECT_DIR$/backend/dao/DotDao.js" />
-        <option value="$PROJECT_DIR$/backend/dataFetchEngine.js" />
         <option value="$PROJECT_DIR$/backend/config/writecount.txt" />
         <option value="$PROJECT_DIR$/backend/dataWriteEngine.js" />
         <option value="$PROJECT_DIR$/frontend/dalongyu/src/components/platform/PlatformMain.vue" />
+        <option value="$PROJECT_DIR$/backend/dataFetchEngine.js" />
       </list>
     </option>
   </component>
@@ -301,6 +302,36 @@
             <path>
               <item name="zhnextcom" type="b2602c69:ProjectViewProjectNode" />
               <item name="zhnextcom" type="462c0819:PsiDirectoryNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
+              <item name="dist" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="zhnextcom" type="b2602c69:ProjectViewProjectNode" />
+              <item name="zhnextcom" type="462c0819:PsiDirectoryNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
+              <item name="dist" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="zhnextcom" type="b2602c69:ProjectViewProjectNode" />
+              <item name="zhnextcom" type="462c0819:PsiDirectoryNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
+              <item name="dist" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="zhnextcom" type="b2602c69:ProjectViewProjectNode" />
+              <item name="zhnextcom" type="462c0819:PsiDirectoryNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
+              <item name="dist" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+              <item name="app.64d9964802d8d4d5e972.js" type="620a8d5e:NestingTreeNode" />
+            </path>
+            <path>
+              <item name="zhnextcom" type="b2602c69:ProjectViewProjectNode" />
+              <item name="zhnextcom" type="462c0819:PsiDirectoryNode" />
               <item name="frontend" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -308,30 +339,6 @@
               <item name="zhnextcom" type="462c0819:PsiDirectoryNode" />
               <item name="frontend" type="462c0819:PsiDirectoryNode" />
               <item name="dalongyu" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="zhnextcom" type="b2602c69:ProjectViewProjectNode" />
-              <item name="zhnextcom" type="462c0819:PsiDirectoryNode" />
-              <item name="frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="dalongyu" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="zhnextcom" type="b2602c69:ProjectViewProjectNode" />
-              <item name="zhnextcom" type="462c0819:PsiDirectoryNode" />
-              <item name="frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="dalongyu" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="zhnextcom" type="b2602c69:ProjectViewProjectNode" />
-              <item name="zhnextcom" type="462c0819:PsiDirectoryNode" />
-              <item name="frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="dalongyu" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="platform" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -399,7 +406,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="62372000" />
+    <option name="totallyTimeSpent" value="62914000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -615,24 +622,13 @@
     <entry file="file://$PROJECT_DIR$/backend/dist/static/js/app.809d9e95d7c36abaeb52.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/backend/dataFetchEngine.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-699">
-          <caret line="344" column="8" selection-start-line="344" selection-start-column="8" selection-end-line="344" selection-end-column="8" />
-          <folding>
-            <element signature="n#!!block;n#modifyPositionData#0" />
-            <element signature="e#3313#4591#0" />
-            <element signature="e#4639#10274#0" />
-            <element signature="e#4643#4673#0" />
-            <element signature="e#11455#12199#0" />
-          </folding>
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/backend/dist/static/js/app.64d9964802d8d4d5e972.js">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/frontend/dalongyu/src/components/platform/PlatformMain.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="123">
-          <caret line="71" column="70" selection-start-line="71" selection-start-column="70" selection-end-line="71" selection-end-column="70" />
+        <state relative-caret-position="138">
+          <caret line="72" column="54" lean-forward="true" selection-start-line="72" selection-start-column="54" selection-end-line="72" selection-end-column="54" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#p#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
@@ -659,6 +655,20 @@
             <element signature="n#style#0;n#p#2;n#div#0;n#div#1;n#div#5;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#p#1;n#div#0;n#template#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#el-table#0;n#div#0;n#div#2;n#div#0;n#template#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/dataFetchEngine.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="472">
+          <caret line="432" column="35" lean-forward="true" selection-start-line="432" selection-start-column="35" selection-end-line="432" selection-end-column="35" />
+          <folding>
+            <element signature="n#!!block;n#modifyPositionData#0" />
+            <element signature="e#3313#4591#0" />
+            <element signature="e#4639#10274#0" />
+            <element signature="e#4643#4673#0" />
+            <element signature="e#11455#12199#0" />
           </folding>
         </state>
       </provider>
