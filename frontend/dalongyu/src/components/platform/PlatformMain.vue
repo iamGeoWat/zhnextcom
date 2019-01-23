@@ -69,10 +69,10 @@
         <div class="item-content">
           <div style="margin-top: 15px">
             <img src="../../assets/platform/向上.png" height="13">
-            <p style="font-size: 38px;">{{this.showData.totalEquity}}</p>
+            <p style="font-size: 38px;">{{this.showData.startEquity*30}}</p>
             <p style="vertical-align: bottom;">BTC</p>
             <br/>
-            <p style="font-size: 12px;color: rgb(181,181,181);">TOTAL NET WORTH</p>
+            <p style="font-size: 12px;color: rgb(181,181,181);">START EQUITY</p>
           </div>
         </div>
       </div>
