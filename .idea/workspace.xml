@@ -6,7 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="c4fad8de-57f0-4386-8476-b9c30c6ec773" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/config/writecount.txt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/config/writecount.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dataFetchEngine.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/dataFetchEngine.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dataWriteEngine.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/dataWriteEngine.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -48,15 +50,15 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="gitignore" value="79" />
-          <entry key="js" value="12008" />
-          <entry key="txt" value="4" />
+          <entry key="js" value="12027" />
+          <entry key="txt" value="5" />
           <entry key="vue" value="95" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JavaScript" value="12008" />
-          <entry key="PLAIN_TEXT" value="83" />
+          <entry key="JavaScript" value="12027" />
+          <entry key="PLAIN_TEXT" value="84" />
           <entry key="Vue.js" value="95" />
         </counts>
       </usages-collector>
@@ -64,11 +66,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/backend/dataFetchEngine.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-176">
-              <caret line="350" column="30" selection-start-line="350" selection-start-column="30" selection-end-line="350" selection-end-column="30" />
+            <state relative-caret-position="279">
+              <caret line="431" column="54" selection-start-line="431" selection-start-column="54" selection-end-line="431" selection-end-column="54" />
               <folding>
                 <element signature="n#!!block;n#modifyPositionData#0" />
                 <element signature="e#3313#4591#0" />
@@ -84,7 +86,7 @@
         <entry file="file://$PROJECT_DIR$/backend/config/writecount.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state>
-              <caret column="2" selection-start-column="2" selection-end-column="2" />
+              <caret column="1" selection-start-column="1" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -103,7 +105,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/backend/index.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="180">
@@ -147,8 +149,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/backend/dataWriteEngine.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="20">
-              <caret line="58" column="55" selection-start-line="58" selection-start-column="55" selection-end-line="58" selection-end-column="55" />
+            <state relative-caret-position="350">
+              <caret line="105" column="40" selection-start-line="105" selection-start-column="40" selection-end-line="105" selection-end-column="40" />
             </state>
           </provider>
         </entry>
@@ -170,9 +172,9 @@
       <find>console.log</find>
       <find>accountEngine</find>
       <find>''</find>
-      <find>infoContainer</find>
       <find>equity</find>
       <find>drawPie</find>
+      <find>infoContainer</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -197,11 +199,11 @@
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/backend/engineTest.js" />
         <option value="$PROJECT_DIR$/backend/.gitignore" />
-        <option value="$PROJECT_DIR$/backend/dataFetchEngine.js" />
-        <option value="$PROJECT_DIR$/backend/dataWriteEngine.js" />
-        <option value="$PROJECT_DIR$/backend/config/writecount.txt" />
         <option value="$PROJECT_DIR$/frontend/dalongyu/src/components/platform/PlatformMain.vue" />
         <option value="$PROJECT_DIR$/backend/index.js" />
+        <option value="$PROJECT_DIR$/backend/dataWriteEngine.js" />
+        <option value="$PROJECT_DIR$/backend/config/writecount.txt" />
+        <option value="$PROJECT_DIR$/backend/dataFetchEngine.js" />
       </list>
     </option>
   </component>
@@ -368,7 +370,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="56581000" />
+    <option name="totallyTimeSpent" value="56978000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -383,7 +385,7 @@
     <frame x="212" y="27" width="1468" height="983" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2854181" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2854181" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -395,7 +397,7 @@
       <window_info anchor="bottom" id="TODO" order="6" weight="0.33333334" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="9" visible="true" weight="0.35016835" />
+      <window_info anchor="bottom" id="Terminal" order="9" visible="true" weight="0.35016835" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -520,38 +522,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/backend/dataFetchEngine.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-176">
-          <caret line="350" column="30" selection-start-line="350" selection-start-column="30" selection-end-line="350" selection-end-column="30" />
-          <folding>
-            <element signature="n#!!block;n#modifyPositionData#0" />
-            <element signature="e#3313#4591#0" />
-            <element signature="e#4639#10274#0" />
-            <element signature="e#4643#4673#0" />
-            <element signature="e#11455#12199#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/dataWriteEngine.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="58" column="55" selection-start-line="58" selection-start-column="55" selection-end-line="58" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/backend/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
           <caret line="1" column="22" selection-start-line="1" selection-start-column="22" selection-end-line="1" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/config/writecount.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="2" selection-start-column="2" selection-end-column="2" />
         </state>
       </provider>
     </entry>
@@ -586,6 +560,34 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="12" column="82" lean-forward="true" selection-start-line="12" selection-start-column="82" selection-end-line="12" selection-end-column="82" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/config/writecount.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="1" selection-start-column="1" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/dataWriteEngine.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="350">
+          <caret line="105" column="40" selection-start-line="105" selection-start-column="40" selection-end-line="105" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/dataFetchEngine.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="279">
+          <caret line="431" column="54" selection-start-line="431" selection-start-column="54" selection-end-line="431" selection-end-column="54" />
+          <folding>
+            <element signature="n#!!block;n#modifyPositionData#0" />
+            <element signature="e#3313#4591#0" />
+            <element signature="e#4639#10274#0" />
+            <element signature="e#4643#4673#0" />
+            <element signature="e#11455#12199#0" />
+          </folding>
         </state>
       </provider>
     </entry>
