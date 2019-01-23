@@ -429,7 +429,7 @@ app.post('/showInfo', async (req, res) => {
   resData.runningTime = currentDate.diff(startDate, 'days') + 1
   // console.log(resData.runningTime)
   resData.estimatedYearly = (((((currentEquity - userInfo.start_equity) / userInfo.start_equity) * 100)/resData.runningTime) * 365).toFixed(4)
-  resData.totalEquity = resData.currentProfitRatio + 1
+  resData.totalEquity = parseFloat(resData.currentProfitRatio)/100 + 1
   res.send(JSON.stringify(resData))
 })
 
