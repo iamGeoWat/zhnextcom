@@ -3,48 +3,48 @@
     <div class="menu">
       <ul>
         <li><img src="../assets/home/logo.png" alt="logo"></li>
-        <li><a href="#">大龙鱼的故事</a></li>
-        <li><a href="#">我们的合作伙伴</a></li>
-        <li><a href="#">出席的活动</a></li>
-        <li><a href="#">合作意向</a></li>
+        <li><a href="#">{{$t('home.header.title1')}}</a></li>
+        <li><a href="#">{{$t('home.header.title2')}}</a></li>
+        <li><a href="#">{{$t('home.header.title3')}}</a></li>
+        <li><a href="#">{{$t('home.header.title4')}}</a></li>
         <li><img style="margin-top: 19px" src="../assets/home/点点.png"></li>
         <li class="lang">
           {{lang}}
           <img src="../assets/home/icon_三角形.png" height="20" style="vertical-align: middle;">
           <ul style="margin-left: 0">
-            <li><a href="#" @click="selectLang($event)">简体中文</a></li>
-            <li><a href="#" @click="selectLang($event)">English</a></li>
+            <li @click="selectLang($event,'zh')">简体中文</li>
+            <li @click="selectLang($event,'en')">English</li>
           </ul>
         </li>
       </ul>
     </div>
     <div class="main">
       <div class="main-left">
-        <p style="margin-top: 38%;font-size: 100px;">大龙鱼资本<br>智汇未来</p>
-        <p style="margin-top: 50px;font-size: 50px;">共聚智慧&nbsp;共赢未来</p>
+        <p style="margin-top: 38%;font-size: 100px;">{{$t('home.body.body1')}}<br>{{$t('home.body.body2')}}</p>
+        <p style="margin-top: 50px;font-size: 50px;">{{$t('home.body.body3')}}</p>
         <a href="#">LEARN MORE ></a>
       </div>
       <div class="main-right">
         <img src="../assets/home/logo1.png" height="110">
-        <p>VIP登录系统</p>
+        <p>{{$t('home.body.body4')}}</p>
         <el-input
           v-model="user.username"
           style="width:60%;margin-top: 17px;"
-          placeholder="输入您的账号">
+          :placeholder="$t('home.body.body5')">
           <!--<i slot="prefix" class="iconfont icon-suo"></i>-->
         </el-input>
         <el-input
           v-model="user.password"
           style="width:60%;margin-top: 17px;"
-          placeholder="输入您的密码">
+          :placeholder="$t('home.body.body6')">
           <!--<i slot="prefix" class="iconfont icon-suo"></i>-->
         </el-input>
         <br/>
-        <el-button style="margin-top: 17px;width: 60%;background-color: rgb(210,190,140);border: 0;color: #000;" @click="login">登录</el-button>
+        <el-button style="margin-top: 17px;width: 60%;background-color: rgb(210,190,140);border: 0;color: #000;" @click="login">{{$t('home.body.body7')}}</el-button>
         <div class="more">
-          <span style="float: left;"><a href="#">游客登录</a></span><span style="float: right;"><a
-          href="#">联系我们</a></span><span style="float: right;">&nbsp;&nbsp;|&nbsp;&nbsp;</span><span
-          style="float: right;"><a href="#">忘记会员名</a></span>
+          <span style="float: left;"><a href="#">{{$t('home.body.body9')}}</a></span><span style="float: right;"><a
+          href="#">{{$t('home.body.body8')}}</a></span><span style="float: right;">&nbsp;&nbsp;|&nbsp;&nbsp;</span><span
+          style="float: right;"><a href="#">{{$t('home.body.body10')}}</a></span>
         </div>
       </div>
     </div>
@@ -66,13 +66,14 @@
         user:{
           username:"",
           password:""
-        }
+        },
       }
     },
     methods: {
-      selectLang(e) {
+      selectLang(e,value) {
         console.log(e.target.innerText);
         this.lang = e.target.innerText;
+        this.$i18n.locale = value;
       },
       login() {
         this.$http({
@@ -145,6 +146,7 @@
             display: none;
             li {
               float: none;
+              cursor: pointer;
             }
           }
         }

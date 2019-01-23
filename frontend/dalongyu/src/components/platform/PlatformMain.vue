@@ -1,11 +1,11 @@
 <template>
   <div class="platformMain">
-    <p class="title">资金情况披露</p>
+    <p class="title">{{$t('platform.body.title1')}}</p>
     <div class="top-data">
       <div class="item">
         <div class="item-title">
           <img src="../../assets/platform/交易页面_19.png" height="40">
-          <p>总资产</p>
+          <p>{{$t('platform.body.body1_1')}}</p>
         </div>
         <div class="item-content">
           <div style="margin-top: 15px">
@@ -20,7 +20,7 @@
       <div class="item">
         <div class="item-title">
           <img src="../../assets/platform/交易页面_21.png" height="40">
-          <p>目前收益</p>
+          <p>{{$t('platform.body.body1_2')}}</p>
         </div>
         <div class="item-content">
           <div style="margin-top: 15px">
@@ -35,7 +35,7 @@
       <div class="item">
         <div class="item-title">
           <img src="../../assets/platform/交易页面_23.png" height="40">
-          <p>动态年化</p>
+          <p>{{$t('platform.body.body1_3')}}</p>
         </div>
         <div class="item-content">
           <div style="margin-top: 15px">
@@ -50,7 +50,7 @@
       <div class="item">
         <div class="item-title">
           <img src="../../assets/platform/交易页面_25.png" height="40">
-          <p>净值</p>
+          <p>{{$t('platform.body.body1_4')}}</p>
         </div>
         <div class="item-content">
           <div style="margin-top: 15px">
@@ -64,7 +64,7 @@
       <div class="item">
         <div class="item-title">
           <img src="../../assets/platform/交易页面_27.png" height="40">
-          <p>已经运行</p>
+          <p>{{$t('platform.body.body1_5')}}</p>
         </div>
         <div class="item-content">
           <div style="margin-top: 15px">
@@ -77,11 +77,11 @@
         </div>
       </div>
     </div>
-    <p class="title" style="margin-top: 40px;">收益走势报表</p>
+    <p class="title" style="margin-top: 40px;">{{$t('platform.body.title2')}}</p>
     <div class="chart">
       <div class="lineChart">
         <div class="lineChartTitle">
-          <p>单位百分比</p>
+          <p>{{$t('platform.body.body2_1')}}</p>
           <div class="button">
             <el-button round @click="clickFun($event)" :class="{ active: isActive==='6h' }">6h</el-button>
             <el-button round @click="clickFun($event)" :class="{ active: isActive==='Day' }">Day</el-button>
@@ -92,12 +92,12 @@
         <div id="lineChart" :style="{width: '100%', height: '80%'}"></div>
       </div>
       <div class="pieChart">
-        <p>当前持币比例</p>
+        <p>{{$t('platform.body.body2_2')}}</p>
         <div id="pieChart" :style="{width: '100%', height: '80%'}"></div>
       </div>
     </div>
     <div class="listTable">
-      <p>交易记录</p>
+      <p>{{$t('platform.body.title3')}}</p>
       <div class="tableMargin">
         <el-table
           :data="tableData"
@@ -106,16 +106,16 @@
           style="width: 100%;">
           <el-table-column
             prop="type"
-            label="合约类型"
+            :label="$t('platform.body.body3_1')"
             align="center">
           </el-table-column>
           <el-table-column
             prop="lever"
-            label="杠杆"
+            :label="$t('platform.body.body3_2')"
             align="center">
           </el-table-column>
           <el-table-column
-            label="交易时间"
+            :label="$t('platform.body.body3_3')"
             align="center">
             <template slot-scope="scope">
               <span>{{tableData[scope.$index].time | filterDate}}</span>
@@ -123,22 +123,22 @@
           </el-table-column>
           <el-table-column
             prop="num"
-            label="委托数量"
+            :label="$t('platform.body.body3_4')"
             align="center">
           </el-table-column>
           <el-table-column
             prop="price"
-            label="委托价格"
+            :label="$t('platform.body.body3_5')"
             align="center">
           </el-table-column>
           <el-table-column
             prop="avg"
-            label="成交均价"
+            :label="$t('platform.body.body3_6')"
             align="center">
           </el-table-column>
           <el-table-column
             prop="income"
-            label="收益"
+            :label="$t('platform.body.body3_7')"
             align="center">
           </el-table-column>
         </el-table>

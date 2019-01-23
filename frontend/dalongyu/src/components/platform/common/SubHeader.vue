@@ -12,8 +12,8 @@
           {{lang}}
           <img src="../../../assets/platform/下拉.png" height="20" style="vertical-align: middle;">
           <ul style="margin-left: 0;background: #fff;">
-            <li><a href="#" @click="selectLang($event)">简体中文</a></li>
-            <li><a href="#" @click="selectLang($event)">English</a></li>
+            <li style="cursor: pointer;" @click="selectLang($event,'zh')">简体中文</li>
+            <li style="cursor: pointer;" @click="selectLang($event,'en')">English</li>
           </ul>
         </div>
         <div class="right">
@@ -128,9 +128,10 @@
 
     },
     methods:{
-      selectLang(e){
+      selectLang(e,value){
         console.log(e.target.innerText);
         this.lang=e.target.innerText;
+        this.$i18n.locale = value;
       }
     }
   }

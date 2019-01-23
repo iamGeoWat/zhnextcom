@@ -15,16 +15,16 @@
         @select="handleSelect">
         <div class="menu-item-header">
           <img src="../../../assets/platform/chart-图表.png" height="23">
-          <p>交易套利</p>
+          <p>{{$t('platform.navMenu.title1')}}</p>
         </div>
         <el-menu-item index="/platform/1">
           <i class="icon-nav"><img src="../../../assets/platform/AK-MN折线图_fill.png" height="20"/></i>
-          <span slot="title">基金情况披露</span>
+          <span slot="title">{{$t('platform.navMenu.menuItem1_1')}}</span>
         </el-menu-item>
         <el-submenu index="2">
           <template slot="title">
             <i class="icon-nav"><img src="../../../assets/platform/docket-单据查询-1.png" height="20"/></i>
-            <span slot="title">交易记录查询</span>
+            <span slot="title">{{$t('platform.navMenu.menuItem1_2')}}</span>
           </template>
           <el-menu-item index="2" @click="collapseClose">查询1</el-menu-item>
           <el-menu-item index="2" @click="collapseClose">查询2</el-menu-item>
@@ -33,19 +33,19 @@
         <el-submenu index="3">
           <template slot="title">
             <i class="icon-nav"><img src="../../../assets/platform/切换.png" height="20"/></i>
-            <span slot="title">策略量化收益</span>
+            <span slot="title">{{$t('platform.navMenu.menuItem1_3')}}</span>
           </template>
           <el-menu-item index="3" @click="collapseClose">收益1</el-menu-item>
           <el-menu-item index="3" @click="collapseClose">收益2</el-menu-item>
         </el-submenu>
         <div class="menu-item-header">
           <img src="../../../assets/platform/应用.png" height="23">
-          <p>我们开发的应用</p>
+          <p>{{$t('platform.navMenu.title2')}}</p>
         </div>
         <el-submenu index="6">
           <template slot="title">
             <i class="icon-nav"><img src="../../../assets/platform/钱包.png" height="20"/></i>
-            <span slot="title">EOS钱包</span>
+            <span slot="title">{{$t('platform.navMenu.menuItem2_1')}}</span>
           </template>
           <el-menu-item index="4">钱包1</el-menu-item>
           <el-menu-item index="4">钱包2</el-menu-item>
@@ -53,7 +53,7 @@
         <el-submenu index="7">
           <template slot="title">
             <i class="icon-nav"><img src="../../../assets/platform/小程序.png" height="20"/></i>
-            <span slot="title">小程序应用</span>
+            <span slot="title">{{$t('platform.navMenu.menuItem2_2')}}</span>
           </template>
           <el-menu-item index="5">应用1</el-menu-item>
         </el-submenu>
