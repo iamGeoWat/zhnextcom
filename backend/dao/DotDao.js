@@ -5,7 +5,7 @@ module.exports = class DotDao {
   async addDot (dotInfo) {
     let conn = await dbConnection()
     try {
-      await conn.query(query.add, [dotInfo[0], dotInfo[1], dotInfo[2], dotInfo[3], null])
+      await conn.query(query.add, [dotInfo[0], dotInfo[1], dotInfo[2], dotInfo[3], dotInfo[4], null])
       return true
     } catch (e) {
       console.log(e)
@@ -95,6 +95,30 @@ module.exports = class DotDao {
         var modTime = []
         for (var i = 0; i < equity.length; i++) {
           modEquity.push(equity[i].equity)
+          modTime.push(time[i].time)
+        }
+        return [ modEquity, modTime ]
+      } else {
+        return 'database row data margin error.'
+      }
+    } catch (e) {
+      console.log(e)
+      throw e
+    } finally {
+      await conn.release()
+      await conn.destroy()
+    }
+  }
+  async queryPRTimeByIdAndIntvType (apiId, intvType) {
+    let conn = await dbConnection()
+    try {
+      let profitRatio = await conn.query(query.queryPRByIdIntvType, [apiId, intvType])
+      let time = await conn.query(query.queryTimeByIdIntvType, [apiId, intvType])
+      if (profitRatio.length === time.length) {
+        var modEquity = []
+        var modTime = []
+        for (var i = 0; i < profitRatio.length; i++) {
+          modEquity.push(profitRatio[i].profitRatio)
           modTime.push(time[i].time)
         }
         return [ modEquity, modTime ]
