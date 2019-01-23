@@ -4,7 +4,10 @@
     <bookmark url="file://$PROJECT_DIR$/backend/dataFetchEngine.js" line="20" mnemonic="9" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c4fad8de-57f0-4386-8476-b9c30c6ec773" name="Default Changelist" comment="" />
+    <list default="true" id="c4fad8de-57f0-4386-8476-b9c30c6ec773" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/backend/config/writecount.txt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/config/writecount.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/dalongyu/src/components/platform/PlatformMain.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/dalongyu/src/components/platform/PlatformMain.vue" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -46,15 +49,15 @@
         <counts>
           <entry key="gitignore" value="79" />
           <entry key="js" value="12036" />
-          <entry key="txt" value="7" />
-          <entry key="vue" value="95" />
+          <entry key="txt" value="8" />
+          <entry key="vue" value="159" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JavaScript" value="12036" />
-          <entry key="PLAIN_TEXT" value="86" />
-          <entry key="Vue.js" value="95" />
+          <entry key="PLAIN_TEXT" value="87" />
+          <entry key="Vue.js" value="159" />
         </counts>
       </usages-collector>
     </session>
@@ -86,7 +89,7 @@
         <entry file="file://$PROJECT_DIR$/backend/config/writecount.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state>
-              <caret column="1" lean-forward="true" selection-start-column="1" selection-end-column="1" />
+              <caret column="1" selection-start-column="1" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -99,8 +102,31 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/frontend/dalongyu/src/components/platform/PlatformMain.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="28" column="52" selection-start-line="28" selection-start-column="52" selection-end-line="28" selection-end-column="52" />
+            <state relative-caret-position="50">
+              <caret line="77" column="12" lean-forward="true" selection-start-line="77" selection-start-column="12" selection-end-line="77" selection-end-column="12" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#2;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#1;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#2;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#2;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#0;n#div#0;n#div#1;n#div#2;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#1;n#div#0;n#div#1;n#div#2;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#2;n#div#0;n#div#1;n#div#2;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#3;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#0;n#div#0;n#div#1;n#div#3;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#1;n#div#0;n#div#1;n#div#3;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#4;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#0;n#div#0;n#div#1;n#div#4;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#1;n#div#0;n#div#1;n#div#4;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#2;n#div#0;n#div#1;n#div#4;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#1;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#el-table#0;n#div#0;n#div#2;n#div#0;n#template#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -167,9 +193,9 @@
       <find>console.log</find>
       <find>accountEngine</find>
       <find>''</find>
-      <find>drawPie</find>
       <find>infoContainer</find>
       <find>equity</find>
+      <find>drawPie</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -194,10 +220,10 @@
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/backend/engineTest.js" />
         <option value="$PROJECT_DIR$/backend/.gitignore" />
-        <option value="$PROJECT_DIR$/frontend/dalongyu/src/components/platform/PlatformMain.vue" />
         <option value="$PROJECT_DIR$/backend/index.js" />
         <option value="$PROJECT_DIR$/backend/dataWriteEngine.js" />
         <option value="$PROJECT_DIR$/backend/dataFetchEngine.js" />
+        <option value="$PROJECT_DIR$/frontend/dalongyu/src/components/platform/PlatformMain.vue" />
         <option value="$PROJECT_DIR$/backend/config/writecount.txt" />
       </list>
     </option>
@@ -365,7 +391,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="57511000" />
+    <option name="totallyTimeSpent" value="57641000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -527,13 +553,6 @@
     <entry file="file://$PROJECT_DIR$/frontend/dalongyu/src/components/platform/Platform.vue">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/dalongyu/src/components/platform/PlatformMain.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="28" column="52" selection-start-line="28" selection-start-column="52" selection-end-line="28" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/backend/dist/static/js/app.b135941298aa12304fc1.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -582,10 +601,40 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/dalongyu/src/components/platform/PlatformMain.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="50">
+          <caret line="77" column="12" lean-forward="true" selection-start-line="77" selection-start-column="12" selection-end-line="77" selection-end-column="12" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#2;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#1;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#2;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#2;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#div#0;n#div#1;n#div#2;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#1;n#div#0;n#div#1;n#div#2;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#2;n#div#0;n#div#1;n#div#2;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#3;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#div#0;n#div#1;n#div#3;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#1;n#div#0;n#div#1;n#div#3;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#4;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#div#0;n#div#1;n#div#4;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#1;n#div#0;n#div#1;n#div#4;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#2;n#div#0;n#div#1;n#div#4;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#1;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#el-table#0;n#div#0;n#div#2;n#div#0;n#template#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/backend/config/writecount.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state>
-          <caret column="1" lean-forward="true" selection-start-column="1" selection-end-column="1" />
+          <caret column="1" selection-start-column="1" selection-end-column="1" />
         </state>
       </provider>
     </entry>
