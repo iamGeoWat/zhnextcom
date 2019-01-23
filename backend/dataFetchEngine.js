@@ -423,7 +423,7 @@ app.post('/showInfo', async (req, res) => {
   }
   resData.currentProfit = (currentEquity - userInfo.start_equity).toFixed(4)
   resData.currentProfitRatio = (((currentEquity - userInfo.start_equity) / userInfo.start_equity)*100).toFixed(4)
-  resData.equityRatio = (((currentEquity - userInfo.start_equity) / userInfo.start_equity) * 100).toFixed(4)
+  resData.equityRatio = (parseFloat(resData.currentProfitRatio)/100 + 1).toFixed(4)
   var startDate = new Date(userInfo.start_date)
   startDate = moment(startDate)
   resData.runningTime = currentDate.diff(startDate, 'days') + 1

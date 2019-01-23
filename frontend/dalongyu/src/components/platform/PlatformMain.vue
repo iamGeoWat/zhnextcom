@@ -13,7 +13,7 @@
             <p style="font-size: 38px;">{{this.showData.totalEquity}}</p>
             <p style="vertical-align: bottom;">BTC</p>
             <br/>
-            <p style="font-size: 12px;color: rgb(181,181,181);">TOTAL NET WORTH 36.656BTC</p>
+            <p style="font-size: 12px;color: rgb(181,181,181);">TOTAL NET WORTH</p>
           </div>
         </div>
       </div>
@@ -28,7 +28,7 @@
             <p style="font-size: 38px;">{{this.showData.currentProfitRatio}}</p>
             <p style="vertical-align: bottom;">%</p>
             <br/>
-            <p style="font-size: 12px;color: rgb(181,181,181);">TOTAL NET WORTH 36.656BTC</p>
+            <p style="font-size: 12px;color: rgb(181,181,181);">TOTAL PROFIT RATIOC</p>
           </div>
         </div>
       </div>
@@ -43,7 +43,7 @@
             <p style="font-size: 38px;">{{showData.estimatedYearly}}</p>
             <p style="vertical-align: bottom;">%</p>
             <br/>
-            <p style="font-size: 12px;color: rgb(181,181,181);">TOTAL NET WORTH 36.656BTC</p>
+            <p style="font-size: 12px;color: rgb(181,181,181);">TOTAL YEARLY ESTIMATE</p>
           </div>
         </div>
       </div>
@@ -57,7 +57,7 @@
             <img src="../../assets/platform/向上.png" height="13">
             <p style="font-size: 38px;">{{showData.equityRatio}}</p>
             <br/>
-            <p style="font-size: 12px;color: rgb(181,181,181);">TOTAL NET WORTH 36.656BTC</p>
+            <p style="font-size: 12px;color: rgb(181,181,181);">TOTAL EQUITY RATIO</p>
           </div>
         </div>
       </div>
@@ -72,7 +72,7 @@
             <p style="font-size: 38px;">{{showData.runningTime}}</p>
             <p style="vertical-align: bottom;">天</p>
             <br/>
-            <p style="font-size: 12px;color: rgb(181,181,181);">TOTAL NET WORTH 36.656BTC</p>
+            <p style="font-size: 12px;color: rgb(181,181,181);">EXISTING TIME</p>
           </div>
         </div>
       </div>
