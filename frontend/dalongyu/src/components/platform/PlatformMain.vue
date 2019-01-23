@@ -63,8 +63,23 @@
       </div>
       <div class="item">
         <div class="item-title">
-          <img src="../../assets/platform/交易页面_27.png" height="40">
+          <img src="../../assets/platform/初始资产.png" height="40">
           <p>{{$t('platform.body.body1_5')}}</p>
+        </div>
+        <div class="item-content">
+          <div style="margin-top: 15px">
+            <img src="../../assets/platform/向上.png" height="13">
+            <p style="font-size: 38px;">{{this.showData.totalEquity}}</p>
+            <p style="vertical-align: bottom;">BTC</p>
+            <br/>
+            <p style="font-size: 12px;color: rgb(181,181,181);">TOTAL NET WORTH</p>
+          </div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="item-title">
+          <img src="../../assets/platform/交易页面_27.png" height="40">
+          <p>{{$t('platform.body.body1_6')}}</p>
         </div>
         <div class="item-content">
           <div style="margin-top: 15px">
@@ -93,7 +108,7 @@
       </div>
       <div class="pieChart">
         <p>{{$t('platform.body.body2_2')}}</p>
-        <div id="pieChart" :style="{width: '100%', height: '80%'}"></div>
+        <div id="pieChart" :style="{width: '95%', height: '80%'}"></div>
       </div>
     </div>
     <div class="listTable">
@@ -395,7 +410,7 @@
       margin-top: 15px;
       min-width: 1300px;
       .item {
-        width: 19%;
+        width: 16%;
         height: 100%;
         background: white;
         border-radius: 5px;
