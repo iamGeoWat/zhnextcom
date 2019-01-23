@@ -1,9 +1,7 @@
 <template>
   <el-container style="position: absolute;top: 0;width: 100%;">
-      <el-header style="height: 60px;">
+      <el-header style="height: 60px;padding: 0;">
         <div class="left">
-          <img src="../../../assets/home/logo.png" height="35">
-          <span>智汇未来</span>
         </div>
         <div class="more">
           <div class="line"></div>
@@ -13,21 +11,24 @@
         <div class="lang">
           {{lang}}
           <img src="../../../assets/platform/下拉.png" height="20" style="vertical-align: middle;">
-          <ul style="margin-left: 0">
+          <ul style="margin-left: 0;background: #fff;">
             <li><a href="#" @click="selectLang($event)">简体中文</a></li>
             <li><a href="#" @click="selectLang($event)">English</a></li>
           </ul>
         </div>
         <div class="right">
-          <div class="radio"></div>
+          <!--<div class="radio"></div>-->
+          <div class="radio">
+            <img src="../../../assets/platform/交易页面_04.png" height="30">
+          </div>
           <div class="tixing">
-            <img src="../../../assets/platform/提醒.png" height="23">
+            <img src="../../../assets/platform/提醒.png" height="30">
           </div>
           <div class="message">
             <img src="../../../assets/platform/信息.png" height="30">
           </div>
           <div class="morefun">
-            <img src="../../../assets/platform/更多.png" height="23">
+            <img src="../../../assets/platform/更多.png" height="30">
           </div>
         </div>
       </el-header>
@@ -44,10 +45,12 @@
 }
   .left {
     width: 200px;
+    height: 100%;
     text-align: center;
-    background: #000;
     display: inline-block;
     float: left;
+    background: #000 url('../../../assets/platform/交易页面_01.png') center center;
+    background-size: 100% 100%;
     img {
       vertical-align: middle;
     }
@@ -69,14 +72,6 @@
     font-size: 14px;
     cursor: pointer;
     height: 60px;
-    .radio{
-      /*display: inline-block;*/
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      background: #000;
-      margin-right: 20px;
-    }
     .tixing,.message,.morefun{
       margin-left: 30px;
     }

@@ -4,7 +4,7 @@
     <div class="top-data">
       <div class="item">
         <div class="item-title">
-          <img src="../../assets/platform/chart-图表.png" height="40">
+          <img src="../../assets/platform/交易页面_19.png" height="40">
           <p>总资产</p>
         </div>
         <div class="item-content">
@@ -19,7 +19,7 @@
       </div>
       <div class="item">
         <div class="item-title">
-          <img src="../../assets/platform/chart-图表.png" height="40">
+          <img src="../../assets/platform/交易页面_21.png" height="40">
           <p>目前收益</p>
         </div>
         <div class="item-content">
@@ -34,7 +34,7 @@
       </div>
       <div class="item">
         <div class="item-title">
-          <img src="../../assets/platform/chart-图表.png" height="40">
+          <img src="../../assets/platform/交易页面_23.png" height="40">
           <p>动态年化</p>
         </div>
         <div class="item-content">
@@ -49,7 +49,7 @@
       </div>
       <div class="item">
         <div class="item-title">
-          <img src="../../assets/platform/chart-图表.png" height="40">
+          <img src="../../assets/platform/交易页面_25.png" height="40">
           <p>净值</p>
         </div>
         <div class="item-content">
@@ -63,7 +63,7 @@
       </div>
       <div class="item">
         <div class="item-title">
-          <img src="../../assets/platform/chart-图表.png" height="40">
+          <img src="../../assets/platform/交易页面_27.png" height="40">
           <p>已经运行</p>
         </div>
         <div class="item-content">
@@ -382,7 +382,7 @@
   .platformMain {
     width: 100%;
     height: 100%;
-    background-color: rgb(245, 245, 245);
+    background-color: rgb(243, 247, 248);
     .title {
       color: rgb(58, 67, 72);
       font-size: 24px;
@@ -477,6 +477,7 @@
       border-radius: 10px;
       margin-top: 15px;
       margin-bottom: 20px;
+      min-width: 1300px;
       p {
         color: rgb(58, 67, 72);
         font-size: 22px;

@@ -25,7 +25,7 @@
         <a href="#">LEARN MORE ></a>
       </div>
       <div class="main-right">
-        <img src="../assets/home/logo.png" height="110">
+        <img src="../assets/home/logo1.png" height="110">
         <p>VIP登录系统</p>
         <el-input
           v-model="user.username"
@@ -48,12 +48,18 @@
         </div>
       </div>
     </div>
+    <myFooter></myFooter>
   </div>
 </template>
 
 <script>
+  import Footer from '../common/Footer';
+
   export default {
     name: 'Home',
+    components:{
+      "myFooter": Footer,
+    },
     data() {
       return {
         lang: "简体中文",
@@ -91,9 +97,11 @@
 </style>
 <style scoped lang="less">
   .home {
-    padding-top: 1px;
+    /*padding-top: 1px;*/
     height: 100%;
     width: 100%;
+    /*min-height: 900px;*/
+    /*min-width: 1300px;*/
     background: url("../assets/home/背景.jpg") center center;
     background-size: cover;
     .menu {
@@ -118,6 +126,7 @@
             display: block;
             line-height: 56px;
             cursor: pointer;
+            font-family: "Source Han Sans CN";
           }
           p {
             color: #fff;
