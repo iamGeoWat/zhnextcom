@@ -94,7 +94,10 @@
       vertical-align: top;
     }
     .menu-item-header{
+      width: 100%;
       height:60px;
+      padding-right: 1px;
+      background: rgb(32,44,54);
       img{
         margin-left: 15px;
       }
