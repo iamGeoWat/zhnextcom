@@ -122,8 +122,8 @@ function app() {
       })
   }, 1000)
   console.log('data engine engaged.')
-  // var dataWriteEngine = setInterval(classifiedWrite, 3600000)
-  var dataWriteEngine = setInterval(classifiedWrite, 5000)
+  var dataWriteEngine = setInterval(classifiedWrite, 3600000)
+  // var dataWriteEngine = setInterval(classifiedWrite, 5000)
   console.log('write engine engaged.')
 }
 
