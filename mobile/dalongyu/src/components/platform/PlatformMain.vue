@@ -1,145 +1,154 @@
 <template>
   <div class="platformMain">
-    <p class="title">基金情况披露</p>
-    <div class="top-data">
-      <div class="data1">
-        <div class="item">
-          <div class="item-title">
-            <img src="../../assets/platform/交易页面_19.png" height="30">
-            <p>总资产</p>
+    <div class="topBack">
+      <img style="margin-left: 10px;" src="../../assets/platform/logo.png" height="30">
+      <p class="bigTitle">智汇未来</p>
+      <img style="float: right;margin-right: 10px;" src="../../assets/platform/交易页面_04.png" height="30">
+      <div class="top">
+        <p class="title" style="color: rgb(243,247,248);">基金情况披露</p>
+        <div class="top-data">
+          <div class="data1">
+            <div class="item">
+              <div class="item-title">
+                <img src="../../assets/platform/交易页面_19.png" height="30">
+                <p>总资产</p>
+              </div>
+              <div class="item-content">
+                <div>
+                  <img src="../../assets/platform/向上.png" height="10">
+                  <p style="font-size: 24px;">{{this.showData.totalEquity}}</p>
+                  <p style="vertical-align: bottom;font-size: 11px;">BTC</p>
+                  <br/>
+                  <p style="font-size: 5px;color: rgb(181,181,181);">TOTAL NET WORTH</p>
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="item-title">
+                <img src="../../assets/platform/交易页面_21.png" height="30">
+                <p>目前收益</p>
+              </div>
+              <div class="item-content">
+                <div>
+                  <img src="../../assets/platform/向上.png" height="10">
+                  <p style="font-size: 24px;">{{this.showData.currentProfitRatio}}</p>
+                  <p style="vertical-align: bottom;font-size: 11px;">%</p>
+                  <br/>
+                  <p style="font-size: 5px;color: rgb(181,181,181);">TOTAL PROFIT RATIOC</p>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="item-content">
-            <div>
-              <img src="../../assets/platform/向上.png" height="10">
-              <p style="font-size: 24px;">{{this.showData.totalEquity}}</p>
-              <p style="vertical-align: bottom;font-size: 11px;">BTC</p>
-              <br/>
-              <p style="font-size: 5px;color: rgb(181,181,181);">TOTAL NET WORTH</p>
+          <div class="data1">
+            <div class="item">
+              <div class="item-title">
+                <img src="../../assets/platform/交易页面_23.png" height="30">
+                <p>动态年化</p>
+              </div>
+              <div class="item-content">
+                <div>
+                  <img src="../../assets/platform/向上.png" height="10">
+                  <p style="font-size: 24px;">{{showData.estimatedYearly}}</p>
+                  <p style="vertical-align: bottom;font-size: 11px;">%</p>
+                  <br/>
+                  <p style="font-size: 5px;color: rgb(181,181,181);">TOTAL YEARLY ESTIMATE</p>
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="item-title">
+                <img src="../../assets/platform/交易页面_25.png" height="30">
+                <p>净值</p>
+              </div>
+              <div class="item-content">
+                <div>
+                  <img src="../../assets/platform/向上.png" height="10">
+                  <p style="font-size: 24px;">{{showData.equityRatio}}</p>
+                  <br/>
+                  <p style="font-size: 5px;color: rgb(181,181,181);">TOTAL EQUITY RATIO</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        <div class="item">
-          <div class="item-title">
-            <img src="../../assets/platform/交易页面_21.png" height="30">
-            <p>目前收益</p>
-          </div>
-          <div class="item-content">
-            <div>
-              <img src="../../assets/platform/向上.png" height="10">
-              <p style="font-size: 24px;">{{this.showData.currentProfitRatio}}</p>
-              <p style="vertical-align: bottom;font-size: 11px;">%</p>
-              <br/>
-              <p style="font-size: 5px;color: rgb(181,181,181);">TOTAL PROFIT RATIOC</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="data1">
-        <div class="item">
-          <div class="item-title">
-            <img src="../../assets/platform/交易页面_23.png" height="30">
-            <p>动态年化</p>
-          </div>
-          <div class="item-content">
-            <div>
-              <img src="../../assets/platform/向上.png" height="10">
-              <p style="font-size: 24px;">{{showData.estimatedYearly}}</p>
-              <p style="vertical-align: bottom;font-size: 11px;">%</p>
-              <br/>
-              <p style="font-size: 5px;color: rgb(181,181,181);">TOTAL YEARLY ESTIMATE</p>
-            </div>
-          </div>
-        </div>
-        <div class="item">
-          <div class="item-title">
-            <img src="../../assets/platform/交易页面_25.png" height="30">
-            <p>净值</p>
-          </div>
-          <div class="item-content">
-            <div>
-              <img src="../../assets/platform/向上.png" height="10">
-              <p style="font-size: 24px;">{{showData.equityRatio}}</p>
-              <br/>
-              <p style="font-size: 5px;color: rgb(181,181,181);">TOTAL EQUITY RATIO</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <p class="title" style="margin-top: 25px;">基金情况披露</p>
-    <div class="chart">
-      <div class="lineChart">
-        <div class="lineChartTitle">
-          <p>单位百分比</p>
-          <div class="button">
-            <el-button round @click="clickFun($event)" :class="{ active: isActive==='6h' }" type="mini">6h</el-button>
-            <el-button round @click="clickFun($event)" :class="{ active: isActive==='Day' }" type="mini">Day</el-button>
-            <el-button round @click="clickFun($event)" :class="{ active: isActive==='Week' }" type="mini">Week
-            </el-button>
-            <el-button round @click="clickFun($event)" :class="{ active: isActive==='Month' }" type="mini">Month
-            </el-button>
-          </div>
-        </div>
-        <div id="lineChart" :style="{width: '100%', height: '80%'}"></div>
-      </div>
-      <p class="title" style="margin-top: 20px">当前帐号持币比例</p>
-      <div class="pieChart">
-        <div id="pieChart" :style="{width: '100%', height: '90%'}"></div>
       </div>
     </div>
-    <p class="title" style="margin-top: 25px;">交易记录</p>
-    <div class="listTable">
-      <div class="tableMargin">
-        <el-table
-          :data="tableData"
-          size="mini"
-          height="500"
-          style="width: 100%;">
-          <el-table-column
-            prop="type"
-            label="合约类型"
-            align="center"
-            width="50">
-          </el-table-column>
-          <el-table-column
-            prop="lever"
-            label="杠杆"
-            align="center"
-            width="30">
-          </el-table-column>
-          <el-table-column
-            label="交易时间"
-            align="center"
-            width="55">
-            <template slot-scope="scope">
-              <span>{{tableData[scope.$index].time | filterDate}}</span>
-            </template>
-          </el-table-column>
-          <el-table-column
-            prop="num"
-            label="委托数量"
-            align="center"
-            width="50">
-          </el-table-column>
-          <el-table-column
-            prop="price"
-            label="委托价格"
-            align="center"
-            width="50">
-          </el-table-column>
-          <el-table-column
-            prop="avg"
-            label="成交均价"
-            align="center"
-            width="50">
-          </el-table-column>
-          <el-table-column
-            prop="income"
-            label="收益"
-            align="center"
-            width="50">
-          </el-table-column>
-        </el-table>
+    <div class="bottom">
+      <p class="title" style="margin-top: 25px;">基金情况披露</p>
+      <div class="chart">
+        <div class="lineChart">
+          <div class="lineChartTitle">
+            <p>单位百分比</p>
+            <div class="button">
+              <el-button round @click="clickFun($event)" :class="{ active: isActive==='6h' }" type="mini">6h</el-button>
+              <el-button round @click="clickFun($event)" :class="{ active: isActive==='Day' }" type="mini">Day</el-button>
+              <el-button round @click="clickFun($event)" :class="{ active: isActive==='Week' }" type="mini">Week
+              </el-button>
+              <el-button round @click="clickFun($event)" :class="{ active: isActive==='Month' }" type="mini">Month
+              </el-button>
+            </div>
+          </div>
+          <div id="lineChart" :style="{width: '100%', height: '80%'}"></div>
+        </div>
+        <p class="title" style="margin-top: 20px">当前帐号持币比例</p>
+        <div class="pieChart">
+          <div id="pieChart" :style="{width: '100%', height: '90%'}"></div>
+        </div>
+      </div>
+      <p class="title" style="margin-top: 25px;">交易记录</p>
+      <div class="listTable">
+        <div class="tableMargin">
+          <el-table
+            :data="tableData"
+            size="mini"
+            height="400"
+            style="width: 100%;">
+            <el-table-column
+              prop="type"
+              label="合约类型"
+              align="center"
+              width="50">
+            </el-table-column>
+            <el-table-column
+              prop="lever"
+              label="杠杆"
+              align="center"
+              width="45">
+            </el-table-column>
+            <el-table-column
+              label="交易时间"
+              align="center"
+              width="55">
+              <template slot-scope="scope">
+                <span>{{tableData[scope.$index].time | filterDate}}</span>
+              </template>
+            </el-table-column>
+            <el-table-column
+              prop="num"
+              label="委托数量"
+              align="center"
+              width="50">
+            </el-table-column>
+            <el-table-column
+              prop="price"
+              label="委托价格"
+              align="center"
+              width="50">
+            </el-table-column>
+            <el-table-column
+              prop="avg"
+              label="成交均价"
+              align="center"
+              width="50">
+            </el-table-column>
+            <el-table-column
+              prop="income"
+              label="收益"
+              align="center"
+              width="50">
+            </el-table-column>
+          </el-table>
+        </div>
       </div>
     </div>
   </div>
@@ -409,107 +418,133 @@
   }
 
   .platformMain {
-    width: 97.5%;
+    width: 100%;
     height: 100%;
     margin: 0 auto;
     background-color: rgb(243, 247, 248);
     .title {
       color: rgb(58, 67, 72);
       font-size: 15px;
+      margin-left: 5px;
     }
-    .top-data {
-      width: 100%;
-      /*height: 180px;*/
-      margin-top: 5px;
-      .data1 {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 10px;
-        .item {
-          width: 49%;
-          height: 110px;
-          background: white;
-          border-radius: 5px;
-          .item-title {
-            /*height: 40px;*/
-            margin-top: 10px;
-            margin-left: 10px;
-            img {
-              vertical-align: middle;
-            }
-            p {
-              color: rgb(58, 67, 72);
-              font-size: 12px;
-              display: inline-block;
-              vertical-align: middle;
-            }
-          }
-          .item-content {
-            text-align: center;
-            p {
-              color: rgb(58, 67, 72);
-              vertical-align: middle;
-              display: inline-block;
+    .topBack{
+      background: url("../../assets/platform/手机back.jpg") center center;
+      background-size: 100% 100%;
+      img{
+        vertical-align: middle;
+        margin-top: 10px;
+      }
+      .bigTitle{
+        display: inline-block;
+        font-family: font1;
+        color: #fff;
+        vertical-align: middle;
+        font-size: 18px;
+        margin-top: 10px;
+      }
+      .top{
+        width: 97.5%;
+        margin: 30px auto 0 auto;
+        .top-data {
+          width: 100%;
+          /*height: 180px;*/
+          margin-top: 5px;
+          padding-bottom: 1px;
+          .data1 {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            .item {
+              width: 49%;
+              height: 110px;
+              background: white;
+              border-radius: 5px;
+              .item-title {
+                /*height: 40px;*/
+                margin-top: 10px;
+                margin-left: 10px;
+                img {
+                  vertical-align: middle;
+                }
+                p {
+                  color: rgb(58, 67, 72);
+                  font-size: 12px;
+                  display: inline-block;
+                  vertical-align: middle;
+                }
+              }
+              .item-content {
+                text-align: center;
+                p {
+                  color: rgb(58, 67, 72);
+                  vertical-align: middle;
+                  display: inline-block;
+                }
+              }
             }
           }
         }
       }
     }
-    .lineChart {
-      background: white;
-      height: 300px;
-      width: 100%;
-      border-radius: 10px;
-      padding-top: 1px;
-      .lineChartTitle {
-        margin-top: 10px;
+    .bottom{
+      width: 97.5%;
+      margin: 0 auto;
+      .lineChart {
+        background: white;
+        height: 300px;
+        width: 100%;
+        border-radius: 10px;
+        padding-top: 1px;
+        .lineChartTitle {
+          margin-top: 10px;
+          p {
+            color: rgb(58, 67, 72);
+            font-size: 10px;
+            margin-left: 15px;
+            display: inline-block;
+          }
+          .button {
+            margin-right: 10px;
+            display: inline-block;
+            float: right;
+          }
+        }
+      }
+      .pieChart {
+        height: 400px;
+        width: 100%;
+        border-radius: 10px;
+        background: white;
+        padding-top: 1px;
         p {
           color: rgb(58, 67, 72);
-          font-size: 10px;
-          margin-left: 15px;
+          font-size: 22px;
+          margin-left: 20px;
+          margin-top: 30px;
           display: inline-block;
         }
-        .button {
-          margin-right: 10px;
-          display: inline-block;
-          float: right;
+        #pieChart {
+          margin-top: 10px;
         }
       }
-    }
-    .pieChart {
-      height: 400px;
-      width: 100%;
-      border-radius: 10px;
-      background: white;
-      padding-top: 1px;
-      p {
-        color: rgb(58, 67, 72);
-        font-size: 22px;
-        margin-left: 20px;
-        margin-top: 30px;
-        display: inline-block;
-      }
-      #pieChart {
-        margin-top: 10px;
-      }
-    }
-    .listTable {
-      padding-top: 1px;
-      height: 600px;
-      width: 100%;
-      background: white;
-      border-radius: 10px;
-      margin-top: 5px;
-      margin-bottom: 20px;
-      p {
-        color: rgb(58, 67, 72);
-        font-size: 22px;
-        margin-left: 50px;
-        margin-top: 30px;
-      }
-      .tableMargin {
+      .listTable {
+        padding-top: 1px;
+        height: 400px;
         width: 100%;
-        height: 500px;
+        background: white;
+        border-radius: 10px;
+        margin-top: 5px;
+        margin-bottom: 20px;
+        p {
+          color: rgb(58, 67, 72);
+          font-size: 22px;
+          margin-left: 50px;
+          margin-top: 30px;
+        }
+        .tableMargin {
+          width: 100%;
+          height: 400px;
+        }
       }
     }
   }
