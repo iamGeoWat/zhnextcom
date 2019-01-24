@@ -16,7 +16,7 @@
               <div class="item-content">
                 <div>
                   <img src="../../assets/platform/向上.png" height="10">
-                  <p style="font-size: 24px;">{{this.showData.totalEquity}}</p>
+                  <p style="font-size: 24px;">{{this.showData.totalEquity*30}}</p>
                   <p style="vertical-align: bottom;font-size: 11px;">BTC</p>
                   <br/>
                   <p style="font-size: 5px;color: rgb(181,181,181);">TOTAL NET WORTH</p>
@@ -34,7 +34,7 @@
                   <p style="font-size: 24px;">{{this.showData.currentProfitRatio}}</p>
                   <p style="vertical-align: bottom;font-size: 11px;">%</p>
                   <br/>
-                  <p style="font-size: 5px;color: rgb(181,181,181);">TOTAL PROFIT RATIOC</p>
+                  <p style="font-size: 5px;color: rgb(181,181,181);">TOTAL PROFIT RATIO</p>
                 </div>
               </div>
             </div>
@@ -51,7 +51,7 @@
                   <p style="font-size: 24px;">{{showData.estimatedYearly}}</p>
                   <p style="vertical-align: bottom;font-size: 11px;">%</p>
                   <br/>
-                  <p style="font-size: 5px;color: rgb(181,181,181);">TOTAL YEARLY ESTIMATE</p>
+                  <p style="font-size: 5px;color: rgb(181,181,181);">YEARLY ESTIMATE</p>
                 </div>
               </div>
             </div>
