@@ -262,7 +262,7 @@
           this.pieChart.setOption({
             tooltip: {
               trigger: 'item',
-              formatter: "{a} <br/>{b}: {c} ({d}%)"
+              formatter: " {b}: ({d}%)"
             },
             legend: {
               // orient: 'vertical',
@@ -273,38 +273,26 @@
               {
                 name: '访问来源',
                 type: 'pie',
-                radius: ['30%', '55%'],
+                radius: ['20%', '45%'],
                 avoidLabelOverlap: true,
                 label: {
                   normal: {
-                    formatter: '{a|{a}}{abg|}\n{hr|}\n  {b|{b}：}\n  {c}  \n  {per|{d}%}  ',
+                    formatter: ' {b|{b}：}{per|{d}%} ',
                     backgroundColor: '#eee',
                     borderColor: '#aaa',
                     borderWidth: 1,
                     borderRadius: 4,
                     // textAlign:center,
                     rich: {
-                      a: {
-                        color: '#999',
-                        lineHeight: 15,
-                        align: 'center',
-                        fontSize: 10
-                      },
-                      hr: {
-                        borderColor: '#aaa',
-                        width: '100%',
-                        borderWidth: 0.5,
-                        height: 0
-                      },
                       b: {
                         fontSize: 11,
                         lineHeight: 15
                       },
                       per: {
-                        color: '#eee',
-                        backgroundColor: '#334455',
                         padding: [2, 4],
-                        borderRadius: 2
+                        borderRadius: 2,
+                        fontSize: 11,
+                        lineHeight: 15
                       }
                     }
                   },
