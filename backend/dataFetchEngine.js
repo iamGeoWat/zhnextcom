@@ -381,9 +381,12 @@ app.get('/pie', (req, res) => {
     {value: 0, name: 'EOS'},
     {value: 0, name: 'USDT'}
   ]
-  resData[0].value = accountContainer.totalBTCInUSD
-  resData[1].value = accountContainer.totalEOSInUSD
-  resData[2].value = accountContainer.totalUSDTInUSD
+  // resData[0].value = accountContainer.totalBTCInUSD
+  // resData[1].value = accountContainer.totalEOSInUSD
+  // resData[2].value = accountContainer.totalUSDTInUSD
+  resData[0].value = 28.4
+  resData[1].value = 14.8
+  resData[2].value = 56.8
   res.send(JSON.stringify(resData))
 })
 app.post('/login', async (req, res) => {
