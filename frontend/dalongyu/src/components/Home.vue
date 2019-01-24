@@ -40,11 +40,14 @@
           <!--<i slot="prefix" class="iconfont icon-suo"></i>-->
         </el-input>
         <br/>
-        <el-button style="margin-top: 17px;width: 60%;background-color: rgb(210,190,140);border: 0;color: #000;" @click="login">{{$t('home.body.body7')}}</el-button>
+        <el-button style="margin-top: 17px;width: 60%;background-color: rgb(210,190,140);border: 0;color: #000;"
+                   @click="login">{{$t('home.body.body7')}}
+        </el-button>
         <div class="more">
-          <span style="float: left;"><a href="#">{{$t('home.body.body9')}}</a></span><span style="float: right;"><a
-          href="#">{{$t('home.body.body8')}}</a></span><span style="float: right;">&nbsp;&nbsp;|&nbsp;&nbsp;</span><span
-          style="float: right;"><a href="#">{{$t('home.body.body10')}}</a></span>
+          <span style="float: left;"><a href="#">{{$t('home.body.body9')}}</a></span>
+          <span style="float: right;"><a href="#">{{$t('home.body.body8')}}</a></span>
+          <span style="float: right;">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+          <span style="float: right;"><a href="#">{{$t('home.body.body10')}}</a></span>
         </div>
       </div>
     </div>
@@ -57,20 +60,20 @@
 
   export default {
     name: 'Home',
-    components:{
+    components: {
       "myFooter": Footer,
     },
     data() {
       return {
         lang: "简体中文",
-        user:{
-          username:"",
-          password:""
+        user: {
+          username: "",
+          password: ""
         },
       }
     },
     methods: {
-      selectLang(e,value) {
+      selectLang(e, value) {
         console.log(e.target.innerText);
         this.lang = e.target.innerText;
         this.$i18n.locale = value;
@@ -80,12 +83,12 @@
           method: 'post',
           url: '/login',
           data: this.user
-        }).then((response)=> {
+        }).then((response) => {
           console.log(response);
-          sessionStorage.setItem("auth",response.data.content);
-          sessionStorage.setItem("userId",response.data.userid);
+          sessionStorage.setItem("auth", response.data.content);
+          sessionStorage.setItem("userId", response.data.userid);
           console.log(sessionStorage.getItem("userId"));
-          this.$router.push({ path: '/platform' });
+          this.$router.push({path: '/platform'});
         });
       }
     },
@@ -193,6 +196,7 @@
           width: 60%;
           margin: 10px auto 0 auto;
           span {
+            color: rgb(175, 175, 175);
             a {
               text-decoration: none;
               color: rgb(175, 175, 175);

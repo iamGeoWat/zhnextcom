@@ -1,118 +1,94 @@
 <template>
   <div class="platformMain">
-    <p class="title">{{$t('platform.body.title1')}}</p>
+    <p class="title">基金情况披露</p>
     <div class="top-data">
-      <div class="item">
-        <div class="item-title">
-          <img src="../../assets/platform/交易页面_19.png" height="40">
-          <p>{{$t('platform.body.body1_1')}}</p>
+      <div class="data1">
+        <div class="item">
+          <div class="item-title">
+            <img src="../../assets/platform/交易页面_19.png" height="30">
+            <p>总资产</p>
+          </div>
+          <div class="item-content">
+            <div>
+              <img src="../../assets/platform/向上.png" height="10">
+              <p style="font-size: 24px;">{{this.showData.totalEquity}}</p>
+              <p style="vertical-align: bottom;font-size: 11px;">BTC</p>
+              <br/>
+              <p style="font-size: 5px;color: rgb(181,181,181);">TOTAL NET WORTH</p>
+            </div>
+          </div>
         </div>
-        <div class="item-content">
-          <div style="margin-top: 15px">
-            <img src="../../assets/platform/向上.png" height="13">
-            <p style="font-size: 38px;">{{this.showData.totalEquity}}</p>
-            <p style="vertical-align: bottom;">BTC</p>
-            <br/>
-            <p style="font-size: 12px;color: rgb(181,181,181);">TOTAL NET WORTH</p>
+        <div class="item">
+          <div class="item-title">
+            <img src="../../assets/platform/交易页面_21.png" height="30">
+            <p>目前收益</p>
+          </div>
+          <div class="item-content">
+            <div>
+              <img src="../../assets/platform/向上.png" height="10">
+              <p style="font-size: 24px;">{{this.showData.currentProfitRatio}}</p>
+              <p style="vertical-align: bottom;font-size: 11px;">%</p>
+              <br/>
+              <p style="font-size: 5px;color: rgb(181,181,181);">TOTAL PROFIT RATIOC</p>
+            </div>
           </div>
         </div>
       </div>
-      <div class="item">
-        <div class="item-title">
-          <img src="../../assets/platform/交易页面_21.png" height="40">
-          <p>{{$t('platform.body.body1_2')}}</p>
-        </div>
-        <div class="item-content">
-          <div style="margin-top: 15px">
-            <img src="../../assets/platform/向上.png" height="13">
-            <p style="font-size: 38px;">{{this.showData.currentProfitRatio}}</p>
-            <p style="vertical-align: bottom;">%</p>
-            <br/>
-            <p style="font-size: 12px;color: rgb(181,181,181);">TOTAL PROFIT RATIOC</p>
+      <div class="data1">
+        <div class="item">
+          <div class="item-title">
+            <img src="../../assets/platform/交易页面_23.png" height="30">
+            <p>动态年化</p>
+          </div>
+          <div class="item-content">
+            <div>
+              <img src="../../assets/platform/向上.png" height="10">
+              <p style="font-size: 24px;">{{showData.estimatedYearly}}</p>
+              <p style="vertical-align: bottom;font-size: 11px;">%</p>
+              <br/>
+              <p style="font-size: 5px;color: rgb(181,181,181);">TOTAL YEARLY ESTIMATE</p>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="item">
-        <div class="item-title">
-          <img src="../../assets/platform/交易页面_23.png" height="40">
-          <p>{{$t('platform.body.body1_3')}}</p>
-        </div>
-        <div class="item-content">
-          <div style="margin-top: 15px">
-            <img src="../../assets/platform/向上.png" height="13">
-            <p style="font-size: 38px;">{{showData.estimatedYearly}}</p>
-            <p style="vertical-align: bottom;">%</p>
-            <br/>
-            <p style="font-size: 12px;color: rgb(181,181,181);">TOTAL YEARLY ESTIMATE</p>
+        <div class="item">
+          <div class="item-title">
+            <img src="../../assets/platform/交易页面_25.png" height="30">
+            <p>净值</p>
           </div>
-        </div>
-      </div>
-      <div class="item">
-        <div class="item-title">
-          <img src="../../assets/platform/交易页面_25.png" height="40">
-          <p>{{$t('platform.body.body1_4')}}</p>
-        </div>
-        <div class="item-content">
-          <div style="margin-top: 15px">
-            <img src="../../assets/platform/向上.png" height="13">
-            <p style="font-size: 38px;">{{showData.equityRatio}}</p>
-            <br/>
-            <p style="font-size: 12px;color: rgb(181,181,181);">TOTAL EQUITY RATIO</p>
-          </div>
-        </div>
-      </div>
-      <div class="item">
-        <div class="item-title">
-          <img src="../../assets/platform/初始资产.png" height="40">
-          <p>{{$t('platform.body.body1_5')}}</p>
-        </div>
-        <div class="item-content">
-          <div style="margin-top: 15px">
-            <img src="../../assets/platform/向上.png" height="13">
-            <p style="font-size: 38px;">{{this.showData.totalEquity}}</p>
-            <p style="vertical-align: bottom;">BTC</p>
-            <br/>
-            <p style="font-size: 12px;color: rgb(181,181,181);">TOTAL NET WORTH</p>
-          </div>
-        </div>
-      </div>
-      <div class="item">
-        <div class="item-title">
-          <img src="../../assets/platform/交易页面_27.png" height="40">
-          <p>{{$t('platform.body.body1_6')}}</p>
-        </div>
-        <div class="item-content">
-          <div style="margin-top: 15px">
-            <img src="../../assets/platform/向上.png" height="13">
-            <p style="font-size: 38px;">{{showData.runningTime}}</p>
-            <p style="vertical-align: bottom;">天</p>
-            <br/>
-            <p style="font-size: 12px;color: rgb(181,181,181);">EXISTING TIME</p>
+          <div class="item-content">
+            <div>
+              <img src="../../assets/platform/向上.png" height="10">
+              <p style="font-size: 24px;">{{showData.equityRatio}}</p>
+              <br/>
+              <p style="font-size: 5px;color: rgb(181,181,181);">TOTAL EQUITY RATIO</p>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    <p class="title" style="margin-top: 40px;">{{$t('platform.body.title2')}}</p>
+    <p class="title" style="margin-top: 25px;">基金情况披露</p>
     <div class="chart">
       <div class="lineChart">
         <div class="lineChartTitle">
-          <p>{{$t('platform.body.body2_1')}}</p>
+          <p>单位百分比</p>
           <div class="button">
-            <el-button round @click="clickFun($event)" :class="{ active: isActive==='6h' }">6h</el-button>
-            <el-button round @click="clickFun($event)" :class="{ active: isActive==='Day' }">Day</el-button>
-            <el-button round @click="clickFun($event)" :class="{ active: isActive==='Week' }">Week</el-button>
-            <el-button round @click="clickFun($event)" :class="{ active: isActive==='Month' }">Month</el-button>
+            <el-button round @click="clickFun($event)" :class="{ active: isActive==='6h' }" type="mini">6h</el-button>
+            <el-button round @click="clickFun($event)" :class="{ active: isActive==='Day' }" type="mini">Day</el-button>
+            <el-button round @click="clickFun($event)" :class="{ active: isActive==='Week' }" type="mini">Week
+            </el-button>
+            <el-button round @click="clickFun($event)" :class="{ active: isActive==='Month' }" type="mini">Month
+            </el-button>
           </div>
         </div>
         <div id="lineChart" :style="{width: '100%', height: '80%'}"></div>
       </div>
+      <p class="title" style="margin-top: 20px">当前帐号持币比例</p>
       <div class="pieChart">
-        <p>{{$t('platform.body.body2_2')}}</p>
-        <div id="pieChart" :style="{width: '95%', height: '80%'}"></div>
+        <div id="pieChart" :style="{width: '100%', height: '90%'}"></div>
       </div>
     </div>
+    <p class="title" style="margin-top: 25px;">交易记录</p>
     <div class="listTable">
-      <p>{{$t('platform.body.title3')}}</p>
       <div class="tableMargin">
         <el-table
           :data="tableData"
@@ -121,40 +97,47 @@
           style="width: 100%;">
           <el-table-column
             prop="type"
-            :label="$t('platform.body.body3_1')"
-            align="center">
+            label="合约类型"
+            align="center"
+            width="50">
           </el-table-column>
           <el-table-column
             prop="lever"
-            :label="$t('platform.body.body3_2')"
-            align="center">
+            label="杠杆"
+            align="center"
+            width="30">
           </el-table-column>
           <el-table-column
-            :label="$t('platform.body.body3_3')"
-            align="center">
+            label="交易时间"
+            align="center"
+            width="55">
             <template slot-scope="scope">
               <span>{{tableData[scope.$index].time | filterDate}}</span>
             </template>
           </el-table-column>
           <el-table-column
             prop="num"
-            :label="$t('platform.body.body3_4')"
-            align="center">
+            label="委托数量"
+            align="center"
+            width="50">
           </el-table-column>
           <el-table-column
             prop="price"
-            :label="$t('platform.body.body3_5')"
-            align="center">
+            label="委托价格"
+            align="center"
+            width="50">
           </el-table-column>
           <el-table-column
             prop="avg"
-            :label="$t('platform.body.body3_6')"
-            align="center">
+            label="成交均价"
+            align="center"
+            width="50">
           </el-table-column>
           <el-table-column
             prop="income"
-            :label="$t('platform.body.body3_7')"
-            align="center">
+            label="收益"
+            align="center"
+            width="50">
           </el-table-column>
         </el-table>
       </div>
@@ -192,8 +175,8 @@
           }
         ],
         showData: {},
-        lineChartDate:[],
-        lineChartData:[],
+        lineChartDate: [],
+        lineChartData: [],
       }
     },
     mounted() {
@@ -201,7 +184,7 @@
       this.getDot("6h");
       this.drawPie();
     },
-    created(){
+    created() {
       this.showInfo();
     },
     methods: {
@@ -261,9 +244,8 @@
           method: 'get',
           url: '/pie'
         }).then((response) => {
-          console.log(response.data);
-          for (let i=0; i< response.data.length;i++){
-            response.data[i].value=response.data[i].value.toFixed(8);
+          for (let i = 0; i < response.data.length; i++) {
+            response.data[i].value = response.data[i].value.toFixed(6);
           }
           // 基于准备好的dom，初始化echarts实例
           this.pieChart = this.$echarts.init(document.getElementById('pieChart'));
@@ -274,7 +256,7 @@
               formatter: "{a} <br/>{b}: {c} ({d}%)"
             },
             legend: {
-              orient: 'vertical',
+              // orient: 'vertical',
               x: 'left',
               // data: ['BTC', 'ETH', 'LTC', 'EOS', 'USDT','其他']
             },
@@ -282,20 +264,22 @@
               {
                 name: '访问来源',
                 type: 'pie',
-                radius: ['35%', '65%'],
+                radius: ['30%', '55%'],
                 avoidLabelOverlap: true,
                 label: {
                   normal: {
-                    formatter: '{a|{a}}{abg|}\n{hr|}\n  {b|{b}：}{c}  \n  {per|{d}%}  ',
+                    formatter: '{a|{a}}{abg|}\n{hr|}\n  {b|{b}：}\n  {c}  \n  {per|{d}%}  ',
                     backgroundColor: '#eee',
                     borderColor: '#aaa',
                     borderWidth: 1,
                     borderRadius: 4,
+                    // textAlign:center,
                     rich: {
                       a: {
                         color: '#999',
-                        lineHeight: 22,
-                        align: 'center'
+                        lineHeight: 15,
+                        align: 'center',
+                        fontSize: 10
                       },
                       hr: {
                         borderColor: '#aaa',
@@ -304,8 +288,8 @@
                         height: 0
                       },
                       b: {
-                        fontSize: 16,
-                        lineHeight: 33
+                        fontSize: 11,
+                        lineHeight: 15
                       },
                       per: {
                         color: '#eee',
@@ -318,7 +302,7 @@
                   emphasis: {
                     show: true,
                     textStyle: {
-                      fontSize: '20',
+                      fontSize: '15',
                       fontWeight: 'bold'
                     }
                   }
@@ -335,44 +319,44 @@
       },
       clickFun(value) {
         this.isActive = value.path[0].textContent;
-        if (this.isActive==="6h"){
+        if (this.isActive === "6h") {
           // console.log('6h');
           this.getDot(this.isActive);
         }
-        else if (this.isActive==="Day") {
+        else if (this.isActive === "Day") {
           console.log('Day');
           this.getDot(this.isActive);
         }
-        else if (this.isActive==="Week") {
+        else if (this.isActive === "Week") {
           console.log('Week');
           this.getDot(this.isActive);
         }
-        else if (this.isActive==="Month") {
+        else if (this.isActive === "Month") {
           console.log('Month');
           this.getDot(this.isActive);
         }
       },
-      showInfo(){
+      showInfo() {
         this.$http({
           method: 'post',
           url: '/showinfo',
           data: {
-            userid:sessionStorage.getItem("userId")
+            userid: sessionStorage.getItem("userId")
           }
-        }).then((response)=> {
+        }).then((response) => {
           console.log(response);
-          this.showData=response.data;
+          this.showData = response.data;
           console.log(this.showData);
         });
       },
-      getDot(value){
-        this.lineChartDate=[];
-        this.lineChartData=[];
+      getDot(value) {
+        this.lineChartDate = [];
+        this.lineChartData = [];
         this.$http({
           method: 'get',
-          url: '/dot'+value,
-        }).then((response)=> {
-          for (let i=0;i<response.data[1].length;i++){
+          url: '/dot' + value,
+        }).then((response) => {
+          for (let i = 0; i < response.data[1].length; i++) {
             let t = response.data[1][i]
             let d = new Date(t);
             let Y = d.getFullYear() + '-';
@@ -383,13 +367,13 @@
             let s = (d.getSeconds() < 10 ? '0' + (d.getSeconds()) : d.getSeconds());
             this.lineChartDate.push(Y + M + D + h + m + s);
           }
-          this.lineChartData=response.data[0];
-          console.log(this.lineChartData,this.lineChartDate);
+          this.lineChartData = response.data[0];
+          console.log(this.lineChartData, this.lineChartDate);
           this.drawLine();
         });
       }
     },
-    filters:{
+    filters: {
       filterDate: function (val) {
         if (val == null) return '-';
         let date = new Date(val);//时间戳为10位需*1000，时间戳为13位的话不需乘1000
@@ -411,6 +395,11 @@
       background: rgb(243, 247, 250);
       border: 0;
     }
+    .cell{
+      padding-left: 0;
+      padding-right: 0;
+      font-size: 8px;
+    }
   }
 </style>
 <style scoped lang="less">
@@ -420,93 +409,88 @@
   }
 
   .platformMain {
-    width: 100%;
+    width: 97.5%;
     height: 100%;
+    margin: 0 auto;
     background-color: rgb(243, 247, 248);
     .title {
       color: rgb(58, 67, 72);
-      font-size: 24px;
+      font-size: 15px;
     }
     .top-data {
       width: 100%;
-      height: 180px;
-      display: flex;
-      justify-content: space-between;
-      margin-top: 15px;
-      min-width: 1300px;
-      .item {
-        width: 16%;
-        height: 100%;
-        background: white;
-        border-radius: 5px;
-        .item-title {
-          height: 40px;
-          margin-top: 15px;
-          margin-left: 25px;
-          img {
-            vertical-align: middle;
+      /*height: 180px;*/
+      margin-top: 5px;
+      .data1 {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+        .item {
+          width: 49%;
+          height: 110px;
+          background: white;
+          border-radius: 5px;
+          .item-title {
+            /*height: 40px;*/
+            margin-top: 10px;
+            margin-left: 10px;
+            img {
+              vertical-align: middle;
+            }
+            p {
+              color: rgb(58, 67, 72);
+              font-size: 12px;
+              display: inline-block;
+              vertical-align: middle;
+            }
           }
-          p {
-            color: rgb(58, 67, 72);
-            font-size: 16px;
-            display: inline-block;
-            vertical-align: middle;
-          }
-        }
-        .item-content {
-          text-align: center;
-          p {
-            color: rgb(58, 67, 72);
-            vertical-align: middle;
-            display: inline-block;
+          .item-content {
+            text-align: center;
+            p {
+              color: rgb(58, 67, 72);
+              vertical-align: middle;
+              display: inline-block;
+            }
           }
         }
       }
     }
-    .chart {
+    .lineChart {
+      background: white;
+      height: 300px;
       width: 100%;
-      height: 500px;
-      min-width: 1300px;
-      margin-top: 15px;
-      .lineChart {
-        display: inline-block;
-        background: white;
-        height: 100%;
-        width: 60%;
-        border-radius: 10px;
-        .lineChartTitle {
-          margin-top: 30px;
-          p {
-            color: rgb(58, 67, 72);
-            font-size: 22px;
-            margin-left: 50px;
-            display: inline-block;
-          }
-          .button {
-            margin-right: 50px;
-            display: inline-block;
-            float: right;
-          }
-        }
-      }
-      .pieChart {
-        display: inline-block;
-        height: 100%;
-        width: 39%;
-        float: right;
-        border-radius: 10px;
-        background: white;
+      border-radius: 10px;
+      padding-top: 1px;
+      .lineChartTitle {
+        margin-top: 10px;
         p {
           color: rgb(58, 67, 72);
-          font-size: 22px;
-          margin-left: 20px;
-          margin-top: 30px;
+          font-size: 10px;
+          margin-left: 15px;
           display: inline-block;
         }
-        #pieChart {
-          margin-left: 30px;
-          margin-top: 20px;
+        .button {
+          margin-right: 10px;
+          display: inline-block;
+          float: right;
         }
+      }
+    }
+    .pieChart {
+      height: 400px;
+      width: 100%;
+      border-radius: 10px;
+      background: white;
+      padding-top: 1px;
+      p {
+        color: rgb(58, 67, 72);
+        font-size: 22px;
+        margin-left: 20px;
+        margin-top: 30px;
+        display: inline-block;
+      }
+      #pieChart {
+        margin-top: 10px;
       }
     }
     .listTable {
@@ -515,9 +499,8 @@
       width: 100%;
       background: white;
       border-radius: 10px;
-      margin-top: 15px;
+      margin-top: 5px;
       margin-bottom: 20px;
-      min-width: 1300px;
       p {
         color: rgb(58, 67, 72);
         font-size: 22px;
@@ -525,9 +508,8 @@
         margin-top: 30px;
       }
       .tableMargin {
-        width: 95%;
+        width: 100%;
         height: 500px;
-        margin: 30px auto 0 auto;
       }
     }
   }

@@ -7,7 +7,7 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import axios from 'axios'
 import echarts from 'echarts' //引入echarts
-import i18n from './i18n/lang'
+import i18n from './i18n/i18n'
 
 
 axios.defaults.baseURL = 'http://zhnext.com:8877';
@@ -24,4 +24,4 @@ new Vue({
   i18n,
   components: { App },
   template: '<App/>'
-});
+})
