@@ -27,6 +27,17 @@ var accountContainer = {
   totalEquityInUSD: 0
 }
 
+var showInfo = {
+  startEquity: '',
+  weeklyProfitRatio: '',
+  currentProfit: '',
+  currentProfitRatio: '',
+  estimatedYearly: '',
+  equityRatio: '',
+  runningTime: '',
+  totalEquity: ''
+}
+
 var writeCount = 0
 
 async function ifEquityChanged(currentEquity) {
@@ -56,7 +67,8 @@ async function dotWrite (intvType, apiID) {
     console.log(accountContainer)
     var equity = accountContainer.totalEquityInBTC
     var time = moment(new Date()).format('YYYY-MM-DD HH:mm:ss')
-    var dotInfo = [equity, time, intvType, apiID, null]
+    var profitRatio = showInfo.currentProfitRatio
+    var dotInfo = [equity, profitRatio, time, intvType, apiID, null]
     // console.log(dotInfo)
     if (intvType === 1) {
       if (await ifEquityChanged(equity)) {
@@ -99,6 +111,14 @@ function app() {
       .catch((err) => {
         console.log(err)
         accountContainer = 'error'
+      })
+    axios.post('http://localhost:8877/showInfo', {userid: 1})
+      .then((res) => {
+        showInfo = res.data
+      })
+      .catch((err) => {
+        console.log(err)
+        showInfo = 'error'
       })
   }, 1000)
   console.log('data engine engaged.')

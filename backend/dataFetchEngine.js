@@ -354,23 +354,23 @@ var seeThruEngine = setInterval(() => {
 
 //interfaces
 app.get('/dot1h', async (req, res) => {
-  var result = await dotDao.queryEquityTimeByIdAndIntvType(1, 1)
+  var result = await dotDao.queryPRTimeByIdAndIntvType(1, 1)
   res.send(result)
 })
 app.get('/dot6h', async (req, res) => {
-  var result = await dotDao.queryEquityTimeByIdAndIntvType(1, 2)
+  var result = await dotDao.queryPRTimeByIdAndIntvType(1, 2)
   res.send(result)
 })
 app.get('/dotDay', async (req, res) => {
-  var result = await dotDao.queryEquityTimeByIdAndIntvType(1, 3)
+  var result = await dotDao.queryPRTimeByIdAndIntvType(1, 3)
   res.send(result)
 })
 app.get('/dotWeek', async (req, res) => {
-  var result = await dotDao.queryEquityTimeByIdAndIntvType(1, 4)
+  var result = await dotDao.queryPRTimeByIdAndIntvType(1, 4)
   res.send(result)
 })
 app.get('/dotMonth', async (req, res) => {
-  var result = await dotDao.queryEquityTimeByIdAndIntvType(1, 5)
+  var result = await dotDao.queryPRTimeByIdAndIntvType(1, 5)
   res.send(result)
 })
 app.get('/infoContainer', (req, res) => res.send(JSON.stringify(infoContainer[0])))
@@ -414,22 +414,22 @@ app.post('/showInfo', async (req, res) => {
   userInfo = userInfo[0]
   // console.log(userInfo)
   var resData = { startEquity: '', weeklyProfitRatio: '', currentProfit: '', currentProfitRatio: '', estimatedYearly: '', equityRatio: '', runningTime: '', totalEquity: '' }
-  resData.startEquity = userInfo.start_equity
+  resData.startEquity = parseFloat(userInfo.start_equity).toFixed(3)
   let currentEquity = accountContainer.totalEquityInBTC
   // console.log(dotWeek)
   if (dotWeek.length >= 1) {
     let lastWeekEquity = dotWeek[dotWeek.length - 1].equity
-    resData.weeklyProfitRatio = (((currentEquity - lastWeekEquity) / lastWeekEquity)*100).toFixed(4)
+    resData.weeklyProfitRatio = (((currentEquity - lastWeekEquity) / lastWeekEquity)*100).toFixed(3)
   }
-  resData.currentProfit = (currentEquity - userInfo.start_equity).toFixed(4)
-  resData.currentProfitRatio = (((currentEquity - userInfo.start_equity) / userInfo.start_equity)*100).toFixed(4)
-  resData.equityRatio = (parseFloat(resData.currentProfitRatio)/100 + 1).toFixed(4)
+  resData.currentProfit = (currentEquity - userInfo.start_equity).toFixed(3)
+  resData.currentProfitRatio = (((currentEquity - userInfo.start_equity) / userInfo.start_equity)*100).toFixed(3)
+  resData.equityRatio = (parseFloat(resData.currentProfitRatio)/100 + 1).toFixed(3)
   var startDate = new Date(userInfo.start_date)
   startDate = moment(startDate)
   resData.runningTime = currentDate.diff(startDate, 'days') + 1
   // console.log(resData.runningTime)
-  resData.estimatedYearly = (((((currentEquity - userInfo.start_equity) / userInfo.start_equity) * 100)/resData.runningTime) * 365).toFixed(4)
-  resData.totalEquity = accountContainer.totalEquityInBTC
+  resData.estimatedYearly = (((((currentEquity - userInfo.start_equity) / userInfo.start_equity) * 100)/resData.runningTime) * 365).toFixed(3)
+  resData.totalEquity = parseFloat(accountContainer.totalEquityInBTC).toFixed(3)
   res.send(JSON.stringify(resData))
 })
 
