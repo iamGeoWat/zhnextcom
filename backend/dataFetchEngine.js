@@ -387,6 +387,7 @@ app.get('/pie', (req, res) => {
   resData[0].value = 28.4
   resData[1].value = 14.8
   resData[2].value = 56.8
+  //todo: 改成外部文件
   res.send(JSON.stringify(resData))
 })
 app.post('/login', async (req, res) => {
@@ -418,7 +419,7 @@ app.post('/showInfo', async (req, res) => {
   // console.log(userInfo)
   var resData = { startEquity: '', weeklyProfitRatio: '', currentProfit: '', currentProfitRatio: '', estimatedYearly: '', equityRatio: '', runningTime: '', totalEquity: '' }
   resData.startEquity = parseFloat(userInfo.start_equity).toFixed(3)
-  let currentEquity = accountContainer.totalEquityInBTC
+  let currentEquity = parseFloat(accountContainer.totalEquityInBTC).toFixed(3)
   // console.log(dotWeek)
   if (dotWeek.length >= 1) {
     let lastWeekEquity = dotWeek[dotWeek.length - 1].equity
@@ -432,7 +433,7 @@ app.post('/showInfo', async (req, res) => {
   resData.runningTime = currentDate.diff(startDate, 'days') + 1
   // console.log(resData.runningTime)
   resData.estimatedYearly = (((((currentEquity - userInfo.start_equity) / userInfo.start_equity) * 100)/resData.runningTime) * 365).toFixed(3)
-  resData.totalEquity = parseFloat(accountContainer.totalEquityInBTC).toFixed(3)
+  resData.totalEquity = currentEquity
   res.send(JSON.stringify(resData))
 })
 
