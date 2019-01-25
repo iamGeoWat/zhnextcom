@@ -10,6 +10,6 @@ app.use(function(req, res, next) {
 });
 app.use(express.static(path.join(__dirname, '/mobile/dist')));
 
-app.get('/m', (req, res) => res.sendFile(path.join(__dirname, '/mobile/dist/index.html')))
+app.get('/', (req, res) => res.sendFile(path.join(__dirname, '/mobile/dist/index.html')))
 
 app.listen(8898, () => console.log('fund_app mobile is running at port 8898.'))
