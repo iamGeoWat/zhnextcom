@@ -10,7 +10,7 @@
         <div class="item-content">
           <div style="margin-top: 15px">
             <img src="../../assets/platform/向上.png" height="13">
-            <p style="font-size: 38px;">{{this.showData.totalEquity*30*5}}</p>
+            <p style="font-size: 38px;">{{this.showData.totalEquity}}</p>
             <p style="vertical-align: bottom;">BTC</p>
             <br/>
             <p style="font-size: 12px;color: rgb(181,181,181);">TOTAL NET WORTH</p>
@@ -69,7 +69,7 @@
         <div class="item-content">
           <div style="margin-top: 15px">
             <img src="../../assets/platform/向上.png" height="13">
-            <p style="font-size: 38px;">{{this.showData.startEquity*30}}</p>
+            <p style="font-size: 38px;">{{this.showData.startEquity}}</p>
             <p style="vertical-align: bottom;">BTC</p>
             <br/>
             <p style="font-size: 12px;color: rgb(181,181,181);">START EQUITY</p>
@@ -194,6 +194,7 @@
         showData: {},
         lineChartDate:[],
         lineChartData:[],
+        infoEngine: '',
       }
     },
     mounted() {
@@ -202,7 +203,10 @@
       this.drawPie();
     },
     created(){
-      this.showInfo();
+      // this.showInfo();
+      this.infoEngine = setInterval(() => {
+        this.showInfo()
+      }, 10000)
     },
     methods: {
       drawLine() {
@@ -227,9 +231,9 @@
             symbol: 'circle',
             itemStyle: {
               normal: {
-                color: "rgb(112, 152, 242)",//折线点的颜色
+                color: "rgb(112, 152, 242)", //折线点的颜色
                 lineStyle: {
-                  color: "rgb(197, 224, 69)"//折线的颜色
+                  color: "rgb(197, 224, 69)" //折线的颜色
                 }
               }
             },
@@ -353,6 +357,8 @@
         }).then((response)=> {
           console.log(response);
           this.showData=response.data;
+          this.showData.startEquity = (parseFloat(this.showData.startEquity)*30*2).toFixed(3)
+          this.showData.totalEquity = (parseFloat(this.showData.totalEquity)*30*2).toFixed(3) //调整数据
           console.log(this.showData);
         });
       },
