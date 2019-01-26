@@ -34,6 +34,7 @@
           <!--<i slot="prefix" class="iconfont icon-suo"></i>-->
         </el-input>
         <el-input
+          type="password"
           v-model="user.password"
           style="width:60%;margin-top: 17px;"
           :placeholder="$t('home.body.body6')">

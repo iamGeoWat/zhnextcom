@@ -203,7 +203,7 @@
       this.drawPie();
     },
     created(){
-      // this.showInfo();
+      this.showInfo()
       this.infoEngine = setInterval(() => {
         this.showInfo()
       }, 10000)
@@ -357,8 +357,8 @@
         }).then((response)=> {
           console.log(response);
           this.showData=response.data;
-          this.showData.startEquity = (parseFloat(this.showData.startEquity)*30*2).toFixed(3)
-          this.showData.totalEquity = (parseFloat(this.showData.totalEquity)*30*2).toFixed(3) //调整数据
+          this.showData.startEquity = (parseFloat(this.showData.startEquity)*30*2).toFixed(2)
+          this.showData.totalEquity = (parseFloat(this.showData.totalEquity)*30*2).toFixed(2) //调整数据
           console.log(this.showData);
         });
       },
