@@ -198,6 +198,10 @@
       }
     },
     mounted() {
+      console.log(sessionStorage.getItem("userId"))
+      if (sessionStorage.getItem("userId") === null) {
+        this.$router.push({ path: '/' })
+      }
       // this.drawLine();
       this.getDot("6h");
       this.drawPie();
@@ -352,7 +356,7 @@
           method: 'post',
           url: '/showinfo',
           data: {
-            userid:sessionStorage.getItem("userId")
+            userid: sessionStorage.getItem("userId")
           }
         }).then((response)=> {
           console.log(response);

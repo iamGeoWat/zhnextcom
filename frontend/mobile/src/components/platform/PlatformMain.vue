@@ -190,6 +190,10 @@
       }
     },
     mounted() {
+      console.log(sessionStorage.getItem("userId"))
+      if (sessionStorage.getItem("userId") === null) {
+        this.$router.push({ path: '/' })
+      }
       // this.drawLine();
       this.getDot("6h");
       this.drawPie();
