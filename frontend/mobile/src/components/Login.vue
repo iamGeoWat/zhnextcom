@@ -44,9 +44,18 @@
             sessionStorage.setItem("auth", response.data.content);
             sessionStorage.setItem("userId", response.data.userid);
             console.log(sessionStorage.getItem("userId"));
-            this.$router.push({path: '/platform'});
+            // let userPath = '/platform/' + response.data.userid
+            this.$router.push({path: "/platform"});
+            // 1
           });
-        },
+        }
+      },
+      created() {
+        let userid = sessionStorage.getItem("userId")
+        if (userid !== null) {
+          // let userPath = '/platform/' + userid
+          this.$router.push({path: "/platform"})
+        }
       }
     }
 </script>

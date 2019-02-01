@@ -58,7 +58,7 @@
             <div class="item">
               <div class="item-title">
                 <img src="../../assets/platform/交易页面_25.png" height="30">
-                <p>净值</p>
+                <p>单位净值</p>
               </div>
               <div class="item-content">
                 <div>
@@ -78,7 +78,7 @@
       <div class="chart">
         <div class="lineChart">
           <div class="lineChartTitle">
-            <p>单位百分比</p>
+            <p>收益率曲线</p>
             <div class="button">
               <el-button round @click="clickFun($event)" :class="{ active: isActive==='6h' }" type="mini">6h</el-button>
               <el-button round @click="clickFun($event)" :class="{ active: isActive==='Day' }" type="mini">Day</el-button>

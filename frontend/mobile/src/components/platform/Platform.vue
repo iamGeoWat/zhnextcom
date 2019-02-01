@@ -17,8 +17,8 @@
     },
     beforeRouteEnter (to, from, next) {
       if (to.meta.requireAuth) {         //如果需要跳转 ，往下走（1）
-        console.log(sessionStorage.getItem("auth"));
-        if (sessionStorage.getItem("auth")==='success'){
+        console.log(sessionStorage.getItem("userId"));
+        if (sessionStorage.getItem("userId") !== null){
           next();
         }
         else{
