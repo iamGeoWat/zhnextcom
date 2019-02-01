@@ -351,7 +351,7 @@
         }).then((response) => {
           console.log(response);
           this.showData = response.data;
-          this.showData.totalEquity = (parseFloat(this.showData.totalEquity)*30*2).toFixed(2) //调整数据
+          this.showData.totalEquity = (parseFloat(this.showData.totalEquity)*30*4).toFixed(2) //调整数据
           console.log(this.showData);
         });
       },
