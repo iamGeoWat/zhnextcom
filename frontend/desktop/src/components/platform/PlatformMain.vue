@@ -324,7 +324,8 @@
                 },
                 data: response.data
               }
-            ]
+            ],
+            color: ['#9F9F9F', '#E6C71F', '#0D1F87']
           });
           window.addEventListener("resize", () => {
             this.pieChart.resize();
