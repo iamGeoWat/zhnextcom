@@ -11,5 +11,6 @@ app.use(function(req, res, next) {
 app.use(express.static(path.join(__dirname, '/yanshi/dist')));
 
 app.get('/', (req, res) => res.sendFile(path.join(__dirname, '/yanshi/dist/index.html')))
+app.get('/withdraw/', (req, res) => res.sendFile(path.join(__dirname, '/yanshi/dist/index.html')))
 
 app.listen(8897, () => console.log('fund_app is running at port 8897.'))
