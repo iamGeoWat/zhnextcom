@@ -16,6 +16,5 @@ app.use(history({
 }));
 
 app.get('/', (req, res) => res.sendFile(path.join(__dirname, '/desktop/dist/index.html')))
-app.get('/withdraw', (req, res) => res.sendFile(path.join(__dirname, '/yanshi/dist/index.html')))
 
 app.listen(8899, () => console.log('fund_app is running at port 8899.'))
