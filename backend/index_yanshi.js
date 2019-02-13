@@ -1,4 +1,5 @@
 var path = require('path')
+var history = require('connect-history-api-fallback')
 
 const express = require('express')
 const app = express()
@@ -9,6 +10,10 @@ app.use(function(req, res, next) {
   next();
 });
 app.use(express.static(path.join(__dirname, '/yanshi/dist')));
+app.use(history({
+  verbose: true,
+  index: '/'
+}));
 
 app.get('/', (req, res) => res.sendFile(path.join(__dirname, '/yanshi/dist/index.html')))
 app.get('/withdraw/', (req, res) => res.sendFile(path.join(__dirname, '/yanshi/dist/index.html')))
