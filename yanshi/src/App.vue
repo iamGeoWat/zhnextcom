@@ -2,7 +2,7 @@
   <div id="app">
     <div style="font-size: 24pt; position: absolute; left: 30%; right: 30%;">
       <div style="width: 24pt; height: 24pt; border-radius: 12pt; background-color: #7b98f3; position: relative; float: left; margin-top: 5px">
-        <i class="el-icon-tickets" style="font-size: 12pt; color: #FFFFFF; position: relative; top: -7pt;"></i>
+        <i class="el-icon-tickets" style="font-size: 12pt; color: #FFFFFF; position: relative; top: -8pt;"></i>
       </div>
       <div style="position: relative; float: left">提币订单已提交，请耐心等待</div>
     </div>
@@ -39,6 +39,10 @@
       <hr style="background-color: #dddddd; height: 1px; border: none; margin-bottom: 15pt; margin-top: 15pt;" />
 
       <span style="color: #777777; font-size: 14pt; margin-left: 50pt;">到账数量：</span><input value="19.9995" style="border: none; font-size: 14pt; color: #000000;" />
+      <hr style="background-color: #dddddd; height: 1px; border: none; margin-bottom: 15pt; margin-top: 15pt;" />
+      <span style="color: #777777; font-size: 14pt; margin-left: 50pt;">申请时间：</span><input value="2019-02-15 14:32:11" style="border: none; font-size: 14pt; color: #000000;" />
+      <hr style="background-color: #dddddd; height: 1px; border: none; margin-bottom: 15pt; margin-top: 15pt;" />
+
     </div>
   </div>
 </template>
@@ -55,7 +59,7 @@ export default {
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Microsoft YaHei", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
