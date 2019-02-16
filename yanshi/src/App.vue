@@ -31,7 +31,7 @@
     </div>
 
     <div style="position: absolute; left: 2%; right: 5%; margin-top: 180pt; text-align: left">
-      <span style="color: #777777; font-size: 13pt; margin-left: 50pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;币种：&nbsp;</span><input value="BTC" style="border: none; font-size: 13pt; color: #000000;" />
+      <span style="color: #777777; font-size: 13pt; margin-left: 50pt;"><span style="color: #FFFFFF">你好</span>币种：&nbsp;</span><input value="BTC" style="border: none; font-size: 13pt; color: #000000;" />
       <hr style="background-color: #EEEEEE; height: 1px; border: none; margin-bottom: 15pt; margin-top: 14pt; width: 650pt; margin-left: 10pt;" />
 
       <span style="color: #777777; font-size: 13pt; margin-left: 50pt;">提币地址：&nbsp;</span><input value="16tTArN33F6iNFAEo7hTPJDQxSKhFT1Efm" style="border: none; font-size: 13pt; color: #000000; width: 300pt" />
