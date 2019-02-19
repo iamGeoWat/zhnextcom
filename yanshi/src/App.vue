@@ -61,7 +61,7 @@ export default {
 
 <style>
 #app {
-  font-family: "微软雅黑", "Microsoft YaHei", sans-serif !important;
+  font-family: 微软雅黑, "Microsoft YaHei", sans-serif !important;
   text-align: center;
   margin-top: 60px;
   background-color: #FFFFFF;

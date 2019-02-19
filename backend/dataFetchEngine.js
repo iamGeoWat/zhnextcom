@@ -5,11 +5,6 @@ const bodyParser = require('body-parser')
 const CryptoJS = require('crypto-js')
 const apiInfo = require('./config/api')
 
-const api_key = apiInfo.okex_huang.api_key
-const sec_key = apiInfo.okex_huang.sec_key
-const passphrase = apiInfo.okex_huang.passphrase
-// Huang
-
 const express = require('express')
 const app = express()
 
@@ -30,7 +25,6 @@ function modifyPositionData(source, target) {
   //modify position info
   if (source !== undefined) {
     var modPositionInfo = source
-    // var accountInfo = source[1]
     for (var i = 0; i < modPositionInfo.length; i++) {
       var tokenName = modPositionInfo[i].instrument_id.substr(0, 3)
       var contractType = modPositionInfo[i].instrument_id.substr(8, 6)
@@ -73,47 +67,113 @@ function modifyAccountData (source, target) {
 }
 
 var infoContainer = [
+  [{}, {}],
+  [{}, {}],
+  [{}, {}],
   [{}, {}]
 ]
 
-var accountContainer = {
-  btc: {
-    wallet: 0,
-    b2b: 0,
-    contract: 0
+var accountContainer = [
+  {
+    btc: {
+      wallet: 0,
+      b2b: 0,
+      contract: 0
+    },
+    eos: {
+      wallet: 0,
+      b2b: 0,
+      contract: 0
+    },
+    usdt: {
+      wallet: 0,
+      b2b: 0
+    },
+    totalBTCInUSD: 0,
+    totalEOSInUSD: 0,
+    totalUSDTInUSD: 0,
+    totalEquityInBTC: 0,
+    totalEquityInUSD: 0
   },
-  eos: {
-    wallet: 0,
-    b2b: 0,
-    contract: 0
+  {
+    btc: {
+      wallet: 0,
+      b2b: 0,
+      contract: 0
+    },
+    eos: {
+      wallet: 0,
+      b2b: 0,
+      contract: 0
+    },
+    usdt: {
+      wallet: 0,
+      b2b: 0
+    },
+    totalBTCInUSD: 0,
+    totalEOSInUSD: 0,
+    totalUSDTInUSD: 0,
+    totalEquityInBTC: 0,
+    totalEquityInUSD: 0
   },
-  usdt: {
-    wallet: 0,
-    b2b: 0
+  {
+    btc: {
+      wallet: 0,
+      b2b: 0,
+      contract: 0
+    },
+    eos: {
+      wallet: 0,
+      b2b: 0,
+      contract: 0
+    },
+    usdt: {
+      wallet: 0,
+      b2b: 0
+    },
+    totalBTCInUSD: 0,
+    totalEOSInUSD: 0,
+    totalUSDTInUSD: 0,
+    totalEquityInBTC: 0,
+    totalEquityInUSD: 0
   },
-  totalBTCInUSD: 0,
-  totalEOSInUSD: 0,
-  totalUSDTInUSD: 0,
-  totalEquityInBTC: 0,
-  totalEquityInUSD: 0
-}
-
-
+  {
+    btc: {
+      wallet: 0,
+      b2b: 0,
+      contract: 0
+    },
+    eos: {
+      wallet: 0,
+      b2b: 0,
+      contract: 0
+    },
+    usdt: {
+      wallet: 0,
+      b2b: 0
+    },
+    totalBTCInUSD: 0,
+    totalEOSInUSD: 0,
+    totalUSDTInUSD: 0,
+    totalEquityInBTC: 0,
+    totalEquityInUSD: 0
+  }
+]
 
 //fetch data
-var positionEngine = setInterval(() => {
+async function positionCylinder(apiName) {
   var timestamp = new Date();
   timestamp.setHours(timestamp.getHours(), timestamp.getMinutes());
-  var positionSign = CryptoJS.enc.Base64.stringify(CryptoJS.HmacSHA256(timestamp.toISOString() + 'GET' + '/api/futures/v3/position', sec_key))
+  var positionSign = CryptoJS.enc.Base64.stringify(CryptoJS.HmacSHA256(timestamp.toISOString() + 'GET' + '/api/futures/v3/position', apiInfo[apiName].sec_key))
   const positionInfoOpt = {
     host: 'www.okex.com',
     path: '/api/futures/v3/position',
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
-      'OK-ACCESS-KEY': api_key,
+      'OK-ACCESS-KEY': apiInfo[apiName].api_key,
       'OK-ACCESS-SIGN': positionSign,
-      'OK-ACCESS-PASSPHRASE': passphrase,
+      'OK-ACCESS-PASSPHRASE': apiInfo[apiName].passphrase,
       'OK-ACCESS-TIMESTAMP': timestamp.toISOString()
     }
   }
@@ -126,10 +186,9 @@ var positionEngine = setInterval(() => {
       dataArrLen += d.length
     })
     res.on('end', () => {
-      // console.log(JSON.parse(Buffer.concat(dataArr, dataArrLen).toString()))
       if (JSON.parse(Buffer.concat(dataArr, dataArrLen).toString()).holding !== undefined) {
-        infoContainer[0][0] = JSON.parse(Buffer.concat(dataArr, dataArrLen).toString()).holding[0]
-        modifyPositionData(infoContainer[0][0], infoContainer[0][0])
+        infoContainer[apiInfo[apiName].userid - 1][0] = JSON.parse(Buffer.concat(dataArr, dataArrLen).toString()).holding[0]
+        modifyPositionData(infoContainer[apiInfo[apiName].userid - 1][0], infoContainer[apiInfo[apiName].userid - 1][0])
       }
     })
   })
@@ -137,56 +196,27 @@ var positionEngine = setInterval(() => {
     console.error(e);
   });
   positionInfoGrabber.end()
+}
+var positionEngine = setInterval(() => {
+  for (apiName in apiInfo) {
+    positionCylinder(apiName)
+  }
 }, 10000)
 
-var accountEngine = setInterval(() => {
-  // var timestamp = new Date();
-  // timestamp.setHours(timestamp.getHours(), timestamp.getMinutes());
-  // var accountSign = CryptoJS.enc.Base64.stringify(CryptoJS.HmacSHA256(timestamp.toISOString() + 'GET' + '/api/futures/v3/accounts', sec_key))
-  // const accountInfoOpt = {
-  //   host: 'www.okex.com',
-  //   path: '/api/futures/v3/accounts',
-  //   method: 'GET',
-  //   headers: {
-  //     'Content-Type': 'application/json',
-  //     'OK-ACCESS-KEY': api_key,
-  //     'OK-ACCESS-SIGN': accountSign,
-  //     'OK-ACCESS-PASSPHRASE': passphrase,
-  //     'OK-ACCESS-TIMESTAMP': timestamp.toISOString()
-  //   }
-  // }
-  //
-  // const accountInfoGrabber = https.request(accountInfoOpt, (res) => {
-  //   var dataArr = []
-  //   var dataArrLen = 0
-  //   res.on('data', (d) => {
-  //     dataArr.push(d)
-  //     dataArrLen += d.length
-  //   })
-  //   res.on('end', () => {
-  //     if (JSON.parse(Buffer.concat(dataArr, dataArrLen).toString()).info) {
-  //       infoContainer[0][1] = JSON.parse(Buffer.concat(dataArr, dataArrLen).toString()).info
-  //       modifyAccountData(infoContainer[0][1], infoContainer[0][1])
-  //     }
-  //   })
-  // })
-  // accountInfoGrabber.on('error', (e) => {
-  //   console.error(e);
-  // });
-  // accountInfoGrabber.end()
+async function accountCylinder(apiName) {
   var timestamp = new Date();
   timestamp.setHours(timestamp.getHours(), timestamp.getMinutes());
   
-  var walletSign = CryptoJS.enc.Base64.stringify(CryptoJS.HmacSHA256(timestamp.toISOString() + 'GET' + '/api/account/v3/wallet', sec_key))
+  var walletSign = CryptoJS.enc.Base64.stringify(CryptoJS.HmacSHA256(timestamp.toISOString() + 'GET' + '/api/account/v3/wallet', apiInfo[apiName].sec_key))
   const walletInfoOpt = {
     host: 'www.okex.com',
     path: '/api/account/v3/wallet',
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
-      'OK-ACCESS-KEY': api_key,
+      'OK-ACCESS-KEY': apiInfo[apiName].api_key,
       'OK-ACCESS-SIGN': walletSign,
-      'OK-ACCESS-PASSPHRASE': passphrase,
+      'OK-ACCESS-PASSPHRASE': apiInfo[apiName].passphrase,
       'OK-ACCESS-TIMESTAMP': timestamp.toISOString()
     }
   }
@@ -199,16 +229,17 @@ var accountEngine = setInterval(() => {
     })
     res.on('end', () => {
       var result = JSON.parse(Buffer.concat(dataArr, dataArrLen).toString())
+      // console.log(result)
       for (var i = 0; i < result.length; i++) {
         if (result[i].currency === 'BTC') {
           // console.log(result[i].balance)
-          accountContainer.btc.wallet = result[i].balance
+          accountContainer[apiInfo[apiName].userid - 1].btc.wallet = result[i].balance
         }
         if (result[i].currency === 'EOS') {
-          accountContainer.eos.wallet = result[i].balance
+          accountContainer[apiInfo[apiName].userid - 1].eos.wallet = result[i].balance
         }
         if (result[i].currency === 'USDT') {
-          accountContainer.usdt.wallet = result[i].balance
+          accountContainer[apiInfo[apiName].userid - 1].usdt.wallet = result[i].balance
         }
       }
       // console.log(accountContainer)
@@ -218,16 +249,16 @@ var accountEngine = setInterval(() => {
     console.error(e);
   });
   
-  var b2bSign = CryptoJS.enc.Base64.stringify(CryptoJS.HmacSHA256(timestamp.toISOString() + 'GET' + '/api/spot/v3/accounts', sec_key))
+  var b2bSign = CryptoJS.enc.Base64.stringify(CryptoJS.HmacSHA256(timestamp.toISOString() + 'GET' + '/api/spot/v3/accounts', apiInfo[apiName].sec_key))
   const b2bInfoOpt = {
     host: 'www.okex.com',
     path: '/api/spot/v3/accounts',
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
-      'OK-ACCESS-KEY': api_key,
+      'OK-ACCESS-KEY': apiInfo[apiName].api_key,
       'OK-ACCESS-SIGN': b2bSign,
-      'OK-ACCESS-PASSPHRASE': passphrase,
+      'OK-ACCESS-PASSPHRASE': apiInfo[apiName].passphrase,
       'OK-ACCESS-TIMESTAMP': timestamp.toISOString()
     }
   }
@@ -244,13 +275,13 @@ var accountEngine = setInterval(() => {
       for (var i = 0; i < result.length; i++) {
         if (result[i].currency === 'BTC') {
           // console.log(result[i].balance)
-          accountContainer.btc.b2b = result[i].balance
+          accountContainer[apiInfo[apiName].userid - 1].btc.b2b = result[i].balance
         }
         if (result[i].currency === 'EOS') {
-          accountContainer.eos.b2b = result[i].balance
+          accountContainer[apiInfo[apiName].userid - 1].eos.b2b = result[i].balance
         }
         if (result[i].currency === 'USDT') {
-          accountContainer.usdt.b2b = result[i].balance
+          accountContainer[apiInfo[apiName].userid - 1].usdt.b2b = result[i].balance
         }
       }
       // console.log(accountContainer)
@@ -260,16 +291,16 @@ var accountEngine = setInterval(() => {
     console.error(e);
   });
   
-  var contractSign = CryptoJS.enc.Base64.stringify(CryptoJS.HmacSHA256(timestamp.toISOString() + 'GET' + '/api/futures/v3/accounts', sec_key))
+  var contractSign = CryptoJS.enc.Base64.stringify(CryptoJS.HmacSHA256(timestamp.toISOString() + 'GET' + '/api/futures/v3/accounts', apiInfo[apiName].sec_key))
   const contractInfoOpt = {
     host: 'www.okex.com',
     path: '/api/futures/v3/accounts',
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
-      'OK-ACCESS-KEY': api_key,
+      'OK-ACCESS-KEY': apiInfo[apiName].api_key,
       'OK-ACCESS-SIGN': contractSign,
-      'OK-ACCESS-PASSPHRASE': passphrase,
+      'OK-ACCESS-PASSPHRASE': apiInfo[apiName].passphrase,
       'OK-ACCESS-TIMESTAMP': timestamp.toISOString()
     }
   }
@@ -286,17 +317,17 @@ var accountEngine = setInterval(() => {
       // console.log(result.info.btc.equity)
       for (var token in result.info) {
         if (token === 'btc') {
-          accountContainer.btc.contract = result.info[token].equity
+          accountContainer[apiInfo[apiName].userid - 1].btc.contract = result.info[token].equity
         }
         if (token === 'eos') {
-          accountContainer.eos.contract = result.info[token].equity
+          accountContainer[apiInfo[apiName].userid - 1].eos.contract = result.info[token].equity
         }
       }
       if (JSON.parse(Buffer.concat(dataArr, dataArrLen).toString()).info) {
-        infoContainer[0][1] = JSON.parse(Buffer.concat(dataArr, dataArrLen).toString()).info
-        modifyAccountData(infoContainer[0][1], infoContainer[0][1])
+        infoContainer[apiInfo[apiName].userid - 1][1] = JSON.parse(Buffer.concat(dataArr, dataArrLen).toString()).info
+        modifyAccountData(infoContainer[apiInfo[apiName].userid - 1][1], infoContainer[apiInfo[apiName].userid - 1][1])
       }
-      console.log(accountContainer)
+      // console.log(accountContainer)
     })
   })
   contractInfoGrabber.on('error', (e) => {
@@ -306,50 +337,50 @@ var accountEngine = setInterval(() => {
   walletInfoGrabber.end()
   b2bInfoGrabber.end()
   contractInfoGrabber.end()
+}
+
+var accountEngine = setInterval(() => {
+  for (apiName in apiInfo) {
+    accountCylinder(apiName)
+  }
 }, 20000)
 
 var priceEngine = setInterval(() => {
-  var eosTotal = 0
-  var btcTotal = 0
-  var usdtTotal = 0
   axios.get('https://api.bitfinex.com/v2/ticker/tEOSUSD').then((res) => {
-    // console.log(res.data[0])
-    for (var item in accountContainer.eos) {
-      // console.log(accountContainer.eos[item])
-      eosTotal += parseFloat(accountContainer.eos[item])
-      // console.log('for: '+eosTotal)
+    for (var accountIndex in accountContainer) {
+      var eosTotal = 0
+      for (var item in accountContainer[accountIndex].eos) {
+        eosTotal += parseFloat(accountContainer[accountIndex].eos[item])
+      }
+      eosTotal = eosTotal * res.data[0]
+      accountContainer[accountIndex].totalEOSInUSD = eosTotal
     }
-    eosTotal = eosTotal * res.data[0]
-    // console.log('total: ' + eosTotal)
+  
     axios.get('https://api.bitfinex.com/v2/ticker/tBTCUSD').then((res) => {
-      // console.log('btc usdt:' + res.data[0])
-      for (var item in accountContainer.btc) {
-        // console.log(accountContainer.btc[item])
-        btcTotal += parseFloat(accountContainer.btc[item])
+      for (var accountIndex in accountContainer) {
+        var btcTotal = 0
+        for (var item in accountContainer[accountIndex].btc) {
+          btcTotal += parseFloat(accountContainer[accountIndex].btc[item])
+        }
+        btcTotal = btcTotal * res.data[0]
+        
+        var usdtTotal = 0
+        for (var i in accountContainer[accountIndex].usdt) {
+          usdtTotal += parseFloat(accountContainer[accountIndex].usdt[i])
+        }
+        accountContainer[accountIndex].totalEquityInUSD = (accountContainer[accountIndex].totalEOSInUSD + btcTotal + usdtTotal).toFixed(4)
+        accountContainer[accountIndex].totalBTCInUSD = btcTotal
+        accountContainer[accountIndex].totalUSDTInUSD = usdtTotal
+        accountContainer[accountIndex].totalEquityInBTC = (accountContainer[accountIndex].totalEquityInUSD / res.data[0]).toFixed(4)
       }
-      // console.log('btc before: ' + btcTotal)
-      // console.log('btc price: ' + res.data[0])
-      btcTotal = btcTotal * res.data[0]
-      for (var i in accountContainer.usdt) {
-        usdtTotal += parseFloat(accountContainer.usdt[i])
-      }
-      // console.log('usdt: '+ usdtTotal)
-      // console.log('btc: ' + btcTotal)
-      accountContainer.totalEquityInUSD = (eosTotal + btcTotal + usdtTotal).toFixed(4)
-      accountContainer.totalBTCInUSD = btcTotal
-      accountContainer.totalEOSInUSD = eosTotal
-      accountContainer.totalUSDTInUSD = usdtTotal
-      axios.get('https://api.bitfinex.com/v2/ticker/tBTCUSD').then((res) => {
-        accountContainer.totalEquityInBTC = (accountContainer.totalEquityInUSD / res.data[0]).toFixed(4)
-        // console.log(accountContainer)
-      })
-    })
-  })
+    }).catch((error => console.log('BTC price error')))
+  }).catch(error => console.log('EOS price error'))
 }, 10000)
 
 var seeThruEngine = setInterval(() => {
+  // console.log(infoContainer)
   console.log(accountContainer)
-}, 5000)
+}, 10000)
 
 
 //interfaces
@@ -373,7 +404,7 @@ app.get('/dotMonth', async (req, res) => {
   var result = await dotDao.queryPRTimeByIdAndIntvType(1, 5)
   res.send(result)
 })
-app.get('/infoContainer', (req, res) => res.send(JSON.stringify(infoContainer[0])))
+app.get('/infoContainer', (req, res) => res.send(JSON.stringify(infoContainer)))
 app.get('/equity', (req, res) => res.send(JSON.stringify(accountContainer)))
 app.get('/pie', (req, res) => {
   var resData = [
@@ -416,11 +447,9 @@ app.post('/showInfo', async (req, res) => {
   let userInfo = await userDao.queryByUserID(userid)
   let dotWeek = await dotDao.queryDotByIdAndIntvType(userid, 4)
   userInfo = userInfo[0]
-  // console.log(userInfo)
   var resData = { startEquity: '', weeklyProfitRatio: '', currentProfit: '', currentProfitRatio: '', estimatedYearly: '', equityRatio: '', runningTime: '', totalEquity: '' }
   resData.startEquity = parseFloat(userInfo.start_equity).toFixed(3)
-  let currentEquity = parseFloat(accountContainer.totalEquityInBTC).toFixed(3)
-  // console.log(dotWeek)
+  let currentEquity = parseFloat(accountContainer[userid - 1].totalEquityInBTC).toFixed(3)
   if (dotWeek.length >= 1) {
     let lastWeekEquity = dotWeek[dotWeek.length - 1].equity
     resData.weeklyProfitRatio = (((currentEquity - lastWeekEquity) / lastWeekEquity)*100).toFixed(3)
@@ -431,7 +460,6 @@ app.post('/showInfo', async (req, res) => {
   var startDate = new Date(userInfo.start_date)
   startDate = moment(startDate)
   resData.runningTime = currentDate.diff(startDate, 'days') + 1
-  // console.log(resData.runningTime)
   resData.estimatedYearly = (((((currentEquity - userInfo.start_equity) / userInfo.start_equity) * 100)/resData.runningTime) * 365).toFixed(3)
   resData.totalEquity = currentEquity
   res.send(JSON.stringify(resData))
