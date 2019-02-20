@@ -5,94 +5,184 @@ const fs = require('fs')
 const DotDao = require('./dao/DotDao')
 const dotDao = new DotDao()
 
-var accountContainer = {
-  btc: {
-    wallet: 0,
-    b2b: 0,
-    contract: 0
+const CountDao = require('./dao/CountDao')
+const countDao = new CountDao()
+
+var accountContainer = [
+  {
+    btc: {
+      wallet: 0,
+      b2b: 0,
+      contract: 0
+    },
+    eos: {
+      wallet: 0,
+      b2b: 0,
+      contract: 0
+    },
+    usdt: {
+      wallet: 0,
+      b2b: 0
+    },
+    totalBTCInUSD: 0,
+    totalEOSInUSD: 0,
+    totalUSDTInUSD: 0,
+    totalEquityInBTC: 0,
+    totalEquityInUSD: 0
   },
-  eos: {
-    wallet: 0,
-    b2b: 0,
-    contract: 0
+  {
+    btc: {
+      wallet: 0,
+      b2b: 0,
+      contract: 0
+    },
+    eos: {
+      wallet: 0,
+      b2b: 0,
+      contract: 0
+    },
+    usdt: {
+      wallet: 0,
+      b2b: 0
+    },
+    totalBTCInUSD: 0,
+    totalEOSInUSD: 0,
+    totalUSDTInUSD: 0,
+    totalEquityInBTC: 0,
+    totalEquityInUSD: 0
   },
-  usdt: {
-    wallet: 0,
-    b2b: 0
+  {
+    btc: {
+      wallet: 0,
+      b2b: 0,
+      contract: 0
+    },
+    eos: {
+      wallet: 0,
+      b2b: 0,
+      contract: 0
+    },
+    usdt: {
+      wallet: 0,
+      b2b: 0
+    },
+    totalBTCInUSD: 0,
+    totalEOSInUSD: 0,
+    totalUSDTInUSD: 0,
+    totalEquityInBTC: 0,
+    totalEquityInUSD: 0
   },
-  totalBTCInUSD: 0,
-  totalEOSInUSD: 0,
-  totalUSDTInUSD: 0,
-  totalEquityInBTC: 0,
-  totalEquityInUSD: 0
-}
+  {
+    btc: {
+      wallet: 0,
+      b2b: 0,
+      contract: 0
+    },
+    eos: {
+      wallet: 0,
+      b2b: 0,
+      contract: 0
+    },
+    usdt: {
+      wallet: 0,
+      b2b: 0
+    },
+    totalBTCInUSD: 0,
+    totalEOSInUSD: 0,
+    totalUSDTInUSD: 0,
+    totalEquityInBTC: 0,
+    totalEquityInUSD: 0
+  }
+]
 
-var showInfo = {
-  startEquity: '',
-  weeklyProfitRatio: '',
-  currentProfit: '',
-  currentProfitRatio: '',
-  estimatedYearly: '',
-  equityRatio: '',
-  runningTime: '',
-  totalEquity: ''
-}
+var showInfo = [
+  {
+    startEquity: '',
+    weeklyProfitRatio: '',
+    currentProfit: '',
+    currentProfitRatio: '',
+    estimatedYearly: '',
+    equityRatio: '',
+    runningTime: '',
+    totalEquity: ''
+  },
+  {
+    startEquity: '',
+    weeklyProfitRatio: '',
+    currentProfit: '',
+    currentProfitRatio: '',
+    estimatedYearly: '',
+    equityRatio: '',
+    runningTime: '',
+    totalEquity: ''
+  },
+  {
+    startEquity: '',
+    weeklyProfitRatio: '',
+    currentProfit: '',
+    currentProfitRatio: '',
+    estimatedYearly: '',
+    equityRatio: '',
+    runningTime: '',
+    totalEquity: ''
+  },
+  {
+    startEquity: '',
+    weeklyProfitRatio: '',
+    currentProfit: '',
+    currentProfitRatio: '',
+    estimatedYearly: '',
+    equityRatio: '',
+    runningTime: '',
+    totalEquity: ''
+  }
+]
 
-var writeCount = 0
+var userAmount = 0
 
-async function ifEquityChanged(currentEquity) {
-  var savedEquity = await dotDao.queryLatestByIntvType(1)
-  return currentEquity !== savedEquity;
-}
+// async function ifEquityChanged(currentEquity) {
+//   var savedEquity = await dotDao.queryLatestByIntvType(1)
+//   return currentEquity !== savedEquity;
+// }
 
-function classifiedWrite () {
+async function classifiedWrite (userIndex) {
+  var rawWriteCount = await countDao.queryWriteCountByUID(userIndex + 1)
+  var writeCount = rawWriteCount[0].wc
+  console.log(writeCount)
   if (writeCount % 6 === 0) {
-    dotWrite(2, 1)
+    dotWrite(2, userIndex+1, writeCount)
   }
   if (writeCount % 24 === 0) {
-    dotWrite(3, 1)
+    dotWrite(3, userIndex+1, writeCount)
   }
   if (writeCount % 168 === 0) {
-    dotWrite(4, 1)
+    dotWrite(4, userIndex+1, writeCount)
   }
   if (writeCount % 672 === 0) {
-    dotWrite(5, 1)
+    dotWrite(5, userIndex+1, writeCount)
   }
-  dotWrite(1, 1)
+  dotWrite(1, userIndex+1, writeCount)
 }
 
-async function dotWrite (intvType, apiID) {
-  console.log(accountContainer)
-  if (accountContainer !== 'error' && accountContainer.totalEquityInBTC !== 0) {
+async function dotWrite (intvType, apiID, writeCount) {
+  // console.log(accountContainer)
+  if (accountContainer[apiID-1] !== 'error' && accountContainer[apiID-1].totalEquityInBTC !== 0) {
     console.log(accountContainer)
-    var equity = accountContainer.totalEquityInBTC
+    var equity = accountContainer[apiID-1].totalEquityInBTC
     var time = moment(new Date()).format('YYYY-MM-DD HH:mm:ss')
-    var profitRatio = showInfo.currentProfitRatio
+    var profitRatio = showInfo[apiID-1].currentProfitRatio
     var dotInfo = [equity, profitRatio, time, intvType, apiID, null]
-    // console.log(dotInfo)
     if (intvType === 1) {
-      if (await ifEquityChanged(equity)) {
-        await dotDao.addDot(dotInfo)
-        writeCount++
-        writeCount = writeCount % 673
-        fs.writeFile('./config/writecount.txt', writeCount, (err) => {
-          if (err) {
-            return console.error(err)
-          }
-        })
-        // console.log(writeCount)
-      }
+      await dotDao.addDot(dotInfo)
+      writeCount++
+      writeCount = writeCount % 673
+      console.log('new writecount: ' + writeCount)
+      countDao.updateWriteCountByUID(writeCount, apiID)
     } else {
       await dotDao.addDot(dotInfo)
       writeCount++
       writeCount = writeCount % 673
-      fs.writeFile('./config/writecount.txt', writeCount, (err) => {
-        if (err) {
-          return console.error(err)
-        }
-      })
-      // console.log(writeCount)
-  
+      countDao.updateWriteCountByUID(writeCount, apiID)
     }
   }
 }
@@ -100,10 +190,21 @@ async function dotWrite (intvType, apiID) {
 function operationWrite () {}
 //todo:记录新操作
 
+async function showInfoRequest(userIndex) {
+  await axios.post('http://localhost:8877/showInfo', {userid: userIndex + 1})
+    .then((res) => {
+      showInfo[userIndex] = res.data
+      // console.log(res.data)
+    })
+    .catch((err) => {
+      console.log(err)
+      showInfo[userIndex] = 'error'
+    })
+}
+
 function app() {
-  writeCount = fs.readFileSync('./config/writecount.txt')
-  console.log(writeCount.toString())
-  var dataEngine = setInterval(() => {
+  userAmount = fs.readFileSync('./config/useramount.txt')
+  var dataEngine = setInterval(async () => {
     axios.get('http://localhost:8877/equity')
       .then((res) => {
         accountContainer = res.data
@@ -112,18 +213,26 @@ function app() {
         console.log(err)
         accountContainer = 'error'
       })
-    axios.post('http://localhost:8877/showInfo', {userid: 1})
-      .then((res) => {
-        showInfo = res.data
-      })
-      .catch((err) => {
-        console.log(err)
-        showInfo = 'error'
-      })
-  }, 1000)
+    for (var userIndex = 0; userIndex < userAmount; userIndex++) {
+      await showInfoRequest(userIndex)
+    }
+  }, 5000)
   console.log('data engine engaged.')
-  var dataWriteEngine = setInterval(classifiedWrite, 3600000)
-  // var dataWriteEngine = setInterval(classifiedWrite, 5000)
+  
+  var dataWriteEngine = setInterval(() => {
+    for (var userIndex = 0; userIndex < userAmount; userIndex++) {
+      classifiedWrite(userIndex)
+    }
+  }, 3600000)
+  // for production use
+  
+  // var dataWriteEngine = setInterval(() => {
+  //   for (var userIndex = 0; userIndex < userAmount; userIndex++) {
+  //     classifiedWrite(userIndex)
+  //   }
+  // }, 10000)
+  // for test use
+  
   console.log('write engine engaged.')
 }
 
