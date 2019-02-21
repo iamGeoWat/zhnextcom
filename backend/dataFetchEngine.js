@@ -384,24 +384,29 @@ var seeThruEngine = setInterval(() => {
 
 
 //interfaces
-app.get('/dot1h', async (req, res) => {
-  var result = await dotDao.queryPRTimeByIdAndIntvType(1, 1)
+app.post('/dot1h', async (req, res) => {
+  let userid = req.body.userid
+  var result = await dotDao.queryPRTimeByIdAndIntvType(userid, 1)
   res.send(result)
 })
-app.get('/dot6h', async (req, res) => {
-  var result = await dotDao.queryPRTimeByIdAndIntvType(1, 2)
+app.post('/dot6h', async (req, res) => {
+  let userid = req.body.userid
+  var result = await dotDao.queryPRTimeByIdAndIntvType(userid, 2)
   res.send(result)
 })
-app.get('/dotDay', async (req, res) => {
-  var result = await dotDao.queryPRTimeByIdAndIntvType(1, 3)
+app.post('/dotDay', async (req, res) => {
+  let userid = req.body.userid
+  var result = await dotDao.queryPRTimeByIdAndIntvType(userid, 3)
   res.send(result)
 })
-app.get('/dotWeek', async (req, res) => {
-  var result = await dotDao.queryPRTimeByIdAndIntvType(1, 4)
+app.post('/dotWeek', async (req, res) => {
+  let userid = req.body.userid
+  var result = await dotDao.queryPRTimeByIdAndIntvType(userid, 4)
   res.send(result)
 })
-app.get('/dotMonth', async (req, res) => {
-  var result = await dotDao.queryPRTimeByIdAndIntvType(1, 5)
+app.post('/dotMonth', async (req, res) => {
+  let userid = req.body.userid
+  var result = await dotDao.queryPRTimeByIdAndIntvType(userid, 5)
   res.send(result)
 })
 app.get('/infoContainer', (req, res) => res.send(JSON.stringify(infoContainer)))

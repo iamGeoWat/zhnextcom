@@ -360,8 +360,11 @@
         this.lineChartDate = [];
         this.lineChartData = [];
         this.$http({
-          method: 'get',
+          method: 'post',
           url: '/dot' + value,
+          data: {
+            userid: sessionStorage.getItem("userId")
+          }
         }).then((response) => {
           for (let i = 0; i < response.data[1].length; i++) {
             let t = response.data[1][i]
