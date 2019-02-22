@@ -223,7 +223,7 @@ function app() {
     for (var userIndex = 0; userIndex < userAmount; userIndex++) {
       classifiedWrite(userIndex)
     }
-  }, 360000)
+  }, 3600000)
   // for production use
   
   // var dataWriteEngine = setInterval(() => {
