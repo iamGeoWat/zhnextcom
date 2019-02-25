@@ -1,6 +1,6 @@
 <template>
   <div style="width: 100%;height: 100%;">
-    <el-container style="width: 100%;height: 100%;background-color: rgb(245, 245, 245);">
+    <el-container style="width: 100%;height: 100%;">
       <el-main class="platformMainContainer">
         <router-view></router-view>
       </el-main>

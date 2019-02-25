@@ -1,7 +1,7 @@
 <template>
   <div style="width: 100%;height: 100%;position: relative;box-sizing: border-box;padding-top: 60px;">
     <sub-header></sub-header>
-    <el-container style="width: 100%;height: 100%;background-color: rgb(245, 245, 245);">
+    <el-container style="width: 100%;height: 100%;">
       <sub-nav></sub-nav>
       <el-main class="platformMainContainer">
         <router-view></router-view>
