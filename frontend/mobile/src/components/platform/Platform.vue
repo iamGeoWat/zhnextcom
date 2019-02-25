@@ -1,7 +1,7 @@
 <template>
   <div style="width: 100%;height: 100%;">
     <el-container style="width: 100%;height: 100%;background-color: rgb(245, 245, 245);">
-      <el-main>
+      <el-main class="platformMainContainer">
         <router-view></router-view>
       </el-main>
     </el-container>
@@ -36,6 +36,10 @@
 
   .el-main{
     padding: 0;
+  }
+
+  .platformMainContainer {
+    background-color: rgb(243, 247, 248);
   }
 
 </style>

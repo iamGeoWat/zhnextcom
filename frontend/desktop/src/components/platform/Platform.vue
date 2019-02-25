@@ -3,7 +3,7 @@
     <sub-header></sub-header>
     <el-container style="width: 100%;height: 100%;background-color: rgb(245, 245, 245);">
       <sub-nav></sub-nav>
-      <el-main>
+      <el-main class="platformMainContainer">
         <router-view></router-view>
       </el-main>
     </el-container>
@@ -46,5 +46,9 @@
   /* .el-main{
     padding: 0;
   } */
+
+  .platformMainContainer {
+    background-color: rgb(243, 247, 248);
+  }
 
 </style>
