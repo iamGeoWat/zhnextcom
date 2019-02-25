@@ -39,7 +39,7 @@
   }
 
   .platformMainContainer {
-    background-color: rgb(243, 247, 248);
+    background-color: rgb(243, 247, 248) !important;
   }
 
 </style>
