@@ -2,14 +2,14 @@
   <div class="platformMain">
     <sub-header></sub-header>
     <div class="content">
-      <p class="title" style="margin-top: 10px">智汇未来总账户</p>
+      <p class="title" style="margin-top: 10px; font-family: font1">智汇未来总账户</p>
       <div class="top-data">
         <div class="item">
           <div class="item-title">
             <img src="../../assets/admin/top_01.png">
             <div class="item-data">
               <p style="font-family: font1;font-weight: bold;">总资产(BTC)</p>
-              <p style="font-size: 35px;color: rgb(200,165,108);">252</p>
+              <p style="font-size: 35px;color: rgb(200,165,108);">{{ showData[1].totalEquity }}</p>
             </div>
 
           </div>
@@ -19,7 +19,7 @@
             <img src="../../assets/admin/top_02.png">
             <div class="item-data">
               <p style="font-family: font1;font-weight: bold;">目前收益%</p>
-              <p style="font-size: 35px;color: rgb(58,200,45);">252</p>
+              <p style="font-size: 35px;color: rgb(58,200,45);"> {{ showData[1].currentProfitRatio }}</p>
             </div>
 
           </div>
@@ -28,8 +28,8 @@
           <div class="item-title">
             <img src="../../assets/admin/top_03.png">
             <div class="item-data">
-              <p style="font-family: font1;font-weight: bold;">动态年华%</p>
-              <p style="font-size: 35px;color: rgb(58,200,45);">252</p>
+              <p style="font-family: font1;font-weight: bold;">动态年化%</p>
+              <p style="font-size: 35px;color: rgb(58,200,45);">{{ showData[1].estimatedYearly }}</p>
             </div>
 
           </div>
@@ -39,7 +39,7 @@
             <img src="../../assets/admin/top_04.png">
             <div class="item-data">
               <p style="font-family: font1;font-weight: bold;">净值</p>
-              <p style="font-size: 35px;">1.33</p>
+              <p style="font-size: 35px;">{{ showData[1].equityRatio }}</p>
             </div>
 
           </div>
@@ -49,7 +49,7 @@
             <img src="../../assets/admin/top_05.png">
             <div class="item-data">
               <p style="font-family: font1;font-weight: bold;">初始资产(BTC)</p>
-              <p style="font-size: 35px;">80</p>
+              <p style="font-size: 35px;">{{ showData[1].startEquity }}</p>
             </div>
 
           </div>
@@ -59,12 +59,13 @@
             <img src="../../assets/admin/top_06.png">
             <div class="item-data">
               <p style="font-family: font1;font-weight: bold;">已经运行</p>
-              <p style="font-size: 35px;">11天</p>
+              <p style="font-size: 35px;"> {{ showData[1].runningTime }}天</p>
             </div>
 
           </div>
         </div>
       </div>
+
       <div class="chart">
         <div class="lineChart">
           <div class="lineChartTitle">
@@ -84,131 +85,43 @@
           <div id="pieChart" :style="{width: '95%', height: '80%'}"></div>
         </div>
       </div>
+
       <p class="title" style="margin-top: 30px">资金子账号</p>
       <div class="bottom-data">
-        <div class="bottom-item">
-          <div class="item-top">
-            <p>法币账户-A</p>
+        <div class="bottom-item" v-for="(account, index) in showData">
+          <div class="item-top" v-if="index !== 3">
+            <p>子账户 {{ index + 1 }}</p>
+            <el-button class="myButton" size="mini" round @click="download()">导出表格</el-button>
+          </div>
+          <div class="item-top" v-else>
+            <p>开发测试账户</p>
             <el-button class="myButton" size="mini" round @click="download()">导出表格</el-button>
           </div>
           <div class="item-content">
             <div class="top-item">
               <p class="fontFamily">总资产(BTC)</p>
-              <p class="data">108.656</p>
+              <p class="data"> {{ account.totalEquity }} </p>
             </div>
             <div class="top-item">
               <p class="fontFamily">运行天数</p>
-              <p class="data">11</p>
+              <p class="data"> {{ account.runningTime }}</p>
             </div>
             <div class="top-item">
               <p class="fontFamily">净值</p>
-              <p class="data">1.33</p>
+              <p class="data">{{ account.equityRatio }}</p>
             </div>
           </div>
           <div class="item-content2">
             <div class="top-item">
-              <p class="fontFamily">目前收益</p>
-              <p class="data">33.62</p>
+              <p class="fontFamily">目前收益(BTC)</p>
+              <p class="data">{{ account.currentProfit }}</p>
             </div>
-            <div class="top-item" style="margin-left: 25%">
+            <div class="top-item">
               <p class="fontFamily">动态年化</p>
-              <p class="data">528.15</p>
+              <p class="data">{{ account.estimatedYearly }}</p>
             </div>
           </div>
-          <div id="item-lineChart" :style="{width: '100%', height: '60%'}"></div>
-        </div>
-        <div class="bottom-item">
-          <div class="item-top">
-            <p>法币账户-A</p>
-            <el-button class="myButton" size="mini" round @click="download()">导出表格</el-button>
-          </div>
-          <div class="item-content">
-            <div class="top-item">
-              <p class="fontFamily">总资产(BTC)</p>
-              <p class="data">108.656</p>
-            </div>
-            <div class="top-item">
-              <p class="fontFamily">运行天数</p>
-              <p class="data">11</p>
-            </div>
-            <div class="top-item">
-              <p class="fontFamily">净值</p>
-              <p class="data">1.33</p>
-            </div>
-          </div>
-          <div class="item-content2">
-            <div class="top-item">
-              <p class="fontFamily">目前收益</p>
-              <p class="data">33.62</p>
-            </div>
-            <div class="top-item" style="margin-left: 25%">
-              <p class="fontFamily">动态年化</p>
-              <p class="data">528.15</p>
-            </div>
-          </div>
-          <div id="item-lineChart2" :style="{width: '100%', height: '60%'}"></div>
-        </div>
-        <div class="bottom-item">
-          <div class="item-top">
-            <p>法币账户-A</p>
-            <el-button class="myButton" size="mini" round @click="download()">导出表格</el-button>
-          </div>
-          <div class="item-content">
-            <div class="top-item">
-              <p class="fontFamily">总资产(BTC)</p>
-              <p class="data">108.656</p>
-            </div>
-            <div class="top-item">
-              <p class="fontFamily">运行天数</p>
-              <p class="data">11</p>
-            </div>
-            <div class="top-item">
-              <p class="fontFamily">净值</p>
-              <p class="data">1.33</p>
-            </div>
-          </div>
-          <div class="item-content2">
-            <div class="top-item">
-              <p class="fontFamily">目前收益</p>
-              <p class="data">33.62</p>
-            </div>
-            <div class="top-item" style="margin-left: 25%">
-              <p class="fontFamily">动态年化</p>
-              <p class="data">528.15</p>
-            </div>
-          </div>
-          <div id="item-lineChart3" :style="{width: '100%', height: '60%'}"></div>
-        </div>
-        <div class="bottom-item">
-          <div class="item-top">
-            <p>法币账户-A</p>
-            <el-button class="myButton" size="mini" round @click="download()">导出表格</el-button>
-          </div>
-          <div class="item-content">
-            <div class="top-item">
-              <p class="fontFamily">总资产(BTC)</p>
-              <p class="data">108.656</p>
-            </div>
-            <div class="top-item">
-              <p class="fontFamily">运行天数</p>
-              <p class="data">11</p>
-            </div>
-            <div class="top-item">
-              <p class="fontFamily">净值</p>
-              <p class="data">1.33</p>
-            </div>
-          </div>
-          <div class="item-content2">
-            <div class="top-item">
-              <p class="fontFamily">目前收益</p>
-              <p class="data">33.62</p>
-            </div>
-            <div class="top-item" style="margin-left: 25%">
-              <p class="fontFamily">动态年化</p>
-              <p class="data">528.15</p>
-            </div>
-          </div>
-          <div id="item-lineChart4" :style="{width: '100%', height: '60%'}"></div>
+          <div :id="'item-lineChart' + index" :style="{width: '100%', height: '60%'}"></div>
         </div>
       </div>
     </div>
@@ -218,6 +131,7 @@
 <script>
   /* eslint-disable */
   import SubHeader from "../platform-admin/common/SubHeader";
+  import Vue from 'vue'
 
   export default {
     name: "PlatformMain",
@@ -228,29 +142,113 @@
       return {
         isActive: '6h',
         lineChart: null,
+        itemLineChart: [null, null, null, null],
         pieChart: null,
-        showData: {},
-        lineChartDate: [],
-        lineChartData: [],
+        showData: [{}, {}, {}, {}],
+        lineChartDate: '',
+        lineChartData: '',
+        lineIntvWord: ['6h', 'Day', 'Week', 'Month'],
         infoEngine: '',
       }
     },
     mounted() {
-      console.log(sessionStorage.getItem("userId"))
+      // console.log(sessionStorage.getItem("userId"))
       if (sessionStorage.getItem("userId") === null) {
         this.$router.push({path: '/'})
       }
-      this.getDot("6h");
+      // this.getDot("6h");
       this.drawPie();
+      this.getAllDot()
+      this.getAllShowInfo()
+      this.infoEngine = setInterval(() => {
+        this.getAllShowInfo()
+      }, 10000)
+      // this.drawLine()
+      setTimeout(() => {
+        this.drawLine(1)
+        this.drawItemLine(0, 1)
+        this.drawItemLine(1, 1)
+        this.drawItemLine(2, 1)
+        this.drawItemLine(3, 1)
+
+      }, 2000)
     },
     created() {
-      this.showInfo();
-      this.infoEngine = setInterval(() => {
-        this.showInfo()
-      }, 10000)
+
     },
     methods: {
-      drawLine() {
+      async getShowInfo(i) {
+        // console.log("userid: " + i)
+        this.$http({
+          method: 'post',
+          url: '/showInfo',
+          data: {
+            userid: i
+          }
+        }).then((response) => {
+          this.showData[i-1] = response.data;
+          Vue.set(this.showData, i-1, response.data)
+        });
+      },
+      async getAllShowInfo() {
+        for (var i = 1; i <= 4; i++) {
+          await this.getShowInfo(i)
+        }
+        console.log("showData updated.")
+      },
+      async getDot(value, userid) {
+        this.$http({
+          method: 'post',
+          url: '/dot' + this.lineIntvWord[value-2],
+          data: {
+            userid: userid
+          }
+        }).then((response) => {
+
+          // this.lineChartData = response.data[0];
+          // console.log(this.lineChartData, this.lineChartDate);
+          // this.drawLine();
+          // this.drawItemLine();
+          // this.drawItemLine2();
+          // this.drawItemLine3();
+          // this.drawItemLine4();
+
+          this.lineChartData[userid-1][value-2] = response.data[0]
+          var tempChartDate = []
+          for (let i = 0; i < response.data[1].length; i++) {
+            let t = response.data[1][i]
+            let d = new Date(t);
+            let Y = d.getFullYear() + '-';
+            let M = (d.getMonth() + 1 < 10 ? '0' + (d.getMonth() + 1) : d.getMonth() + 1) + '-';
+            let D = d.getDate() + ' ';
+            let h = d.getHours() + ':';
+            let m = (d.getMinutes() < 10 ? '0' + (d.getMinutes()) : d.getMinutes()) + ':';
+            let s = (d.getSeconds() < 10 ? '0' + (d.getSeconds()) : d.getSeconds());
+            tempChartDate.push(Y + M + D + h + m + s);
+          }
+          this.lineChartDate[userid-1][value-2] = tempChartDate
+        });
+      },
+      async getAllDot() {
+        for (var i = 0; i < 4; i++ ) {
+          this.lineChartData = new Array(4).fill(0)
+          this.lineChartDate = new Array(4).fill(0)
+        }
+        for (var j = 0; j < 4; j++) {
+          this.lineChartData[j] = new Array(4).fill(0)
+          this.lineChartDate[j] = new Array(4).fill(0)
+        }
+
+        for (var intv = 2; intv <= 5; intv++) {
+          for (var userid = 1; userid <= 4; userid++) {
+            await this.getDot(intv, userid)
+          }
+        }
+        console.log(this.lineChartData)
+        console.log(this.lineChartDate)
+      },
+      drawLine(intv) {
+        console.log(this.lineChartData[1][0])
         this.lineChart = this.$echarts.init(document.getElementById('lineChart'));
         this.lineChart.setOption({
           tooltip: {
@@ -261,7 +259,7 @@
           },
           xAxis: {
             type: 'category',
-            data: this.lineChartDate
+            data: this.lineChartDate[1][intv-1]
           },
           yAxis: {
             type: 'value',
@@ -272,7 +270,7 @@
           series: [
             {
               name:"币本位收益",
-              data: this.lineChartData,
+              data: this.lineChartData[1][intv-1],
               type: 'line',
               symbol: 'circle',
               itemStyle: {
@@ -286,7 +284,7 @@
             },
             {
               name:"法币本位",
-              data: [3,7,8,10,14,18,16,19,22,23,25],
+              data: [],
               type: 'line',
               symbol: 'circle',
               itemStyle: {
@@ -302,8 +300,8 @@
           dataZoom: [
             {
             type: 'inside',
-            start: 0,
-            end: 50
+            start: 50,
+            end: 100
           }, {
             start: 0,
             end: 50,
@@ -322,9 +320,9 @@
           this.lineChart.resize();
         });
       },
-      drawItemLine() {
-        this.lineChart = this.$echarts.init(document.getElementById('item-lineChart'));
-        this.lineChart.setOption({
+      drawItemLine(id, intv) {
+        this.itemLineChart[id] = this.$echarts.init(document.getElementById('item-lineChart'+id));
+        this.itemLineChart[id].setOption({
           tooltip: {
             trigger: 'axis',
             position: function (pt) {
@@ -333,7 +331,7 @@
           },
           xAxis: {
             type: 'category',
-            data: this.lineChartDate
+            data: this.lineChartDate[id][intv]
           },
           yAxis: {
             type: 'value',
@@ -345,7 +343,7 @@
           series: [
             {
               name:"币本位收益",
-              data: this.lineChartData,
+              data: this.lineChartData[id][intv],
               type: 'line',
               symbol: 'circle',
               itemStyle: {
@@ -359,7 +357,7 @@
             },
             {
               name:"法币本位",
-              data: [3,7,8,10,14,18,16,19,22,23,25],
+              data: [],
               type: 'line',
               symbol: 'circle',
               itemStyle: {
@@ -375,8 +373,8 @@
           dataZoom: [
             {
               type: 'inside',
-              start: 0,
-              end: 50
+              start: 50,
+              end: 100
             }, {
               start: 0,
               end: 50,
@@ -395,225 +393,7 @@
           this.lineChart.resize();
         });
       },
-      drawItemLine2() {
-        this.lineChart = this.$echarts.init(document.getElementById('item-lineChart2'));
-        this.lineChart.setOption({
-          tooltip: {
-            trigger: 'axis',
-            position: function (pt) {
-              return [pt[0], '10%'];
-            }
-          },
-          xAxis: {
-            type: 'category',
-            data: this.lineChartDate
-          },
-          yAxis: {
-            type: 'value',
-          },
-          legend: {
-            x: 'left',
-            bottom: 0,
-          },
-          series: [
-            {
-              name:"币本位收益",
-              data: this.lineChartData,
-              type: 'line',
-              symbol: 'circle',
-              itemStyle: {
-                normal: {
-                  color: "rgb(112, 152, 242)", //折线点的颜色
-                  lineStyle: {
-                    color: "rgb(20, 99, 162)" //折线的颜色
-                  }
-                }
-              },
-            },
-            {
-              name:"法币本位",
-              data: [3,7,8,10,14,18,16,19,22,23,25],
-              type: 'line',
-              symbol: 'circle',
-              itemStyle: {
-                normal: {
-                  color: "rgb(225, 210, 120)", //折线点的颜色
-                  lineStyle: {
-                    color: "rgb(219, 197, 111)" //折线的颜色
-                  }
-                }
-              },
-            }
-          ],
-          dataZoom: [
-            {
-              type: 'inside',
-              start: 0,
-              end: 50
-            }, {
-              start: 0,
-              end: 50,
-              handleIcon: 'M10.7,11.9v-1.3H9.3v1.3c-4.9,0.3-8.8,4.4-8.8,9.4c0,5,3.9,9.1,8.8,9.4v1.3h1.3v-1.3c4.9-0.3,8.8-4.4,8.8-9.4C19.5,16.3,15.6,12.2,10.7,11.9z M13.3,24.4H6.7V23h6.6V24.4z M13.3,19.6H6.7v-1.4h6.6V19.6z',
-              handleSize: '80%',
-              handleStyle: {
-                color: '#fff',
-                shadowBlur: 3,
-                shadowColor: 'rgba(0, 0, 0, 0.6)',
-                shadowOffsetX: 2,
-                shadowOffsetY: 2
-              }
-            }],
-        });
-        window.addEventListener("resize", () => {
-          this.lineChart.resize();
-        });
-      },
-      drawItemLine3() {
-        this.lineChart = this.$echarts.init(document.getElementById('item-lineChart3'));
-        this.lineChart.setOption({
-          tooltip: {
-            trigger: 'axis',
-            position: function (pt) {
-              return [pt[0], '10%'];
-            }
-          },
-          xAxis: {
-            type: 'category',
-            data: this.lineChartDate
-          },
-          yAxis: {
-            type: 'value',
-          },
-          legend: {
-            x: 'left',
-            bottom: 0,
-          },
-          series: [
-            {
-              name:"币本位收益",
-              data: this.lineChartData,
-              type: 'line',
-              symbol: 'circle',
-              itemStyle: {
-                normal: {
-                  color: "rgb(112, 152, 242)", //折线点的颜色
-                  lineStyle: {
-                    color: "rgb(20, 99, 162)" //折线的颜色
-                  }
-                }
-              },
-            },
-            {
-              name:"法币本位",
-              data: [3,7,8,10,14,18,16,19,22,23,25],
-              type: 'line',
-              symbol: 'circle',
-              itemStyle: {
-                normal: {
-                  color: "rgb(225, 210, 120)", //折线点的颜色
-                  lineStyle: {
-                    color: "rgb(219, 197, 111)" //折线的颜色
-                  }
-                }
-              },
-            }
-          ],
-          dataZoom: [
-            {
-              type: 'inside',
-              start: 0,
-              end: 50
-            }, {
-              start: 0,
-              end: 50,
-              handleIcon: 'M10.7,11.9v-1.3H9.3v1.3c-4.9,0.3-8.8,4.4-8.8,9.4c0,5,3.9,9.1,8.8,9.4v1.3h1.3v-1.3c4.9-0.3,8.8-4.4,8.8-9.4C19.5,16.3,15.6,12.2,10.7,11.9z M13.3,24.4H6.7V23h6.6V24.4z M13.3,19.6H6.7v-1.4h6.6V19.6z',
-              handleSize: '80%',
-              handleStyle: {
-                color: '#fff',
-                shadowBlur: 3,
-                shadowColor: 'rgba(0, 0, 0, 0.6)',
-                shadowOffsetX: 2,
-                shadowOffsetY: 2
-              }
-            }],
-        });
-        window.addEventListener("resize", () => {
-          this.lineChart.resize();
-        });
-      },
-      drawItemLine4() {
-        this.lineChart = this.$echarts.init(document.getElementById('item-lineChart4'));
-        this.lineChart.setOption({
-          tooltip: {
-            trigger: 'axis',
-            position: function (pt) {
-              return [pt[0], '10%'];
-            }
-          },
-          xAxis: {
-            type: 'category',
-            data: this.lineChartDate
-          },
-          yAxis: {
-            type: 'value',
-          },
-          legend: {
-            x: 'left',
-            bottom: 0,
-          },
-          series: [
-            {
-              name:"币本位收益",
-              data: this.lineChartData,
-              type: 'line',
-              symbol: 'circle',
-              itemStyle: {
-                normal: {
-                  color: "rgb(112, 152, 242)", //折线点的颜色
-                  lineStyle: {
-                    color: "rgb(20, 99, 162)" //折线的颜色
-                  }
-                }
-              },
-            },
-            {
-              name:"法币本位",
-              data: [3,7,8,10,14,18,16,19,22,23,25],
-              type: 'line',
-              symbol: 'circle',
-              itemStyle: {
-                normal: {
-                  color: "rgb(225, 210, 120)", //折线点的颜色
-                  lineStyle: {
-                    color: "rgb(219, 197, 111)" //折线的颜色
-                  }
-                }
-              },
-            }
-          ],
-          dataZoom: [
-            {
-              type: 'inside',
-              start: 0,
-              end: 50
-            }, {
-              start: 0,
-              end: 50,
-              handleIcon: 'M10.7,11.9v-1.3H9.3v1.3c-4.9,0.3-8.8,4.4-8.8,9.4c0,5,3.9,9.1,8.8,9.4v1.3h1.3v-1.3c4.9-0.3,8.8-4.4,8.8-9.4C19.5,16.3,15.6,12.2,10.7,11.9z M13.3,24.4H6.7V23h6.6V24.4z M13.3,19.6H6.7v-1.4h6.6V19.6z',
-              handleSize: '80%',
-              handleStyle: {
-                color: '#fff',
-                shadowBlur: 3,
-                shadowColor: 'rgba(0, 0, 0, 0.6)',
-                shadowOffsetX: 2,
-                shadowOffsetY: 2
-              }
-            }],
-        });
-        window.addEventListener("resize", () => {
-          this.lineChart.resize();
-        });
-      },
+
       drawPie() {
         this.$http({
           method: 'get',
@@ -684,25 +464,23 @@
 
       },
       download() {
-        console.log("暂未开放功能");
+         alert("暂未开放功能");
       },
       clickFun(value) {
         this.isActive = value.path[0].textContent;
         if (this.isActive === "6h") {
           // console.log('6h');
-          this.getDot(this.isActive);
+          // this.getDot(this.isActive);
+          this.drawLine(1)
         }
         else if (this.isActive === "Day") {
-          console.log('Day');
-          this.getDot(this.isActive);
+          this.drawLine(2)
         }
         else if (this.isActive === "Week") {
-          console.log('Week');
-          this.getDot(this.isActive);
+          this.drawLine(3)
         }
         else if (this.isActive === "Month") {
-          console.log('Month');
-          this.getDot(this.isActive);
+          this.drawLine(4)
         }
       },
       showInfo() {
@@ -718,33 +496,6 @@
           this.showData.startEquity = (parseFloat(this.showData.startEquity) * 30 * 4).toFixed(2)
           this.showData.totalEquity = (parseFloat(this.showData.totalEquity) * 30 * 4).toFixed(2) //调整数据
           console.log(this.showData);
-        });
-      },
-      getDot(value) {
-        this.lineChartDate = [];
-        this.lineChartData = [];
-        this.$http({
-          method: 'get',
-          url: '/dot' + value,
-        }).then((response) => {
-          for (let i = 0; i < response.data[1].length; i++) {
-            let t = response.data[1][i]
-            let d = new Date(t);
-            let Y = d.getFullYear() + '-';
-            let M = (d.getMonth() + 1 < 10 ? '0' + (d.getMonth() + 1) : d.getMonth() + 1) + '-';
-            let D = d.getDate() + ' ';
-            let h = d.getHours() + ':';
-            let m = (d.getMinutes() < 10 ? '0' + (d.getMinutes()) : d.getMinutes()) + ':';
-            let s = (d.getSeconds() < 10 ? '0' + (d.getSeconds()) : d.getSeconds());
-            this.lineChartDate.push(Y + M + D + h + m + s);
-          }
-          this.lineChartData = response.data[0];
-          console.log(this.lineChartData, this.lineChartDate);
-          this.drawLine();
-          this.drawItemLine();
-          this.drawItemLine2();
-          this.drawItemLine3();
-          this.drawItemLine4();
         });
       }
     },
@@ -793,7 +544,7 @@
       }
       .top-data {
         width: 100%;
-        height: 180px;
+        height: 100px;
         display: flex;
         justify-content: space-between;
         margin-top: 15px;
@@ -910,6 +661,7 @@
               }
               .data{
                 font-size: 28px;
+                transform: scale(1, 1.2);
               }
             }
           }
@@ -925,6 +677,7 @@
               }
               .data{
                 font-size: 28px;
+                transform: scale(1, 1.2);
               }
             }
           }

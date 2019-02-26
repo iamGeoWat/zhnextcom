@@ -23,7 +23,7 @@
           <img src="../../../assets/platform/chart-图表.png" height="23">
           <p>{{$t('platform.navMenu.title1')}}</p>
         </div>
-        <el-submenu>
+        <el-submenu index="1">
           <template slot="title">
             <i class="icon-nav"><img src="../../../assets/platform/AK-MN折线图_fill.png" height="20"/></i>
             <span slot="title">{{$t('platform.navMenu.menuItem1_1')}}</span>

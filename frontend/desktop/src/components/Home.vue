@@ -90,7 +90,11 @@
           sessionStorage.setItem("userId", response.data.userid);
           console.log(sessionStorage.getItem("userId"));
           // let userPath = '/platform/' + response.data.userid
-          this.$router.push({path: "/platform"});
+          if (response.data.userid.toString() === '777') {
+            this.$router.push({path: "/admin"})
+          } else {
+            this.$router.push({path: "/platform"});
+          }
           // 1
         });
       }
