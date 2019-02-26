@@ -47,6 +47,10 @@
     padding: 0;
   } */
 
+  .el-main {
+    padding: 0 !important;
+  }
+
   .platformMainContainer {
     background-color: rgb(243, 247, 248) !important;
   }

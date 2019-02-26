@@ -39,7 +39,7 @@
 <style>
 
   .el-main{
-    padding: 0;
+    padding: 0 !important;
     background-color: rgb(17,17,17);
   }
 
