@@ -4,10 +4,10 @@
     </div>
     <div class="radio">
       <img src="../../../assets/admin/头像.png" height="90">
-      <p>账户A-84BTC</p>
+      <p>ADMIN</p>
     </div>
     <el-aside
-      style="background-color: rgb(31,33,54);overflow: hidden;border:0;max-width: 200px;"
+      style="background-color: rgb(31,33,54);overflow: hidden;border:0;max-width: 260px;"
       width="auto"
       @mouseenter.native="collapseOpen">
       <!--@mouseleave.native="collapseClose"-->
@@ -21,50 +21,50 @@
         @select="handleSelect">
         <div class="menu-item-header">
           <img src="../../../assets/platform/chart-图表.png" height="23">
-          <p>{{$t('platform.navMenu.title1')}}</p>
+          <p style="font-family: 'Microsoft YaHei', sans-serif; font-size: 15px;">{{$t('platform.navMenu.title1')}}</p>
         </div>
         <el-submenu index="1">
           <template slot="title">
             <i class="icon-nav"><img src="../../../assets/platform/AK-MN折线图_fill.png" height="20"/></i>
-            <span slot="title">{{$t('platform.navMenu.menuItem1_1')}}</span>
+            <span slot="title" style="font-size: 13px; font-family: 'Microsoft YaHei', sans-serif">{{$t('platform.navMenu.menuItem1_1')}}</span>
           </template>
-          <el-menu-item index="2" @click="collapseClose">账户-A</el-menu-item>
-          <el-menu-item index="2" @click="collapseClose">账户-B</el-menu-item>
+          <el-menu-item index="2" @click="collapseClose"><span style="margin-left: 60px">账户A</span></el-menu-item>
+          <el-menu-item index="2" @click="collapseClose"><span style="margin-left: 60px">账户B</span></el-menu-item>
         </el-submenu>
         <el-submenu index="2">
           <template slot="title">
             <i class="icon-nav"><img src="../../../assets/platform/docket-单据查询-1.png" height="20"/></i>
-            <span slot="title">{{$t('platform.navMenu.menuItem1_2')}}</span>
+            <span slot="title" style="font-size: 13px; font-family: 'Microsoft YaHei', sans-serif">{{$t('platform.navMenu.menuItem1_2')}}</span>
           </template>
-          <el-menu-item index="2" @click="collapseClose">查询1</el-menu-item>
-          <el-menu-item index="2" @click="collapseClose">查询2</el-menu-item>
+          <el-menu-item index="2" @click="collapseClose"><span style="margin-left: 60px">现货</span></el-menu-item>
+          <el-menu-item index="2" @click="collapseClose"><span style="margin-left: 60px">合约</span></el-menu-item>
         </el-submenu>
         <el-submenu index="3">
           <template slot="title">
             <i class="icon-nav"><img src="../../../assets/platform/切换.png" height="20"/></i>
-            <span slot="title">{{$t('platform.navMenu.menuItem1_3')}}</span>
+            <span slot="title" style="font-size: 13px; font-family: 'Microsoft YaHei', sans-serif">{{$t('platform.navMenu.menuItem1_3')}}</span>
           </template>
-          <el-menu-item index="3" @click="collapseClose">收益1</el-menu-item>
-          <el-menu-item index="3" @click="collapseClose">收益2</el-menu-item>
+          <el-menu-item index="3" @click="collapseClose"><span style="margin-left: 60px">第一期</span></el-menu-item>
+          <el-menu-item index="3" @click="collapseClose"><span style="margin-left: 60px">第二期</span></el-menu-item>
         </el-submenu>
         <div class="menu-item-header">
           <img src="../../../assets/platform/应用.png" height="23">
-          <p>{{$t('platform.navMenu.title2')}}</p>
+          <p style="font-family: 'Microsoft YaHei', sans-serif; font-size: 15px;">{{$t('platform.navMenu.title2')}}</p>
         </div>
         <el-submenu index="6">
           <template slot="title">
             <i class="icon-nav"><img src="../../../assets/platform/钱包.png" height="20"/></i>
-            <span slot="title">{{$t('platform.navMenu.menuItem2_1')}}</span>
+            <span slot="title" style="font-size: 13px; font-family: 'Microsoft YaHei', sans-serif">{{$t('platform.navMenu.menuItem2_1')}}</span>
           </template>
-          <el-menu-item index="4">钱包1</el-menu-item>
-          <el-menu-item index="4">钱包2</el-menu-item>
+          <el-menu-item index="4"><span style="margin-left: 60px">WeWallet</span></el-menu-item>
         </el-submenu>
         <el-submenu index="7">
           <template slot="title">
             <i class="icon-nav"><img src="../../../assets/platform/小程序.png" height="20"/></i>
-            <span slot="title">{{$t('platform.navMenu.menuItem2_2')}}</span>
+            <span slot="title" style="font-size: 13px; font-family: 'Microsoft YaHei', sans-serif">{{$t('platform.navMenu.menuItem2_2')}}</span>
           </template>
-          <el-menu-item index="5">应用1</el-menu-item>
+          <el-menu-item index="5"><span style="margin-left: 60px">黄庄开单</span></el-menu-item>
+          <el-menu-item index="5"><span style="margin-left: 60px">PomeloClub</span></el-menu-item>
         </el-submenu>
       </el-menu>
     </el-aside>
@@ -76,7 +76,7 @@
     // overflow: hidden;
     background-color: rgb(31, 33, 54);
     border: 0;
-    max-width: 200px;
+    max-width: 260px;
     .el-menu--collapse {
       width: 65px;
       border: 0;
@@ -97,8 +97,8 @@
 <style scoped lang="less">
   .mynav {
     .left {
-      width: 200px;
-      height: 60px;
+      width: 260px;
+      height: 70px;
       text-align: center;
       background: url('../../../assets/admin/总帐号_01.png') center center;
       background-size: 100% 100%;
@@ -117,7 +117,7 @@
       }
     }
     .el-menu-vertical-demo:not(.el-menu--collapse) {
-      width: 200px;
+      width: 260px;
     }
     .icon-nav {
       margin-right: 5px;
@@ -125,6 +125,7 @@
       text-align: center;
       font-size: 18px;
       vertical-align: top;
+      margin-left: 30px
     }
     .menu-item-header{
       width: 100%;

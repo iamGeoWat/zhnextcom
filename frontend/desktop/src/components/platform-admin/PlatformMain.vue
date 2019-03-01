@@ -2,14 +2,14 @@
   <div class="platformMain">
     <sub-header></sub-header>
     <div class="content">
-      <p class="title" style="margin-top: 10px; font-family: font1">智汇未来总账户</p>
+      <p class="title" style="font-family: 'Microsoft YaHei', sans-serif; font-size: 25px;">智汇未来总账户</p>
       <div class="top-data">
         <div class="item">
           <div class="item-title">
             <img src="../../assets/admin/top_01.png">
             <div class="item-data">
-              <p style="font-family: font1;font-weight: bold;">总资产(BTC)</p>
-              <p style="font-size: 35px;color: rgb(200,165,108);">{{ showData[1].totalEquity }}</p>
+              <p class="digit" style="color: rgb(200,165,108);">{{ showData[1].totalEquity }}</p>
+              <p class="character">总资产(BTC)</p>
             </div>
 
           </div>
@@ -18,8 +18,8 @@
           <div class="item-title">
             <img src="../../assets/admin/top_02.png">
             <div class="item-data">
-              <p style="font-family: font1;font-weight: bold;">目前收益%</p>
-              <p style="font-size: 35px;color: rgb(58,200,45);"> {{ showData[1].currentProfitRatio }}</p>
+              <p class="digit"> {{ showData[1].currentProfitRatio }}</p>
+              <p class="character">目前收益%</p>
             </div>
 
           </div>
@@ -28,8 +28,8 @@
           <div class="item-title">
             <img src="../../assets/admin/top_03.png">
             <div class="item-data">
-              <p style="font-family: font1;font-weight: bold;">动态年化%</p>
-              <p style="font-size: 35px;color: rgb(58,200,45);">{{ showData[1].estimatedYearly }}</p>
+              <p class="digit">{{ showData[1].estimatedYearly }}</p>
+              <p class="character">动态年化%</p>
             </div>
 
           </div>
@@ -38,8 +38,8 @@
           <div class="item-title">
             <img src="../../assets/admin/top_04.png">
             <div class="item-data">
-              <p style="font-family: font1;font-weight: bold;">净值</p>
-              <p style="font-size: 35px;">{{ showData[1].equityRatio }}</p>
+              <p class="digit">{{ showData[1].equityRatio }}</p>
+              <p class="character">净值</p>
             </div>
 
           </div>
@@ -48,8 +48,8 @@
           <div class="item-title">
             <img src="../../assets/admin/top_05.png">
             <div class="item-data">
-              <p style="font-family: font1;font-weight: bold;">初始资产(BTC)</p>
-              <p style="font-size: 35px;">{{ showData[1].startEquity }}</p>
+              <p class="digit">{{ showData[1].startEquity }}</p>
+              <p class="character">初始资产(BTC)</p>
             </div>
 
           </div>
@@ -58,8 +58,8 @@
           <div class="item-title">
             <img src="../../assets/admin/top_06.png">
             <div class="item-data">
-              <p style="font-family: font1;font-weight: bold;">已经运行</p>
-              <p style="font-size: 35px;"> {{ showData[1].runningTime }}天</p>
+              <p class="digit"> {{ showData[1].runningTime }} days</p>
+              <p class="character">已经运行</p>
             </div>
 
           </div>
@@ -69,7 +69,7 @@
       <div class="chart">
         <div class="lineChart">
           <div class="lineChartTitle">
-            <p>资金总体收益走势报表</p>
+            <p style="font-family: 'Microsoft YaHei', sans-serif; font-size: 25px;">资金总体收益走势报表</p>
             <div class="button">
               <el-button class="myButton" round @click="download()">导出表格</el-button>
               <el-button round @click="clickFun($event)" :class="{ active: isActive==='6h' }">6h</el-button>
@@ -78,33 +78,33 @@
               <el-button round @click="clickFun($event)" :class="{ active: isActive==='Month' }">Month</el-button>
             </div>
           </div>
-          <div id="lineChart" :style="{width: '100%', height: '80%'}"></div>
+          <div id="lineChart" :style="{width: '100%', height: '80%'}" style="margin-left: 20px; margin-top: 20px"></div>
         </div>
         <div class="pieChart">
-          <p>持币比例</p>
-          <div id="pieChart" :style="{width: '95%', height: '80%'}"></div>
+          <p style="font-size: 25px; font-family: 'Microsoft YaHei', sans-serif">持币比例</p>
+          <div id="pieChart" :style="{width: '90%', height: '80%'}" style="margin-top: 30px"></div>
         </div>
       </div>
 
-      <p class="title" style="margin-top: 30px">资金子账号</p>
+      <p class="title" style="margin-top: 30px;">资金子账号</p>
       <div class="bottom-data">
         <div class="bottom-item" v-for="(account, index) in showData">
           <div class="item-top" v-if="index !== 3">
-            <p>子账户 {{ index + 1 }}</p>
+            <p style="font-family: 'Microsoft YaHei', sans-serif; font-size: 20px">子账户 {{ index + 1 }}</p>
             <el-button class="myButton" size="mini" round @click="download()">导出表格</el-button>
           </div>
           <div class="item-top" v-else>
-            <p>开发测试账户</p>
+            <p style="font-family: 'Microsoft YaHei', sans-serif; font-size: 20px">开发测试账户</p>
             <el-button class="myButton" size="mini" round @click="download()">导出表格</el-button>
           </div>
           <div class="item-content">
             <div class="top-item">
               <p class="fontFamily">总资产(BTC)</p>
-              <p class="data"> {{ account.totalEquity }} </p>
+              <p class="data">{{ account.totalEquity }}</p>
             </div>
             <div class="top-item">
               <p class="fontFamily">运行天数</p>
-              <p class="data"> {{ account.runningTime }}</p>
+              <p class="data">{{ account.runningTime }}</p>
             </div>
             <div class="top-item">
               <p class="fontFamily">净值</p>
@@ -121,7 +121,7 @@
               <p class="data">{{ account.estimatedYearly }}</p>
             </div>
           </div>
-          <div :id="'item-lineChart' + index" :style="{width: '100%', height: '60%'}"></div>
+          <div :id="'item-lineChart' + index" :style="{width: '100%', height: '50%'}"></div>
         </div>
       </div>
     </div>
@@ -194,7 +194,7 @@
         for (var i = 1; i <= 4; i++) {
           await this.getShowInfo(i)
         }
-        console.log("showData updated.")
+        // console.log("showData updated.")
       },
       async getDot(value, userid) {
         this.$http({
@@ -244,11 +244,11 @@
             await this.getDot(intv, userid)
           }
         }
-        console.log(this.lineChartData)
-        console.log(this.lineChartDate)
+        // console.log(this.lineChartData)
+        // console.log(this.lineChartDate)
       },
       drawLine(intv) {
-        console.log(this.lineChartData[1][0])
+        // console.log(this.lineChartData[1][0])
         this.lineChart = this.$echarts.init(document.getElementById('lineChart'));
         this.lineChart.setOption({
           tooltip: {
@@ -336,9 +336,15 @@
           yAxis: {
             type: 'value',
           },
+          grid: {
+            right: '8%',
+            left: '15%',
+            top: '15%'
+          },
           legend: {
             x: 'left',
-            bottom: 0,
+            top: 0,
+            left: 10
           },
           series: [
             {
@@ -393,13 +399,12 @@
           this.lineChart.resize();
         });
       },
-
       drawPie() {
         this.$http({
           method: 'get',
           url: '/pie'
         }).then((response) => {
-          console.log(response.data);
+          // console.log(response.data);
           for (let i = 0; i < response.data.length; i++) {
             response.data[i].value = response.data[i].value.toFixed(8);
           }
@@ -424,23 +429,26 @@
                 avoidLabelOverlap: true,
                 label: {
                   normal: {
-                    formatter: '  {b|{b}：}  {per|{d}%}  ',
-                    backgroundColor: '#eee',
+                    formatter: '{b|{b}:  }\n{per|{d}%}  ',
                     borderColor: '#aaa',
-                    borderWidth: 1,
+                    borderWidth: 0,
                     borderRadius: 4,
                     rich: {
                       b: {
-                        fontSize: 16,
-                        lineHeight: 30
+                        fontSize: 18,
+                        lineHeight: 25,
+                        fontFamily: "Microsoft YaHei",
+                        color: '#666666'
                       },
                       per: {
                         // color: '#eee',
                         // backgroundColor: '#334455',
                         padding: [2, 4],
                         borderRadius: 2,
-                        fontSize: 16,
-                        lineHeight: 30
+                        fontSize: 18,
+                        lineHeight: 25,
+                        fontFamily: "Microsoft YaHei",
+                        color: '#666666'
                       }
                     }
                   },
@@ -491,11 +499,11 @@
             userid: sessionStorage.getItem("userId")
           }
         }).then((response) => {
-          console.log(response);
+          // console.log(response);
           this.showData = response.data;
           this.showData.startEquity = (parseFloat(this.showData.startEquity) * 30 * 4).toFixed(2)
           this.showData.totalEquity = (parseFloat(this.showData.totalEquity) * 30 * 4).toFixed(2) //调整数据
-          console.log(this.showData);
+          // console.log(this.showData);
         });
       }
     },
@@ -534,20 +542,21 @@
     height: auto;
     padding-bottom: 20px;
     /*background-color: rgb(243, 247, 248);*/
-    background: #000 url("../../assets/home/背景.jpg") no-repeat fixed;
-    background-size: auto 100%;
+    background: url("../../assets/home/背景.jpg") no-repeat fixed;
+    background-size: 130% auto;
     .content {
       padding: 0 20px;
       .title {
         color: #fff;
-        font-size: 24px;
+        font-size: 25px;
+        font-family: "Microsoft YaHei", sans-serif;
       }
       .top-data {
         width: 100%;
         height: 100px;
         display: flex;
         justify-content: space-between;
-        margin-top: 15px;
+        margin-top: 10px;
         min-width: 1300px;
         .item {
           width: 16%;
@@ -559,12 +568,23 @@
             img {
               display: inline-block;
             }
+            text-align: center;
             .item-data {
-              margin-left: 5px;
               display: inline-block;
               p {
                 color: #fff;
                 font-size: 18px;
+              }
+              .digit {
+                font-size: 50px;
+                color: #FFFFFF;
+                font-family: digitFont, sans-serif;
+              }
+              .character {
+                font-size: 15px;
+                font-family: 'Microsoft YaHei', sans-serif;
+                font-weight: bold;
+                margin-top: -5px;
               }
             }
 
@@ -579,7 +599,7 @@
         .lineChart {
           display: inline-block;
           background: white;
-          height: 100%;
+          height: 105%;
           width: 60%;
           border-radius: 10px;
           .lineChartTitle {
@@ -595,6 +615,7 @@
               display: inline-block;
             }
             .button {
+              margin-top: 10px;
               margin-right: 50px;
               display: inline-block;
               float: right;
@@ -603,7 +624,7 @@
         }
         .pieChart {
           display: inline-block;
-          height: 100%;
+          height: 105%;
           width: 39%;
           float: right;
           border-radius: 10px;
@@ -630,7 +651,7 @@
         margin-top: 5px;
         .bottom-item{
           display: inline-block;
-          height: 600px;
+          height: 520px;
           width: 24%;
           background:#fff;
           border-radius: 10px;
@@ -656,12 +677,12 @@
             .top-item{
               text-align: center;
               .fontFamily{
-                font-family: font1;
+                font-family: "Microsoft YaHei", sans-serif;
                 font-size: 18px;
               }
               .data{
-                font-size: 28px;
-                transform: scale(1, 1.2);
+                font-size: 40px;
+                font-family: digitFont, sans-serif;
               }
             }
           }
@@ -672,12 +693,12 @@
               display: inline-block;
               text-align: center;
               .fontFamily{
-                font-family: font1;
-                font-size: 18px;
+                font-family: "Microsoft YaHei", sans-serif;
+                font-size: 16px;
               }
               .data{
-                font-size: 28px;
-                transform: scale(1, 1.2);
+                font-size: 40px;
+                font-family: digitFont, sans-serif;
               }
             }
           }

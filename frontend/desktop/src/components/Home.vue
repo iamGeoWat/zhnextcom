@@ -121,7 +121,7 @@
     width: 100%;
     /*min-height: 900px;*/
     /*min-width: 1300px;*/
-    background: url("../assets/home/背景.jpg") center center;
+    background: url("../assets/home/背景_user.jpg") center center;
     background-size: cover;
     .menu {
       position: absolute;

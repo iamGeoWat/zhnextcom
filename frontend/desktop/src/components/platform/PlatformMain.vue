@@ -427,6 +427,7 @@
   .platformMain {
     width: 100%;
     height: 100%;
+    padding: 20px;
     background-color: rgb(243, 247, 248);
     .title {
       color: rgb(58, 67, 72);

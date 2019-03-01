@@ -1,6 +1,6 @@
 <template>
   <el-container style="width: 100%;">
-      <el-header style="height: 60px;padding: 0;">
+      <el-header style="height: 70px;padding: 0;">
 
         <div class="right">
           <div class="tixing">
