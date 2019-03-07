@@ -478,6 +478,7 @@ app.post('/showInfo', async (req, res) => {
 
 app.listen(8877, () => console.log('data fetch and interface is running at port 8877.'))
 
+fundebug.notify("Test", "Hello, data fetch engine is started.")
 // 需要数据：
 // 1、初始资产S0
 // 2、实时资产S1
