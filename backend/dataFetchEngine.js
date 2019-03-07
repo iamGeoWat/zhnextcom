@@ -1,3 +1,8 @@
+//anaylizer
+var fundebug = require("fundebug-nodejs");
+fundebug.apikey="af77597493928d2bf89eff991a4323877c31e4f30a7d2440db423f2499a89934";
+
+
 const https = require('https')
 const axios = require('axios')
 const moment = require('moment')
@@ -14,6 +19,7 @@ app.use(function(req, res, next) {
   next();
 });
 app.use(bodyParser.json())
+app.use(fundebug.ExpressErrorHandler)
 
 const DotDao = require('./dao/DotDao')
 const dotDao = new DotDao()
