@@ -10,7 +10,7 @@ import echarts from 'echarts' //引入echarts
 import i18n from './i18n/lang'
 
 
-axios.defaults.baseURL = 'http://zhnext.com:8877';
+axios.defaults.baseURL = 'http://45.32.61.88:8877';
 // axios.defaults.baseURL = 'http://192.168.0.197:8877';
 Vue.prototype.$http= axios;
 Vue.prototype.$echarts = echarts ;//引入组件
