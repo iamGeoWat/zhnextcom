@@ -61,13 +61,15 @@ function modifyAccountData (source, target) {
     for (var token in modAccountInfo) {
       
       var total_margin_frozen = 0
-      for (var i = 0; i < modAccountInfo[token].contracts.length; i++) {
-        total_margin_frozen += modAccountInfo[token].contracts[i].margin_frozen
+      if (modAccountInfo[token].contracts !== undefined) {
+        for (var i = 0; i < modAccountInfo[token].contracts.length; i++) {
+          total_margin_frozen += modAccountInfo[token].contracts[i].margin_frozen
+        }
+        modAccountInfo[token].position_ratio = (total_margin_frozen / modAccountInfo[token].equity * 100).toString().substr(0, 5) + '%'
+        modAccountInfo[token].weeklyPnL = Math.round(modAccountInfo[token].equity - modAccountInfo[token].total_avail_balance)
+  
+        target = modAccountInfo
       }
-      modAccountInfo[token].position_ratio = (total_margin_frozen / modAccountInfo[token].equity * 100).toString().substr(0, 5) + '%'
-      modAccountInfo[token].weeklyPnL = Math.round(modAccountInfo[token].equity - modAccountInfo[token].total_avail_balance)
-      
-      target = modAccountInfo
     }
   }
 }
@@ -385,7 +387,7 @@ var priceEngine = setInterval(() => {
 
 var seeThruEngine = setInterval(() => {
   // console.log(infoContainer)
-  console.log(accountContainer)
+  // console.log(accountContainer)
 }, 10000)
 
 
@@ -478,7 +480,7 @@ app.post('/showInfo', async (req, res) => {
 
 app.listen(8877, () => console.log('data fetch and interface is running at port 8877.'))
 
-fundebug.notify("Test", "Hello, data fetch engine is started.")
+fundebug.notify("Engine 1 Running", "Hello, data fetch engine is started.")
 // 需要数据：
 // 1、初始资产S0
 // 2、实时资产S1

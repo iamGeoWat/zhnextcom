@@ -1,3 +1,7 @@
+//anaylizer
+var fundebug = require("fundebug-nodejs");
+fundebug.apikey="af77597493928d2bf89eff991a4323877c31e4f30a7d2440db423f2499a89934";
+
 const axios = require('axios')
 const moment = require('moment')
 const fs = require('fs')
@@ -237,3 +241,5 @@ function app() {
 }
 
 app()
+
+fundebug.notify("Engine 2 Running", "Hello, data fetch engine is started.")
