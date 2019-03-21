@@ -1,6 +1,6 @@
 <template>
   <el-footer class="el-footer-inner">
-    <span>Copyright@2018-2028&nbsp;智汇未来网络技术有限公司</span>
+    <span>Copyright@2018-2019&nbsp;广州智汇未来网络技术有限公司</span>
   </el-footer>
 </template>
 

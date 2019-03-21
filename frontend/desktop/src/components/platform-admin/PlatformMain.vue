@@ -8,7 +8,7 @@
           <div class="item-title">
             <img src="../../assets/admin/top_01.png">
             <div class="item-data">
-              <p class="digit" style="color: rgb(200,165,108);">{{ showData[1].totalEquity }}</p>
+              <p class="digit" style="color: rgb(200,165,108);">{{ totalEquity }}</p>
               <p class="character">总资产(BTC)</p>
             </div>
 
@@ -48,7 +48,7 @@
           <div class="item-title">
             <img src="../../assets/admin/top_05.png">
             <div class="item-data">
-              <p class="digit">{{ showData[1].startEquity }}</p>
+              <p class="digit">{{ startEquity }}</p>
               <p class="character">初始资产(BTC)</p>
             </div>
 
@@ -58,7 +58,7 @@
           <div class="item-title">
             <img src="../../assets/admin/top_06.png">
             <div class="item-data">
-              <p class="digit"> {{ showData[1].runningTime }} days</p>
+              <p class="digit"> {{ largestRunningTime }} days</p>
               <p class="character">已经运行</p>
             </div>
 
@@ -138,6 +138,35 @@
     components: {
       "sub-header": SubHeader,
     },
+    computed: {
+      largestRunningTime: (that) => {
+        let runningTimes = []
+        for (let item in that.showData) {
+          runningTimes.push(that.showData[item].runningTime)
+        }
+        runningTimes.sort((a, b)=>{return b-a})
+        console.log(runningTimes)
+        return runningTimes[0]
+      },
+
+      totalEquity: (that) => {
+        let totalEquity = 0
+        for (let item in that.showData) {
+          totalEquity += parseFloat(that.showData[item].totalEquity)
+        }
+        return totalEquity.toFixed(3)
+      },
+
+      startEquity: (that) => {
+        let startEquity = 0
+        for (let item in that.showData) {
+          startEquity += parseFloat(that.showData[item].startEquity)
+        }
+        return startEquity.toFixed(3)
+      }
+
+
+    },
     data() {
       return {
         isActive: '6h',
@@ -148,33 +177,19 @@
         lineChartDate: '',
         lineChartData: '',
         lineIntvWord: ['6h', 'Day', 'Week', 'Month'],
-        infoEngine: '',
+        infoEngine: ''
       }
     },
     mounted() {
-      // console.log(sessionStorage.getItem("userId"))
       if (sessionStorage.getItem("userId") === null) {
         this.$router.push({path: '/'})
       }
-      // this.getDot("6h");
       this.drawPie();
-      this.getAllDot()
       this.getAllShowInfo()
       this.infoEngine = setInterval(() => {
         this.getAllShowInfo()
       }, 10000)
-      // this.drawLine()
-      setTimeout(() => {
-        this.drawLine(1)
-        this.drawItemLine(0, 1)
-        this.drawItemLine(1, 1)
-        this.drawItemLine(2, 1)
-        this.drawItemLine(3, 1)
-
-      }, 2000)
-    },
-    created() {
-
+      this.getAllDot()
     },
     methods: {
       async getShowInfo(i) {
@@ -205,14 +220,6 @@
           }
         }).then((response) => {
 
-          // this.lineChartData = response.data[0];
-          // console.log(this.lineChartData, this.lineChartDate);
-          // this.drawLine();
-          // this.drawItemLine();
-          // this.drawItemLine2();
-          // this.drawItemLine3();
-          // this.drawItemLine4();
-
           this.lineChartData[userid-1][value-2] = response.data[0]
           var tempChartDate = []
           for (let i = 0; i < response.data[1].length; i++) {
@@ -227,6 +234,11 @@
             tempChartDate.push(Y + M + D + h + m + s);
           }
           this.lineChartDate[userid-1][value-2] = tempChartDate
+
+          if (value === 5 && userid === 4) {
+            setTimeout(this.drawAllLine, 2000)
+          }
+          // draw all lines
         });
       },
       async getAllDot() {
@@ -244,8 +256,7 @@
             await this.getDot(intv, userid)
           }
         }
-        // console.log(this.lineChartData)
-        // console.log(this.lineChartDate)
+
       },
       drawLine(intv) {
         // console.log(this.lineChartData[1][0])
@@ -398,6 +409,13 @@
         window.addEventListener("resize", () => {
           this.lineChart.resize();
         });
+      },
+      drawAllLine() {
+        this.drawLine(1)
+        this.drawItemLine(0, 1)
+        this.drawItemLine(1, 1)
+        this.drawItemLine(2, 1)
+        this.drawItemLine(3, 1)
       },
       drawPie() {
         this.$http({
