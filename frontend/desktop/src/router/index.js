@@ -5,6 +5,7 @@ import Platform from '../components/platform/Platform'
 import PlatformMain from '../components/platform/PlatformMain'
 import AdminPlat from '../components/platform-admin/Platform'
 import AdminPlatformMain from '../components/platform-admin/PlatformMain'
+import MarketPage from '../components/market/MarketPage'
 
 Vue.use(Router)
 
@@ -44,6 +45,14 @@ export default new Router({
           component: AdminPlatformMain
         },
       ]
+    },
+    {
+      path: '/market',
+      name: 'MarketPage',
+      component: MarketPage,
+      meta: {
+        requireAuth: false,            // 添加该字段，表示进入这个路由是需要登录的
+      }
     },
 
   ],

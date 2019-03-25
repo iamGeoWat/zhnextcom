@@ -4,7 +4,8 @@ export default {
       title1:"大龙鱼的故事",
       title2:"我们的合作伙伴",
       title3:"出席的活动",
-      title4:"合作意向"
+      title4:"合作意向",
+      title5:"市场监控"
     },
     body:{
       body1:"大龙鱼资本",

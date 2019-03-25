@@ -7,6 +7,7 @@
         <li><a href="#">{{$t('home.header.title2')}}</a></li>
         <li><a href="#">{{$t('home.header.title3')}}</a></li>
         <li><a href="#">{{$t('home.header.title4')}}</a></li>
+        <li><a href="/market">{{$t('home.header.title5')}}</a></li>
         <li><img style="margin-top: 19px" src="../assets/home/点点.png"></li>
         <li class="lang">
           {{lang}}
