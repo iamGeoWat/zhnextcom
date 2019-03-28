@@ -12,6 +12,20 @@
       <div id="tv-short-container" class="short-div"></div>
     </div>
 
+    <div style="margin-top: 20px">
+      <el-card style="width: 96%; margin-left: 2%;">
+        <div id="aicoin_container_left" style="height: 320px; width: 47%; float: left;"></div>
+        <div id="aicoin_container_right" style="height: 320px; width: 47%; float: right;"></div>
+      </el-card>
+    </div>
+
+    <div style="margin-top: 20px">
+      <el-card style="width: 96%; margin-left: 2%;">
+        <div id="kraken_container" style="height: 640px; width: 49%; float: left; margin-bottom: 20px"></div>
+        <div id="huobi_container" style="height: 640px; width: 49%; float: right; margin-bottom: 20px"></div>
+      </el-card>
+    </div>
+
     <div class="row">
       <el-card class="greed-card">
         <div slot="header">
@@ -24,10 +38,10 @@
 
       <el-card class="warning-card">
         <div slot="header">
-          <span>报警系统</span>
+          <span>价格预警</span>
         </div>
         <el-row :gutter="20">
-          <el-col :span="12">
+          <el-col :span="12" style="margin-top: 50px;">
             <div>
               <el-switch :disabled="filled" v-model="webWarningOn" active-color="#13ce66" inactive-color="#ff4949" active-text="网页提醒"></el-switch>
               <el-switch :disabled="filled" v-model="phoneWarningOn" active-color="#13ce66" inactive-color="#ff4949" active-text="电话提醒"></el-switch>
@@ -46,16 +60,21 @@
           </el-col>
           <el-col :span="12">
             <p v-if="watchedPairs.length === 0">未选择交易对</p>
-            <div style="width: 500px">
+            <div style="width: 600px">
               <div v-for="pair in watchedPairs" style="margin-top: 5px; float: right">
-                <label>{{exchanges[pair[0]].name + ' ' + exchanges[pair[0]].pairs[pair[2]].name}} USDT价格 </label>
+                <label>{{exchanges[pair[0]].name + ' ' + exchanges[pair[0]].pairs[pair[2]].name}}/USDT </label>
                 <el-input :disabled="filled" style="width: 200px;" v-model="exchanges[pair[0]].pairs[pair[2]].warnPrice"></el-input>
+                <label>现价 {{exchanges[pair[0]].pairs[pair[2]].currentPrice}}</label>
               </div>
             </div>
           </el-col>
         </el-row>
       </el-card>
     </div>
+
+    <div style="height: 20px;"></div>
+
+
   </div>
 </template>
 
@@ -148,7 +167,8 @@
           pairs: [{
             id: 0,
             name: 'BTC',
-            warnPrice: 0
+            warnPrice: 0,
+            currentPrice: 0
           }]
         }, {
           id: 1,
@@ -156,11 +176,13 @@
           pairs: [{
             id: 0,
             name: 'BTC',
-            warnPrice: 0
+            warnPrice: 0,
+            currentPrice: 0
           }, {
             id: 1,
             name: 'ETH',
-            warnPrice: 0
+            warnPrice: 0,
+            currentPrice: 0
           }]
         }, {
           id: 2,
@@ -168,7 +190,8 @@
           pairs: [{
             id: 0,
             name: 'BTC',
-            warnPrice: 0
+            warnPrice: 0,
+            currentPrice: 0
           }]
         }, {
           id: 3,
@@ -176,7 +199,8 @@
           pairs: [{
             id: 0,
             name: 'BTC',
-            warnPrice: 0
+            warnPrice: 0,
+            currentPrice: 0
           }]
         }, {
           id: 4,
@@ -184,7 +208,8 @@
           pairs: [{
             id: 0,
             name: 'LTC',
-            warnPrice: 0
+            warnPrice: 0,
+            currentPrice: 0
           }]
         }, {
           id: 5,
@@ -192,7 +217,8 @@
           pairs: [{
             id: 0,
             name: 'EOS',
-            warnPrice: 0
+            warnPrice: 0,
+            currentPrice: 0
           }]
         }, {
           id: 6,
@@ -200,7 +226,8 @@
           pairs: [{
             id: 0,
             name: 'XRP',
-            warnPrice: 0
+            warnPrice: 0,
+            currentPrice: 0
           }]
         }, {
           id: 7,
@@ -208,7 +235,8 @@
           pairs: [{
             id: 0,
             name: 'BTC',
-            warnPrice: 0
+            warnPrice: 0,
+            currentPrice: 0
           }]
         }, {
           id: 8,
@@ -216,23 +244,28 @@
           pairs: [{
             id: 0,
             name: 'BTC Quarter',
-            warnPrice: 0
+            warnPrice: 0,
+            currentPrice: 0
           }, {
             id: 1,
             name: 'EOS Quarter',
-            warnPrice: 0
+            warnPrice: 0,
+            currentPrice: 0
           }, {
             id: 2,
             name: 'ETH Quarter',
-            warnPrice: 0
+            warnPrice: 0,
+            currentPrice: 0
           }, {
             id: 3,
             name: 'LTC Quarter',
-            warnPrice: 0
+            warnPrice: 0,
+            currentPrice: 0
           }, {
             id: 4,
             name: 'XRP Quarter',
-            warnPrice: 0
+            warnPrice: 0,
+            currentPrice: 0
           }]
         }]
       }
@@ -241,6 +274,64 @@
       // axios.get('https://datamish.com/api/datasources/proxy/1/query?db=bfx&q=SELECT%20last(%22long_pct%22)%20FROM%20%22bfx_pct_long_short%22%20WHERE%20(%22symbol%22%20%3D%20%27BTC%27)%20AND%20time%20%3E%3D%20now()%20-%206h%20GROUP%20BY%20time(1m)%20fill(previous)%3BSELECT%20last(%22short_pct%22)%20FROM%20%22bfx_pct_long_short%22%20WHERE%20(%22symbol%22%20%3D%20%27BTC%27)%20AND%20time%20%3E%3D%20now()%20-%206h%20GROUP%20BY%20time(1m)%20fill(previous)&epoch=ms').then((res)=>{
       //   console.log(res.data)
       // })
+      new AICoin.chart({
+        "symbol": "KRAKENUSDTUSD",
+        "default_step": "3600",
+        "default_theme": "light",
+        "disable_theme_change": true,
+        "container": "kraken_container",
+        "lang": "zh",
+        "title": "USDTUSDTRENDING"
+      })
+      new AICoin.chart({
+        "symbol": "HUOBIPROUSDTHUSD",
+        "default_step": "3600",
+        "default_theme": "light",
+        "disable_theme_change": true,
+        "container": "huobi_container",
+        "lang": "zh",
+        "title": "USDTUSDTRENDING"
+      })
+      new AICoin.markets({
+        "symbols": [
+          "binancebtcusdt",
+          "bitfinexbtcusd",
+          "bitfinexethusd",
+          "bitmexxbtusd",
+          "bitstampbtcusd",
+          "coinbaseltcusd",
+          "huobiproeosusdt",
+        ],
+        "columns": [
+          "degree",
+          "incrSpeed",
+          "market_price",
+          "vol"
+        ],
+        "style": "tr%7Bheight%3A34px%3B%7D",
+        "container": "aicoin_container_left",
+        "lang": "zh"
+      })
+      new AICoin.markets({
+        "symbols": [
+          "krakenxrpusd",
+          "okexbtcusdt",
+          "okcoinfuturesbtcquarterusd",
+          "okexeosquarterusd",
+          "okexethquarterusd",
+          "okcoinfuturesltcquarterusd",
+          "okexxrpquarterusd"
+        ],
+        "columns": [
+          "degree",
+          "incrSpeed",
+          "market_price",
+          "vol"
+        ],
+        "style": "tr%7Bheight%3A34px%3B%7D",
+        "container": "aicoin_container_right",
+        "lang": "zh"
+      })
       new TradingView.widget(
         {
           // "width": 540,
@@ -283,10 +374,10 @@
 
 <style scoped lang="less">
   .page {
-    height: 100%;
+    /*height: 100%;*/
     width: 100%;
     background: url("../../assets/home/背景_user.jpg") center center;
-    background-size: cover;
+    background-size: 100% 100%;
     .menu {
       height: 72px;
       width: 100%;
@@ -316,6 +407,7 @@
       }
     }
     .row {
+      height: 400px;
       position: relative;
       width: 100%;
       margin-top: 20px;
@@ -326,14 +418,14 @@
         /*margin: 0 auto;*/
         float: left;
         margin-left: 2%;
-
-
+        height: 400px;
       }
       .warning-card {
         /*margin: 0 auto;*/
         float: right;
         margin-right: 2%;
         width: 75%;
+        min-height: 400px;
       }
       img {
         width: 320px;
