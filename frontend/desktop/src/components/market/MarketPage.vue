@@ -36,12 +36,23 @@
         </div>
       </el-card>
 
+      <el-card class="dominance-card">
+        <div slot="header">
+          <span>主导指数</span>
+        </div>
+        <div>
+          <p>BTC 主导指数（%）{{btcDominance}}</p>
+          <p>ETH 主导指数（%）{{ethDominance}}</p>
+          <p>*数据源：CoinMarketCap</p>
+        </div>
+      </el-card>
+
       <el-card class="warning-card">
         <div slot="header">
           <span>价格预警</span>
         </div>
         <el-row :gutter="20">
-          <el-col :span="12" style="margin-top: 50px;">
+          <el-col :span="10" style="margin-top: 50px;">
             <div>
               <el-switch :disabled="filled" v-model="webWarningOn" active-color="#13ce66" inactive-color="#ff4949" active-text="网页提醒"></el-switch>
               <el-switch :disabled="filled" v-model="phoneWarningOn" active-color="#13ce66" inactive-color="#ff4949" active-text="电话提醒"></el-switch>
@@ -58,9 +69,9 @@
             <el-button style="width: 46.5%" @click="fuelCheck" :disabled="filled">验证</el-button>
             <el-button @click="engineSwitch" :type="switchBtnType" :disabled="!filled" style="margin-top: 10px; width: 46.5%">{{ switchBtnText }}</el-button>
           </el-col>
-          <el-col :span="12">
+          <el-col :span="14">
             <p v-if="watchedPairs.length === 0">未选择交易对</p>
-            <div style="width: 600px">
+            <div style="width: 90%">
               <div v-for="pair in watchedPairs" style="margin-top: 5px; float: right">
                 <label>{{exchanges[pair[0]].name + ' ' + exchanges[pair[0]].pairs[pair[2]].name}}/USDT </label>
                 <el-input :disabled="filled" style="width: 200px;" v-model="exchanges[pair[0]].pairs[pair[2]].warnPrice"></el-input>
@@ -80,13 +91,22 @@
 
 <script>
 
-  // import axios from 'axios'
+  var axios = require('axios')
   export default {
     name: "MarketPage",
     components: {
 
     },
     methods: {
+      getDominance() {
+        axios.get('https://pro-api.coinmarketcap.com/v1/global-metrics/quotes/latest', {
+          headers: {
+            'X-CMC_PRO_API_KEY': '81185bf4-514a-400a-8e71-05cc1084ceeb'
+          }
+        }).then((res) => {
+          console.log(res.data)
+        })
+      },
       onPairSelect() {
         console.log(this.watchedPairs)
       },
@@ -153,6 +173,8 @@
     },
     data() {
       return {
+        btcDominance: null,
+        ethDominance: null,
         switchBtnText: '启动',
         switchBtnType: 'primary',
         filled: false,
@@ -274,6 +296,7 @@
       // axios.get('https://datamish.com/api/datasources/proxy/1/query?db=bfx&q=SELECT%20last(%22long_pct%22)%20FROM%20%22bfx_pct_long_short%22%20WHERE%20(%22symbol%22%20%3D%20%27BTC%27)%20AND%20time%20%3E%3D%20now()%20-%206h%20GROUP%20BY%20time(1m)%20fill(previous)%3BSELECT%20last(%22short_pct%22)%20FROM%20%22bfx_pct_long_short%22%20WHERE%20(%22symbol%22%20%3D%20%27BTC%27)%20AND%20time%20%3E%3D%20now()%20-%206h%20GROUP%20BY%20time(1m)%20fill(previous)&epoch=ms').then((res)=>{
       //   console.log(res.data)
       // })
+      this.getDominance()
       new AICoin.chart({
         "symbol": "KRAKENUSDTUSD",
         "default_step": "3600",
@@ -424,7 +447,13 @@
         /*margin: 0 auto;*/
         float: right;
         margin-right: 2%;
-        width: 75%;
+        width: 64%;
+        min-height: 400px;
+      }
+      .dominance-card {
+        float: left;
+        margin-left: 1%;
+        width: 10%;
         min-height: 400px;
       }
       img {
