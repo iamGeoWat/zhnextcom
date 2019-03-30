@@ -41,9 +41,11 @@
           <span>主导指数</span>
         </div>
         <div>
-          <p>BTC 主导指数（%）{{btcDominance}}</p>
-          <p>ETH 主导指数（%）{{ethDominance}}</p>
-          <p>*数据源：CoinMarketCap</p>
+          <p style="font-size: 12px">BTC Dominance</p>
+          <p style="font-size: 30px">{{btcDominance}}</p>
+          <p style="margin-top: 20px; font-size: 12px">ETH Dominance</p>
+          <p style="font-size: 30px">{{ethDominance}}</p>
+          <p style="margin-top: 120px; font-size: 10px; color: #888888;">*数据源：CoinMarketCap</p>
         </div>
       </el-card>
 
@@ -91,20 +93,22 @@
 
 <script>
 
-  var axios = require('axios')
+  import axios from 'axios'
   export default {
     name: "MarketPage",
     components: {
 
     },
     methods: {
+      getPriceData() {
+
+      },
       getDominance() {
-        axios.get('https://pro-api.coinmarketcap.com/v1/global-metrics/quotes/latest', {
-          headers: {
-            'X-CMC_PRO_API_KEY': '81185bf4-514a-400a-8e71-05cc1084ceeb'
-          }
-        }).then((res) => {
-          console.log(res.data)
+        var that = this
+        axios.get('http://45.32.61.88:8896/dominance').then((res) => {
+          // console.log(res.data.data)
+          this.btcDominance = res.data.data.btc_dominance.toFixed(2)
+          this.ethDominance = res.data.data.eth_dominance.toFixed(2)
         })
       },
       onPairSelect() {
@@ -297,6 +301,9 @@
       //   console.log(res.data)
       // })
       this.getDominance()
+      setInterval(()=>{
+        this.getDominance()
+      }, 3600000)
       new AICoin.chart({
         "symbol": "KRAKENUSDTUSD",
         "default_step": "3600",
