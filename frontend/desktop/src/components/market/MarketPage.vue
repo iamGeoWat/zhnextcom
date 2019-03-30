@@ -73,8 +73,8 @@
           </el-col>
           <el-col :span="14">
             <p v-if="watchedPairs.length === 0">未选择交易对</p>
-            <div style="width: 90%">
-              <div v-for="pair in watchedPairs" style="margin-top: 5px; float: right">
+            <div>
+              <div v-for="pair in watchedPairs" style="margin-top: 5px; font-size: 15px;">
                 <label>{{exchanges[pair[0]].name + ' ' + exchanges[pair[0]].pairs[pair[2]].name}}/USDT </label>
                 <el-input :disabled="filled" style="width: 200px;" v-model="exchanges[pair[0]].pairs[pair[2]].warnPrice"></el-input>
                 <label>现价 {{exchanges[pair[0]].pairs[pair[2]].currentPrice}}</label>
@@ -87,7 +87,9 @@
 
     <div style="height: 20px;"></div>
 
-
+    <audio id="alertSound">
+      <source src="../../assets/alert.mp3" type="audio/mp3" />
+    </audio>
   </div>
 </template>
 
@@ -100,11 +102,17 @@
 
     },
     methods: {
-      getPriceData() {
-
-      },
+      // getPriceData() {
+      //   axios.get('http://45.32.61.88:8896/price').then((res) => {
+      //     // console.log(res.data)
+      //     for (var i = 0; i < res.data.length; i++) {
+      //       for (var j = 0; j < res.data[i].length; j++) {
+      //         this.exchanges[i].pairs[j].currentPrice = parseFloat(res.data[i][j])
+      //       }
+      //     }
+      //   })
+      // },
       getDominance() {
-        var that = this
         axios.get('http://45.32.61.88:8896/dominance').then((res) => {
           // console.log(res.data.data)
           this.btcDominance = res.data.data.btc_dominance.toFixed(2)
@@ -112,9 +120,10 @@
         })
       },
       onPairSelect() {
-        console.log(this.watchedPairs)
+        // console.log(this.watchedPairs)
       },
       fuelCheck() {
+
         if (this.webWarningOn || this.phoneWarningOn) {
           if ((/^1[34578]\d{9}$/.test(this.phoneNumber))) {
             if (this.warningKey === 'KHASAN') {
@@ -157,26 +166,95 @@
         }
       },
       engineSwitch() {
-        if (this.startBtnText === '启动') {
+        if (this.switchBtnText === '启动') {
           this.switchBtnText =  '停止'
           this.switchBtnType = 'danger'
           this.engineStart()
-        } else if (this.startBtnText === '停止') {
+        } else if (this.switchBtnText === '停止') {
           this.filled = false
           this.switchBtnText =  '启动'
           this.switchBtnType = 'primary'
           this.engineStop()
         }
       },
+      priceInitialize() {
+        axios.get('http://45.32.61.88:8896/price').then((res)=>{
+          for (var i = 0; i < res.data.length; i++) {
+            for (var j = 0; j < res.data[i].length; j++) {
+              this.exchanges[i].pairs[j].currentPrice = parseFloat(res.data[i][j])
+            }
+          }
+        })
+      },
+      doAlert() {
+        if (this.phoneWarningOn) {
+          try {
+            axios.post('http://yzxyytz.market.alicloudapi.com/yzx/voiceNotifySms?phone=' + this.phoneNumber + '&templateId=TP18040817', {}, {
+              headers: {
+                'Authorization': 'APPCODE f6a48955f941406da16f44002b34b67e'
+              }
+            }).then((res) => {
+              if (res.data.return_code !== '00000') {
+                alert('电话预警API出错')
+              } else {
+                console.log('已发送电话预警')
+              }
+            })
+          } catch (e) {
+            console.log(e)
+          }
+        }
+        if (this.webWarningOn) {
+          var bell = document.getElementById('alertSound')
+          bell.play()
+        }
+      },
       engineStart() {
+        this.priceInitialize()
+        this.warningEngine = setInterval(() => {
+          axios.get('http://45.32.61.88:8896/price').then((res) => {
+            // console.log(res.data)
+            for (var k = 0; k < this.watchedPairs.length; k++) {
+              var set = this.exchanges[this.watchedPairs[k][0]].pairs[this.watchedPairs[k][2]].warnPrice
+              var last = this.exchanges[this.watchedPairs[k][0]].pairs[this.watchedPairs[k][2]].currentPrice
+              var current = res.data[this.watchedPairs[k][0]][this.watchedPairs[k][2]]
+              if (current === set) {
+                console.log(k + '到达了警报值')
+                this.doAlert()
+                this.exchanges[this.watchedPairs[k][0]].pairs[this.watchedPairs[k][2]].warnPrice = 99999
+              } else {
+                if (set - last < 0) {
+                  if (current - last < set - last) {
+                    console.log(k + '向下跨越了警报值')
+                    this.doAlert()
+                    this.exchanges[this.watchedPairs[k][0]].pairs[this.watchedPairs[k][2]].warnPrice = 99999
+                  } else {
+                    this.exchanges[this.watchedPairs[k][0]].pairs[this.watchedPairs[k][2]].currentPrice = res.data[this.watchedPairs[k][0]][this.watchedPairs[k][2]]
+                    console.log(k + '未触发警报')
+                  }
+                } else if (set - last > 0) {
+                  if (current - last > set - last) {
+                    console.log(k + '向上跨越了警报值')
+                    this.doAlert()
+                    this.exchanges[this.watchedPairs[k][0]].pairs[this.watchedPairs[k][2]].warnPrice = 99999
+                  } else {
+                    this.exchanges[this.watchedPairs[k][0]].pairs[this.watchedPairs[k][2]].currentPrice = res.data[this.watchedPairs[k][0]][this.watchedPairs[k][2]]
+                    console.log(k + '未触发警报')
+                  }
+                }
+              }
+            }
 
+          })
+        }, 10000)
       },
       engineStop() {
-
+        clearInterval(this.warningEngine)
       }
     },
     data() {
       return {
+        warningEngine: null,
         btcDominance: null,
         ethDominance: null,
         switchBtnText: '启动',
@@ -297,13 +375,15 @@
       }
     },
     mounted() {
-      // axios.get('https://datamish.com/api/datasources/proxy/1/query?db=bfx&q=SELECT%20last(%22long_pct%22)%20FROM%20%22bfx_pct_long_short%22%20WHERE%20(%22symbol%22%20%3D%20%27BTC%27)%20AND%20time%20%3E%3D%20now()%20-%206h%20GROUP%20BY%20time(1m)%20fill(previous)%3BSELECT%20last(%22short_pct%22)%20FROM%20%22bfx_pct_long_short%22%20WHERE%20(%22symbol%22%20%3D%20%27BTC%27)%20AND%20time%20%3E%3D%20now()%20-%206h%20GROUP%20BY%20time(1m)%20fill(previous)&epoch=ms').then((res)=>{
-      //   console.log(res.data)
-      // })
       this.getDominance()
       setInterval(()=>{
         this.getDominance()
       }, 3600000)
+      // this.getPriceData()
+      // setInterval(()=>{
+      //   this.getPriceData()
+      // }, 10000)
+
       new AICoin.chart({
         "symbol": "KRAKENUSDTUSD",
         "default_step": "3600",
