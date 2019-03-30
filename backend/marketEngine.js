@@ -27,7 +27,7 @@ function fetchPriceData() {
     })
     axios.get('https://api.huobi.pro/market/trade?symbol=eosusdt').then((res)=>{
       // console.log(res.data.tick.data[0].price)
-      priceData[5][0] = res.data.tick.data[0].price
+      priceData[5][0] = res.data.tick.data[0].price.toString()
     })
     axios.get('https://api.kraken.com/0/public/Ticker?pair=xrpusd').then((res)=>{
       // console.log(res.data.result.XXRPZUSD.c[0])
@@ -43,15 +43,15 @@ function fetchPriceData() {
     })
     axios.get('https://www.bitmex.com/api/v1/trade?symbol=XBT&count=1&reverse=true').then((res)=>{
       // console.log(res.data[0].price)
-      priceData[2][0] = res.data[0].price
+      priceData[2][0] = res.data[0].price.toString()
     })
     axios.get('https://api.bitfinex.com/v2/ticker/tBTCUSD').then((res)=>{
       // console.log(res.data[6])
-      priceData[1][0] = res.data[6]
+      priceData[1][0] = res.data[6].toString()
     })
     axios.get('https://api.bitfinex.com/v2/ticker/tETHUSD').then((res)=>{
       // console.log(res.data[6])
-      priceData[1][1] = res.data[6]
+      priceData[1][1] = res.data[6].toString()
     })
     axios.get('https://www.okex.com/api/spot/v3/instruments/BTC-USDT/ticker').then((res)=>{
       // console.log(res.data.last)
