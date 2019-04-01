@@ -214,6 +214,8 @@
     },
     methods: {
       drawLine() {
+        console.log(this.lineChartDate)
+        console.log(this.lineChartData)
         this.lineChart = this.$echarts.init(document.getElementById('lineChart'));
         this.lineChart.setOption({
           tooltip: {

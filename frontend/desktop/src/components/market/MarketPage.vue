@@ -19,10 +19,43 @@
       </el-card>
     </div>
 
-    <div style="margin-top: 20px">
-      <el-card style="width: 96%; margin-left: 2%;">
-        <div id="kraken_container" style="height: 640px; width: 49%; float: left; margin-bottom: 20px"></div>
-        <div id="huobi_container" style="height: 640px; width: 49%; float: right; margin-bottom: 20px"></div>
+    <div class="otc-div">
+      <el-card class="otc-card">
+        <el-row>
+          <el-col :span="3" class="otc-data">
+            <el-card class="otc-data-card">
+              <div>
+                <p>USDT场外价格</p>
+                <p>{{ otcData.usdtToCny }}</p>
+              </div>
+            </el-card>
+            <el-card class="otc-data-card">
+              <div>
+                <p>美元价格</p>
+                <p>{{ otcData.usdToCny }}</p>
+              </div>
+            </el-card>
+            <el-card class="otc-data-card">
+              <div>
+                <p>溢价率</p>
+                <p>{{ otcData.premiumRate }}</p>
+              </div>
+            </el-card>
+          </el-col>
+          <el-col :span="21" class="otc-chart">
+            <div class="chart-header">
+              <p class="chart-title">USDT场外溢价率及比特币价格</p>
+              <div>
+                <el-button round @click="changeOtcData($event)" :type=" otcChartType==='day'?'primary':'default' ">1Day</el-button>
+                <el-button round @click="changeOtcData($event)" :type=" otcChartType==='3day'?'primary':'default' ">3Days</el-button>
+                <el-button round @click="changeOtcData($event)" :type=" otcChartType==='Week'?'primary':'default' ">1Week</el-button>
+              </div>
+            </div>
+            <div id="otcChart" :style="{width: '100%', height: '80%'}"></div>
+          </el-col>
+        </el-row>
+
+
       </el-card>
     </div>
 
@@ -102,6 +135,127 @@
 
     },
     methods: {
+      getOtcData() {
+        axios.get('http://blz.bicoin.com.cn/data/getUsdtRateInfo?firstTimeType=1%2C3%2C7&secondTimeType=1%2C3%2C7').then((res) => {
+          // console.log(res.data.data.btcPrices['3day'])
+          this.otcData = res.data.data
+          this.drawOtcChart()
+        })
+      },
+      changeOtcData(e) {
+        if (e.path[0].textContent === '1Day') {
+          this.otcChartType = 'day'
+          this.drawOtcChart()
+        } else if (e.path[0].textContent === '3Days') {
+          this.otcChartType = '3day'
+          this.drawOtcChart()
+        } else if (e.path[0].textContent === '1Week') {
+          this.otcChartType = 'Week'
+          this.drawOtcChart()
+        }
+      },
+      drawOtcChart() {
+        var xAxisData = []
+        var yPrice = []
+        var yPremium = []
+        for (let i = 0; i < this.otcData.btcPrices[this.otcChartType].length; i++) {
+          var time = new Date(this.otcData.btcPrices[this.otcChartType][i].time*1000)
+          xAxisData.push(time.toLocaleString('chinese', { hour12: false }).slice(0, -3))
+          yPrice.push(this.otcData.btcPrices[this.otcChartType][i].rate)
+        }
+        for (let i = 0; i < this.otcData.premiumRateResult[this.otcChartType].length; i++) {
+          yPremium.push(this.otcData.premiumRateResult[this.otcChartType][i].rate)
+        }
+        this.lineChart = this.$echarts.init(document.getElementById('otcChart'));
+        this.lineChart.setOption({
+          tooltip: {
+            trigger: 'axis',
+            position: function (pt) {
+              return [pt[0], '10%'];
+            }
+          },
+          xAxis: {
+            type: 'category',
+            data: xAxisData
+          },
+          yAxis: [{
+            id: 0,
+            type: 'value',
+            scale: true,
+            splitLine: {
+              show: false
+            }
+          }, {
+            id: 1,
+            type: 'value',
+            scale: false,
+            splitLine: {
+              show: false
+            }
+          }],
+          series: [{
+            yAxisIndex: 0,
+            z: 3,
+            data: yPrice,
+            type: 'line',
+            symbol: 'circle',
+            itemStyle: {
+              normal: {
+                color: "rgb(112, 152, 242)", //折线点的颜色
+                lineStyle: {
+                  color: "rgb(112, 152, 242)" //折线的颜色
+                }
+              }
+            },
+            areaStyle: {
+              color: {
+                type: 'linear',
+                x: 0,
+                y: 0,
+                x2: 0,
+                y2: 1,
+                colorStops: [{
+                  offset: 0, color: 'rgb(112, 152, 242)' // 0% 处的颜色
+                }, {
+                  offset: 1, color: '#E0E8FD' // 100% 处的颜色
+                }],
+                global: false // 缺省为 false
+              }
+            }
+          }, {
+            yAxisIndex: 1,
+            data: yPremium,
+            type: 'line',
+            symbol: 'circle',
+            itemStyle: {
+              normal: {
+                color: "#FFB300", //折线点的颜色
+                lineStyle: {
+                  color: "#FFB300" //折线的颜色
+                }
+              }
+            },
+            areaStyle: {
+              color: {
+                type: 'linear',
+                x: 0,
+                y: 0,
+                x2: 0,
+                y2: 1,
+                colorStops: [{
+                  offset: 0, color: '#FFB300' // 0% 处的颜色
+                }, {
+                  offset: 1, color: '#FEEFD2' // 100% 处的颜色
+                }],
+                global: false // 缺省为 false
+              }
+            }
+          }],
+        });
+        window.addEventListener("resize", () => {
+          this.lineChart.resize();
+        });
+      },
       // getPriceData() {
       //   axios.get('http://45.32.61.88:8896/price').then((res) => {
       //     // console.log(res.data)
@@ -254,6 +408,14 @@
     },
     data() {
       return {
+        otcChartType: '3day',
+        otcData: {
+          usdtToCny: null,
+          usdToCny: null,
+          premiumRate: null,
+          btcPrices: null,
+          premiumRateResult: null
+        },
         warningEngine: null,
         btcDominance: null,
         ethDominance: null,
@@ -379,29 +541,9 @@
       setInterval(()=>{
         this.getDominance()
       }, 3600000)
-      // this.getPriceData()
-      // setInterval(()=>{
-      //   this.getPriceData()
-      // }, 10000)
 
-      new AICoin.chart({
-        "symbol": "KRAKENUSDTUSD",
-        "default_step": "3600",
-        "default_theme": "light",
-        "disable_theme_change": true,
-        "container": "kraken_container",
-        "lang": "zh",
-        "title": "USDTUSDTRENDING"
-      })
-      new AICoin.chart({
-        "symbol": "HUOBIPROUSDTHUSD",
-        "default_step": "3600",
-        "default_theme": "light",
-        "disable_theme_change": true,
-        "container": "huobi_container",
-        "lang": "zh",
-        "title": "USDTUSDTRENDING"
-      })
+      this.getOtcData()
+
       new AICoin.markets({
         "symbols": [
           "binancebtcusdt",
@@ -567,7 +709,34 @@
         margin-right: 2%;
       }
     }
+    .otc-div {
+      margin-top: 20px;
+      .otc-card {
+        width: 96%;
+        margin-left: 2%;
+        .otc-data {
+          text-align: center;
+          .otc-data-card {
+            margin-left: 40%;
+            margin-top: 50px;
+            width: 150px;
+            height: 80px;
+            font-size: 15px;
+          }
+        }
+        .otc-chart {
+          height: 450px;
+          .chart-header {
+            text-align: center;
+            .chart-title {
+              margin-bottom: 10px;
+              font-size: 18px;
+            }
+          }
+        }
+      }
 
+    }
   }
 
 </style>
