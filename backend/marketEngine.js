@@ -7,6 +7,21 @@ app.use(function(req, res, next) {
   next();
 });
 
+function addWatch() {
+  
+}
+
+function changeWatch() {
+  
+}
+
+function auth() {
+  
+}
+
+function call() {
+  
+}
 
 var priceData = [
   [0], //0 binance
